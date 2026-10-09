@@ -16,6 +16,7 @@
       <a class="brand" href="#top" aria-label="모진성 포트폴리오 맨 위로">MO JINSUNG<span class="brand-mark">.</span></a>
       <nav aria-label="주 메뉴">
         <a href="#work">프로젝트</a>
+        <a href="#resume">이력</a>
         <a href="#approach">일하는 방식</a>
         <a href="https://github.com/jinsung-mo" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
@@ -54,6 +55,32 @@
       </div>
     </section>
 
+    <section class="section resume" id="resume" aria-labelledby="resume-title">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="section-kicker">BACKGROUND</p><h2 id="resume-title">이력과 활동</h2></div><p>학습한 내용을 프로젝트에서 설계·구현·검증으로 연결했습니다.</p></div>
+        <div class="resume-grid">
+          <div class="resume-main">
+            <div class="resume-group">
+              <h3>교육</h3>
+              <div class="resume-item"><span class="resume-date">2026.01 — 현재</span><div><strong>삼성청년SW·AI아카데미 (SSAFY 15기)</strong><p>Java 전공자 과정 · 1학기 소프트웨어 교육 925시간 이수 · AIoT 공통프로젝트와 특화프로젝트 참여</p></div></div>
+              <div class="resume-item"><span class="resume-date">2022.03 — 2026.02</span><div><strong>창원대학교 컴퓨터공학과</strong><p>학사 졸업 · 3.61 / 4.5</p></div></div>
+              <div class="resume-item"><span class="resume-date">2025.08</span><div><strong>AI 프런티어 글로벌 해커톤 연수</strong><p>캐나다 현지 교육에서 딥러닝과 Transformer를 학습하고 AI 로봇카 프로젝트에 참여</p></div></div>
+            </div>
+            <div class="resume-group">
+              <h3>추가 경험</h3>
+              <div class="resume-item"><span class="resume-date">2025.03 — 2025.12</span><div><strong>CERTMAP · 서비스 기획과 백엔드</strong><p>취업 준비생 100명의 의견을 조사해 자격증 추천을 학습계획 서비스로 전환하고, Spring Boot·MySQL 기반 데이터 구조와 API를 설계</p></div></div>
+              <div class="resume-item"><span class="resume-date">2025.01 — 2025.08</span><div><strong>창업동아리 UniCorn · 운영진 / 개발 트랙</strong><p>비전공 부원을 위한 Figma·FigJam 실습 교육과 서비스 기획 활동 진행</p></div></div>
+            </div>
+          </div>
+          <aside class="resume-side" aria-label="자격과 수상">
+            <div class="profile-card"><img src="assets/profile.png" alt="모진성 증명사진" loading="lazy"><div><strong>모진성</strong><span>Backend Developer</span><p>Java · Spring Boot<br>데이터와 시스템 연동</p></div></div>
+            <div class="resume-group"><h3>자격·어학</h3><ul class="plain-list"><li><span>정보처리기사</span><time>2025.12</time></li><li><span>TOPCIT 수준 3</span><time>2025.05</time></li><li><span>TOEIC Speaking IL</span><time>2025.12</time></li></ul></div>
+            <div class="resume-group"><h3>수상</h3><ul class="plain-list awards"><li><span>SSAFY 특화프로젝트 우수상 <small>가볼래</small></span><time>2026.09</time></li><li><span>SSAFY 공통프로젝트 우수상 <small>삐용</small></span><time>2026.08</time></li><li><span>교내 소프트웨어 전시회 인기상 <small>빈자리</small></span><time>2025.06</time></li><li><span>SW 창업아이디어 경진대회 최우수상</span><time>2024.12</time></li><li><span>스마트제조ICT 캡스톤 경진대회 장려상</span><time>2024.11</time></li></ul></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="section projects" id="work" aria-labelledby="work-title">
       <div class="wrap">
         <div class="section-heading"><div><p class="section-kicker">SELECTED WORK</p><h2 id="work-title">프로젝트</h2></div><p>문제, 담당 범위, 해결 과정을 중심으로 정리했습니다.</p></div>
@@ -76,13 +103,13 @@
         </article>
 
         <article class="project compact gabolle-case" id="gabolle" aria-labelledby="gabolle-title">
-          <div class="project-meta"><span>02 / 데이터 정합성 · 동시 요청</span><span>2026 · 6인 팀</span></div>
+          <div class="project-meta"><span>02 / 데이터 정합성 · 동시 요청</span><span>2026.08 — 2026.09 · 6인 팀</span></div>
           <div class="compact-grid"><div><h3 id="gabolle-title">가볼래 <span>GABOLLE</span></h3><p class="project-lead">외국인 여행객을 위한 부산 여행 계획 서비스</p><p>여행·일정 기능의 백엔드, PostgreSQL 저장·검증, AI 여행 도우미의 서버 기능을 맡았습니다.</p></div><div><div class="case-block"><span class="case-label">PROBLEM → DECISION</span><p>모바일에서 응답이 끊겨 여행 생성 요청이 재전송되면 같은 여행이 여러 번 만들어질 수 있었습니다. 요청 키를 먼저 확보하고, 같은 키·같은 내용이면 기존 여행을 반환하도록 저장 순서를 바꿨습니다.</p></div><div class="case-block"><span class="case-label">CONCURRENT EDITS</span><p>동행자가 같은 일정을 수정할 때는 바탕 판 번호와 DB 조건부 갱신으로 덮어쓰기를 막았습니다. 충돌한 요청에는 HTTP 409를 반환하고, PostgreSQL 통합 테스트로 저장 동작을 확인했습니다.</p></div><a class="project-link" href="https://github.com/jinsung-mo/gabolle-busan-travel" target="_blank" rel="noopener noreferrer">프로젝트 저장소와 구현 근거 <span aria-hidden="true">↗</span></a></div></div>
           <div class="architecture" aria-label="가볼래 여행 생성 저장 구조"><span>앱의 재요청</span><i aria-hidden="true"></i><span>요청 키 확보</span><i aria-hidden="true"></i><span>PostgreSQL 저장</span><small>같은 내용은 기존 결과 · 다른 내용은 409</small></div>
         </article>
 
         <article class="project secondary" id="binjari" aria-labelledby="binjari-title">
-          <div class="project-meta"><span>03 / 영상 분석 · 서비스 최적화</span><span>2024.11 — 2025.05 · 2인 팀</span></div>
+          <div class="project-meta"><span>03 / 영상 분석 · 서비스 최적화</span><span>2024.12 — 2025.06 · 2인 팀</span></div>
           <div class="secondary-grid">
             <div class="project-body">
               <h3 id="binjari-title">빈자리 <span>BINJARI</span></h3>
