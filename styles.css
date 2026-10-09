@@ -7,3 +7,10 @@
 .project-index{justify-content:flex-start}
 .project-image.landscape img{height:230px;aspect-ratio:auto;object-fit:cover;object-position:center}
 @media(max-width:720px){.project-image.landscape img{height:auto;object-fit:contain}}
+.service-overview{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0 20px;margin:0 0 30px;display:grid;grid-template-columns:74px minmax(0,1fr);gap:2px 18px}
+.service-overview h4{grid-row:1 / span 2;color:var(--accent);font-size:13px;font-weight:750}
+.service-overview p{font-size:15px;line-height:1.8;color:#39463d}
+.service-overview ul{display:flex;flex-wrap:wrap;gap:5px 22px;padding:0;margin:12px 0 0;list-style:none;font-size:13px;color:var(--muted)}
+.service-overview li::before{content:'·';color:var(--accent);font-weight:750;margin-right:6px}
+.binjari-screen img{max-width:310px}
+@media(max-width:720px){.service-overview{grid-template-columns:1fr;gap:7px;margin-bottom:25px}.service-overview h4{grid-row:auto}.service-overview ul{display:block}.service-overview li+li{margin-top:3px}}
