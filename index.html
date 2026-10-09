@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="모진성의 백엔드 개발 포트폴리오. 실시간 시스템 연동, 데이터 처리, 운영 문제 해결 경험을 소개합니다.">
+  <meta name="theme-color" content="#10243a">
+  <title>모진성 | Backend Developer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%2310243a'/%3E%3Cpath d='M15 43V21l17 16 17-16v22' fill='none' stroke='%2374d2dd' stroke-width='6' stroke-linecap='square'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 이동</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="모진성 포트폴리오 맨 위로">MO JINSUNG<span class="brand-mark">.</span></a>
+      <nav aria-label="주 메뉴">
+        <a href="#work">프로젝트</a>
+        <a href="#approach">일하는 방식</a>
+        <a href="https://github.com/jinsung-mo" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">BACKEND · SYSTEM INTEGRATION · OPERATIONS</p>
+          <h1 id="hero-title">데이터가 흐르는 경로를<br><em>끝까지 확인합니다.</em></h1>
+          <p class="hero-copy">안녕하세요, 백엔드 개발자 모진성입니다. 요구사항을 API와 데이터 구조로 옮기고, 서로 다른 시스템을 연결해 실제 운영 환경에서 발생한 문제를 해결해 왔습니다.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work">프로젝트 보기</a>
+            <a class="button text-link" href="https://github.com/jinsung-mo" target="_blank" rel="noopener noreferrer">GitHub 프로필 <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="핵심 경험">
+          <div class="panel-top"><span>FOCUS</span><span>01 / 03</span></div>
+          <p>설계부터 운영까지</p>
+          <div class="panel-rule"></div>
+          <dl>
+            <div><dt>01</dt><dd>Spring Boot 기반 API와 인증</dd></div>
+            <div><dt>02</dt><dd>로봇 · 서버 · 웹 실시간 연동</dd></div>
+            <div><dt>03</dt><dd>성능 개선과 장애 원인 분석</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section intro" id="approach" aria-labelledby="approach-title">
+      <div class="wrap intro-grid">
+        <div><p class="section-kicker">HOW I WORK</p><h2 id="approach-title">기능보다 흐름을 먼저 봅니다.</h2></div>
+        <div class="intro-copy"><p>서비스가 기대한 대로 작동하려면 요청을 받는 API뿐 아니라 인증, 저장, 시스템 간 통신, 배포 이후 상태까지 이어져야 합니다. 저는 문제가 생긴 구간을 데이터 흐름에서 찾고, 변경이 다른 부분에 미치는 영향도 함께 살핍니다.</p><p class="small-note">주요 경험: Java · Spring Boot · MySQL · Python · REST API · WebSocket · Docker · AWS EC2</p></div>
+      </div>
+    </section>
+
+    <section class="section projects" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="section-kicker">SELECTED WORK</p><h2 id="work-title">프로젝트</h2></div><p>문제, 담당 범위, 해결 과정을 중심으로 정리했습니다.</p></div>
+
+        <article class="project feature" id="bbiyong" aria-labelledby="bbiyong-title">
+          <div class="project-meta"><span>01 / AIoT · 실시간 관제</span><span>2026.07 — 2026.08 · 6인 팀</span></div>
+          <div class="feature-grid">
+            <div class="project-body">
+              <h3 id="bbiyong-title">삐용 <span>BBIYONG</span></h3>
+              <p class="project-lead">자율 순찰 로봇의 상태와 화재 경보를 웹 관제로 연결한 시스템</p>
+              <p>팀장 겸 백엔드 담당으로 Spring Boot 관제 서버, 로봇과의 WebSocket 연결, 웹 관제용 STOMP 통신, 인증과 배포 환경을 맡았습니다.</p>
+              <div class="case-block"><span class="case-label">PROBLEM → DECISION</span><p>영상이 약 6초 늦게 도착해 즉각적인 현장 확인이 어려웠습니다. 상태·제어 메시지와 영상 전달 경로를 분리하고, 영상은 SRT · MediaMTX · WebRTC 경로로 전환했습니다.</p></div>
+              <div class="result-row"><div><strong>약 6초 → 0.3초</strong><span>프로젝트 기록상 영상 지연 개선</span></div><div><strong>REST + WSS + STOMP</strong><span>역할에 따라 분리한 통신 경로</span></div></div>
+              <p class="detail-note">로봇 주행과 AI 모델 최적화는 팀의 다른 담당자가 구현했습니다.</p>
+              <a class="project-link" href="https://github.com/jinsung-mo/-BBIYONG-autonomous_driving_factory_patrol_robot" target="_blank" rel="noopener noreferrer">프로젝트 저장소 <span aria-hidden="true">↗</span></a>
+            </div>
+            <figure class="project-visual"><img src="assets/bbiyong-map.png" alt="삐용 관제 화면에서 순찰 공간과 로봇 상태를 보여주는 3D 지도" loading="lazy"><figcaption>관제 화면 · 지도와 로봇 상태</figcaption></figure>
+          </div>
+          <div class="architecture" aria-label="삐용 통신 구조"><span>로봇</span><i aria-hidden="true"></i><span>Spring Boot 관제 서버</span><i aria-hidden="true"></i><span>웹 관제</span><small>상태·명령은 WebSocket / 영상은 별도 미디어 경로</small></div>
+        </article>
+
+        <article class="project compact gabolle-case" id="gabolle" aria-labelledby="gabolle-title">
+          <div class="project-meta"><span>02 / 데이터 정합성 · 동시 요청</span><span>2026 · 6인 팀</span></div>
+          <div class="compact-grid"><div><h3 id="gabolle-title">가볼래 <span>GABOLLE</span></h3><p class="project-lead">외국인 여행객을 위한 부산 여행 계획 서비스</p><p>여행·일정 기능의 백엔드, PostgreSQL 저장·검증, AI 여행 도우미의 서버 기능을 맡았습니다.</p></div><div><div class="case-block"><span class="case-label">PROBLEM → DECISION</span><p>모바일에서 응답이 끊겨 여행 생성 요청이 재전송되면 같은 여행이 여러 번 만들어질 수 있었습니다. 요청 키를 먼저 확보하고, 같은 키·같은 내용이면 기존 여행을 반환하도록 저장 순서를 바꿨습니다.</p></div><div class="case-block"><span class="case-label">CONCURRENT EDITS</span><p>동행자가 같은 일정을 수정할 때는 바탕 판 번호와 DB 조건부 갱신으로 덮어쓰기를 막았습니다. 충돌한 요청에는 HTTP 409를 반환하고, PostgreSQL 통합 테스트로 저장 동작을 확인했습니다.</p></div><a class="project-link" href="https://github.com/jinsung-mo/gabolle-busan-travel" target="_blank" rel="noopener noreferrer">프로젝트 저장소와 구현 근거 <span aria-hidden="true">↗</span></a></div></div>
+          <div class="architecture" aria-label="가볼래 여행 생성 저장 구조"><span>앱의 재요청</span><i aria-hidden="true"></i><span>요청 키 확보</span><i aria-hidden="true"></i><span>PostgreSQL 저장</span><small>같은 내용은 기존 결과 · 다른 내용은 409</small></div>
+        </article>
+
+        <article class="project secondary" id="binjari" aria-labelledby="binjari-title">
+          <div class="project-meta"><span>03 / 영상 분석 · 서비스 최적화</span><span>2024.11 — 2025.05 · 2인 팀</span></div>
+          <div class="secondary-grid">
+            <div class="project-body">
+              <h3 id="binjari-title">빈자리 <span>BINJARI</span></h3>
+              <p class="project-lead">영상으로 주차면 점유 상태를 분석하고 앱에 제공하는 서비스</p>
+              <p>기획과 분석 서버 개발, 처리량 개선을 중심으로 참여했습니다. 주차면별 탐지 결과를 상태로 변환하고, 앱에서 현황과 통계를 확인할 수 있도록 API로 제공했습니다.</p>
+              <div class="case-block"><span class="case-label">PROBLEM → DECISION</span><p>모든 프레임을 추론하면 응답이 느려졌습니다. 5개 프레임 중 1개를 추론하도록 조정하고, 줄어든 관측으로 상태가 흔들리지 않도록 최근 프레임의 결과와 상태 전이 조건을 함께 적용했습니다.</p></div>
+              <div class="result-row"><div><strong>추론 프레임 80% 축소</strong><span>기본 설정: 5개 중 1개 처리</span></div><div><strong>약 10초 → 3초 이내</strong><span>프로젝트 기록상 API 응답 개선</span></div></div>
+              <a class="project-link" href="https://github.com/jinsung-mo/binjari-app" target="_blank" rel="noopener noreferrer">프로젝트 저장소 <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="binjari-visual" aria-hidden="true"><img src="assets/binjari-icon.png" alt=""><div class="parking-grid"><span class="occupied"></span><span></span><span class="occupied"></span><span></span><span></span><span class="occupied"></span><span></span><span></span></div><p>영상 → 주차면 매핑 → 상태 필터 → API</p></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title"><div class="wrap closing-grid"><div><p class="section-kicker">NEXT</p><h2 id="closing-title">구현 이후의 동작까지<br>책임지는 개발을 지향합니다.</h2></div><a class="button light" href="https://github.com/jinsung-mo" target="_blank" rel="noopener noreferrer">GitHub에서 더 보기 <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><span>© 2026 모진성</span><span>Backend Developer Portfolio</span></div></footer>
+</body>
+</html>
