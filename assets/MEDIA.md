@@ -8,10 +8,14 @@
 
 ## 삐용
 
+- `bbiyong-mapping.mp4`와 `bbiyong-alert.mp4`: 발표 20·28번 슬라이드의 `image9.gif`(9.83초)와 `image20.gif`(8.9초)를 H.264, 20 FPS로 변환. 원래 속도, 무음. JPG는 원본 중간 프레임.
+
 - `bbiyong-console.png`: 팀 저장소 `docs/assets/readme/patrol-console.png` 전체 화면. 자르지 않고 표시.
 - `bbiyong-driving.mp4`: 같은 저장소의 `autonomous-driving.mp4`. 실제 로봇 촬영 원본의 01:00–01:20 발췌본을 그대로 사용.
 
 ## 빈자리
+
+- `binjari-inference.mp4`: `parking_best.mp4`의 3–11초 구간을 실제 `best_seo.pt` 모델과 `parking_lot_A`의 20개 주차면 판정 코드로 다시 추론한 영상. 기존 도서관 영상에서 교체. 모델이나 주차 상태를 모의로 구성하지 않았습니다.
 
 - `binjari-map-status.png`: 팀 앱의 지도·주차장 선택 화면.
 - `binjari-space-status.png`: 프로젝트 `docs/images/app-space-status.png`의 주차면별 상세 상태 화면.
