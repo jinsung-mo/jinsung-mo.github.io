@@ -17,6 +17,25 @@
 .project-demo video{display:block;width:100%;height:auto;aspect-ratio:960 / 512;background:#17201b}
 .project-demo figcaption{margin-top:10px;font-size:12px;line-height:1.7;color:var(--muted)}
 .gabolle-details{display:block}
+.wide-details{display:block}
+.wide-details .project-story{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.wide-details .project-facts,.wide-details .scope-note,.wide-details .project-links{grid-column:1 / -1}
+.console-overview{margin-top:30px}
+.console-overview img{width:100%;height:auto;object-fit:contain;border:1px solid var(--line)}
+.console-overview figcaption{margin-top:10px;font-size:12px;color:var(--muted)}
+.gallery-hint{margin-top:30px;font-size:13px;color:var(--accent)}
+.gallery-hint span{display:none}
+.gallery-hint+.app-gallery{margin-top:14px}
+.app-gallery .app-screen img{width:auto;height:360px;max-width:100%;object-fit:contain;margin-inline:auto}
+.parking-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:30px}
+.parking-gallery .app-screen img{height:360px;width:100%;object-fit:contain;border:0}
+.app-demo{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:40px;align-items:center;background:var(--pale);padding:28px;margin-top:30px}
+.app-demo video{display:block;width:100%;height:auto;max-height:500px;aspect-ratio:540 / 1140;background:#17201b}
+.app-demo figcaption{font-size:14px;color:var(--muted)}
+.app-demo figcaption strong{display:block;font-size:20px;color:var(--ink);margin-bottom:14px}
+.app-demo figcaption p+p{margin-top:12px}
+.app-demo ol{padding-left:22px;margin:20px 0;line-height:2}
+@media(max-width:720px){.wide-details .project-story{display:block}.gallery-hint span{display:inline}.app-demo{grid-template-columns:1fr;gap:24px;padding:20px}.app-demo video{max-width:240px;justify-self:center}.parking-gallery{gap:12px}.parking-gallery .app-screen{padding:12px 8px}.parking-gallery .app-screen img{height:230px}.app-gallery .app-screen img{height:360px}}
 .gabolle-details .project-story{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
 .gabolle-details .project-facts,.gabolle-details .scope-note,.gabolle-details .project-links{grid-column:1 / -1}
 .app-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:30px}
