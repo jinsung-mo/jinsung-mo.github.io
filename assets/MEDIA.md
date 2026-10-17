@@ -15,7 +15,8 @@
 
 ## 빈자리
 
-- `binjari-inference.mp4`: `parking_best.mp4`의 3–11초 구간을 실제 `best_seo.pt` 모델과 `parking_lot_A`의 20개 주차면 판정 코드로 다시 추론한 영상. 기존 도서관 영상에서 교체. 모델이나 주차 상태를 모의로 구성하지 않았습니다.
+- `binjari-inference.mp4`: `parking_best.mp4`의 110–140초 구간을 실제 `best_seo.pt` 모델과 `parking_lot_A`의 20개 주차면 판정 코드로 다시 추론한 30초 영상. 모델이나 주차 상태를 모의로 구성하지 않았습니다. B5 전환 시각은 원본 128.5195초입니다.
+- `binjari-detail-transition.mp4`: 기존 Flutter 웹 빌드의 실제 상세정보 화면 녹화(430×850, 5 FPS, 30초). 같은 추론 JSON을 로컬 API로 순서대로 재생했습니다. 상세 화면의 10초 자동 조회 주기를 유지했습니다. 실제 UI에서 B5의 색상과 빈자리 수·점유율이 바뀝니다. 운영 CCTV 중계는 아닙니다.
 
 - `binjari-map-status.png`: 팀 앱의 지도·주차장 선택 화면.
 - `binjari-space-status.png`: 프로젝트 `docs/images/app-space-status.png`의 주차면별 상세 상태 화면.

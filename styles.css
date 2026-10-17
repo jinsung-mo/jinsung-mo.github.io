@@ -42,6 +42,7 @@
 .parking-gallery .app-screen img{height:360px;width:100%;object-fit:contain;border:0}
 .app-demo{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:40px;align-items:center;background:var(--pale);padding:28px;margin-top:30px}
 .app-demo video{display:block;width:100%;height:auto;max-height:500px;aspect-ratio:540 / 1140;background:#17201b}
+.parking-detail-demo video{aspect-ratio:430 / 850}
 .app-demo figcaption{font-size:14px;color:var(--muted)}
 .app-demo figcaption strong{display:block;font-size:20px;color:var(--ink);margin-bottom:14px}
 .app-demo figcaption p+p{margin-top:12px}

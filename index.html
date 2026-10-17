@@ -6,7 +6,7 @@
   <meta name="description" content="모진성의 개발 포트폴리오. Java와 Spring Boot로 만든 웹 시스템과 문제 해결 기록을 소개합니다.">
   <meta name="theme-color" content="#f7f7f4">
   <title>모진성 — 백엔드 개발 포트폴리오</title>
-  <link rel="stylesheet" href="styles.css?v=20261017-mapping">
+  <link rel="stylesheet" href="styles.css?v=20261017-b5-transition">
 </head>
 <body>
   <a class="skip" href="#main">본문으로 이동</a>
@@ -80,11 +80,18 @@
           </figure>
         </div>
         <figure class="binjari-inference" id="binjari-demo">
-          <video controls playsinline preload="metadata" poster="assets/binjari-inference.jpg?v=parking-best" width="1440" height="680" aria-describedby="binjari-demo-caption">
-            <source src="assets/binjari-inference.mp4?v=parking-best" type="video/mp4">
+          <video controls playsinline preload="metadata" poster="assets/binjari-inference.jpg?v=b5-entry" width="1440" height="680" aria-describedby="binjari-demo-caption">
+            <source src="assets/binjari-inference.mp4?v=b5-entry" type="video/mp4">
             <a href="assets/binjari-inference.mp4">실제 추론 영상 보기</a>
           </video>
-          <figcaption id="binjari-demo-caption">55호관 주차장 녹화 영상(parking_best.mp4)의 실제 추론 재생 · 왼쪽은 모델의 탐지 박스, 오른쪽은 서버의 시간 필터·상태 전이를 거친 20개 주차면 상태입니다.</figcaption>
+          <figcaption id="binjari-demo-caption">55호관 B5 입차 · 원본 01:50–02:20 구간의 실제 추론입니다. 약 02:08.52에 B5가 빈자리에서 점유로 바뀝니다. 왼쪽은 탐지, 오른쪽은 시간 필터·상태 전이를 거친 20개 주차면 상태입니다.</figcaption>
+        </figure>
+        <figure class="app-demo parking-detail-demo" id="binjari-detail-demo">
+          <video controls playsinline preload="metadata" poster="assets/binjari-detail-transition.png" width="430" height="850" aria-describedby="binjari-detail-caption">
+            <source src="assets/binjari-detail-transition.mp4" type="video/mp4">
+            <a href="assets/binjari-detail-transition.mp4">상세 화면 상태 변화 보기</a>
+          </video>
+          <figcaption id="binjari-detail-caption"><strong>상세정보에서도 B5 상태가 바뀝니다</strong><p>실제 Flutter 상세 화면을 녹화했습니다. B5가 초록에서 빨강으로 바뀌고, 빈자리는 2개에서 1개, 점유율은 90%에서 95%로 갱신됩니다.</p><p>위 영상과 같은 실제 추론 결과를 로컬 API로 시간 순서대로 재생했습니다. 앱의 기존 10초 조회 주기를 유지해 모델 판정 후 다음 조회에서 화면이 바뀝니다.</p><p>30초 · 원본 속도의 기록 재생 시연이며, 운영 CCTV 중계나 실시간 성능 측정 영상은 아닙니다.</p></figcaption>
         </figure>
       </div></article>
     </div></section>
