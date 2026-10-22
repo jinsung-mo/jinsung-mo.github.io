@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="백엔드 개발자 모진성. Java·Spring Boot로 로봇 관제 서버와 여행 일정 API를 개발했습니다. 재전송·중복 요청·동시 수정을 DB 제약으로 막고 실제 DB에서 검증한 기록을 소개합니다.">
+  <meta name="description" content="백엔드 개발자 모진성. Java·Spring Boot로 여행 일정 API와 로봇 관제 서버를 개발했습니다. 재전송·중복 요청·동시 수정을 DB 제약으로 막고 실제 DB에서 검증한 기록을 소개합니다.">
   <meta name="theme-color" content="#f6f7f2">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:title" content="모진성 | Java · Spring Boot 백엔드 개발자">
-  <meta property="og:description" content="로봇 관제·중복 요청·일정 충돌. 제가 맡은 구현과 DB 검증 기록을 소개합니다.">
+  <meta property="og:description" content="중복 요청·일정 충돌·로봇 관제. 제가 맡은 구현과 DB 검증 기록을 소개합니다.">
   <meta property="og:url" content="https://jinsung-mo.github.io/">
   <meta property="og:image" content="https://jinsung-mo.github.io/assets/bbiyong-map-3d.png">
   <meta property="og:image:alt" content="삐용 프로젝트의 로봇 관제 웹 화면">
@@ -29,7 +29,7 @@
       <div class="hero-copy"><p class="eyebrow">JAVA · SPRING BOOT · BACKEND</p>
         <h1 id="hero-title">요청이 몇 번 와도,<br><span>데이터는 한 번만 정확하게.</span></h1>
         <p class="hero-name">백엔드 개발자 <strong>모진성</strong></p>
-        <p class="hero-intro">Java와 Spring Boot로 로봇 관제 서버와 여행 일정 API를 만들었습니다. 네트워크 재전송, 중복 요청, 동시 수정처럼 데이터가 틀어지는 지점을 DB 제약으로 막고, 실제 DB 위에서 테스트해 확인합니다.</p>
+        <p class="hero-intro">Java와 Spring Boot로 여행 일정 API와 로봇 관제 서버를 만들었습니다. 네트워크 재전송, 중복 요청, 동시 수정처럼 데이터가 틀어지는 지점을 DB 제약으로 막고, 실제 DB 위에서 테스트해 확인합니다.</p>
         <div class="hero-links"><a class="button button-primary" href="#projects">프로젝트 보기 <span aria-hidden="true">↓</span></a><a class="button" href="mailto:ahwlstjd57@gmail.com">이메일 보내기 <span aria-hidden="true">↗</span></a><button class="text-button print-button" type="button">인쇄·PDF 저장</button></div>
       </div>
       <div class="hero-side"><img src="assets/profile.png" alt="모진성 프로필 사진" width="1122" height="1402" fetchpriority="high"></div>
@@ -43,13 +43,51 @@
     <section class="projects-section" id="projects" aria-labelledby="projects-title"><div class="wrap">
       <div class="section-head"><div><p class="section-number">01 / SELECTED PROJECTS</p><h2 id="projects-title">제가 맡은 일과 확인한 결과</h2></div><p>담당 범위부터 읽고, 구현과 검증 근거를 확인할 수 있습니다.</p></div>
       <nav class="project-shortcuts" aria-label="프로젝트 바로가기">
-        <a href="#bbiyong"><span class="shortcut-number">01</span><strong>삐용</strong><span>로봇 관제 서버 · 팀장 / Spring Boot</span><span aria-hidden="true">↓</span></a>
-        <a href="#gabolle"><span class="shortcut-number">02</span><strong>가볼래</strong><span>여행·일정 API / PostgreSQL</span><span aria-hidden="true">↓</span></a>
+        <a href="#gabolle"><span class="shortcut-number">01</span><strong>가볼래</strong><span>여행·일정 API / PostgreSQL</span><span aria-hidden="true">↓</span></a>
+        <a href="#bbiyong"><span class="shortcut-number">02</span><strong>삐용</strong><span>로봇 관제 서버 · 팀장 / Spring Boot</span><span aria-hidden="true">↓</span></a>
         <a href="#binjari"><span class="shortcut-number">03</span><strong>빈자리</strong><span>영상 분석 서버 / Flask</span><span aria-hidden="true">↓</span></a>
       </nav>
 
+      <article class="project" id="gabolle" aria-labelledby="gabolle-title">
+        <header class="project-heading"><div><p class="project-kind">01 / 여행 계획 서비스</p><h3 id="gabolle-title">가볼래 <small>GABOLLE</small></h3></div><div class="project-meta"><p>2026.08 — 09 · 6인 팀</p><span class="award">SSAFY 프로젝트 우수상</span></div></header>
+        <div class="project-intro">
+          <div class="project-summary"><p class="service-intro">외국인 여행객이 취향과 이동 조건에 맞춰 부산 여행 일정을 만드는 서비스입니다. 저는 여행·일정 API를 맡아, 재요청으로 여행이 중복 생성되거나 동행자의 수정이 서로 덮이거나 이벤트 기록이 사라지는 문제를 DB 단에서 막았습니다.</p>
+            <dl class="project-facts"><div><dt>제 담당</dt><dd>여행·일정 API, PostgreSQL 저장·검증, 이벤트 저장 경로 수정</dd></div><div><dt>사용 기술</dt><dd>Java 17 · Spring Boot · JPA · PostgreSQL · Flyway</dd></div></dl>
+            <ul class="contribution-list"><li><strong>재요청해도 여행은 하나만</strong><span>Idempotency-Key를 DB에 먼저 등록한 요청만 여행을 만들고, 같은 요청에는 기존 결과를 돌려줍니다.</span></li><li><strong>동시 수정해도 변경이 사라지지 않게</strong><span>읽은 버전과 DB 버전이 같을 때만 수정하고, 충돌하면 409로 최신 일정을 다시 받게 했습니다.</span></li><li><strong>재시작해도 남는 이벤트 기록</strong><span>메모리에 쌓이던 사용자 이벤트를 PostgreSQL Outbox 테이블에 저장하도록 바꿨습니다.</span></li></ul>
+            <div class="project-links"><a class="button button-small" href="https://github.com/jinsung-mo/gabolle-busan-travel" target="_blank" rel="noopener noreferrer">저장소 · 전체 설명 <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/test/java/com/gabolle/backend/itinerary/ItineraryPersistenceIntegrationTest.java" target="_blank" rel="noopener noreferrer">PostgreSQL 검증 <span aria-hidden="true">↗</span></a></div>
+          </div>
+          <figure class="project-preview phone-preview"><div class="phone-pair"><img src="assets/gabolle-plan.jpg" alt="가볼래 여행 조건 입력 화면" loading="lazy" width="540" height="1140"><img src="assets/gabolle-route.jpg" alt="가볼래 부산 여행 경로 화면" loading="lazy" width="540" height="1140"></div><figcaption>여행 조건 입력 → 지도에서 일정·경로 확인<br><span>앱 화면은 팀 결과물이며, 저는 여행·일정 API를 맡았습니다.</span></figcaption></figure>
+        </div>
+        <div class="verification"><p class="verification-label">검증한 범위</p><p><strong>중복 키·버전 제약과 실패한 수정의 롤백은 실제 PostgreSQL 통합 테스트로 검증했습니다.</strong> 동시 생성 8건 → 여행 1건, 동시 수정 8건 → 1건 성공·7건 409 거절은 서비스 테스트로 확인했습니다.</p></div>
+        <details class="project-detail" id="gabolle-cases"><summary><span>문제 해결과 검증 근거</span><span class="summary-hint">펼쳐 보기</span></summary><div class="detail-body"><div class="case-grid"><div class="story"><h4>응답을 못 받은 앱이 다시 요청하면 여행이 두 개 생겼습니다</h4><p>모바일 환경에서는 응답이 유실되면 같은 요청이 다시 옵니다. 요청 식별자(Idempotency-Key)를 DB에 먼저 등록한 요청만 새 여행을 만들도록 했습니다. 새 요청은 201, 같은 키·같은 내용의 재요청은 기존 결과와 함께 200, 같은 키에 내용이 다르면 409로 응답합니다.</p></div>
+<div class="story"><h4>동행자 두 명이 동시에 고치면 앞사람의 변경이 지워졌습니다</h4><p>사용자가 읽은 일정 버전을 요청에 담고, DB의 최신 버전과 같을 때만 수정하도록 했습니다. 충돌하면 409를 반환해 최신 일정을 다시 확인하게 합니다. 처음에는 SAVEPOINT로 일부 작업만 되돌리려 했는데, 메모리 테스트는 통과하고 PostgreSQL 통합 테스트에서만 예외가 났습니다. <code>INSERT ... ON CONFLICT DO NOTHING</code>으로 저장한 행이 0개면 충돌로 판단하고, 최신 버전은 조건부 <code>UPDATE</code>로 바꾸도록 고쳤습니다. <strong>실제 DB에서 테스트했기 때문에 찾을 수 있었던 문제였습니다.</strong></p></div>
+<div class="story story-wide"><h4>성공 응답을 받았는데 이벤트 기록이 사라졌습니다</h4><p>사용자 행동 이벤트 API가 메모리 저장소를 쓰고 있어서, 서버를 재시작하면 기록이 사라졌습니다. 저장소 호출을 추적해 PostgreSQL Outbox 테이블에 기록되도록 연결했습니다. Outbox 설계는 팀 작업이고, 저는 수집·저장 경로를 맡았습니다.</p></div></div><div class="evidence-links"><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java" target="_blank" rel="noopener noreferrer">중복 생성 방지 코드 <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java" target="_blank" rel="noopener noreferrer">일정 충돌 처리 코드 <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/event/application/EventIngestService.java" target="_blank" rel="noopener noreferrer">이벤트 저장 코드 <span aria-hidden="true">↗</span></a></div></div></details>
+      <details class="project-detail media-detail" id="gabolle-media"><summary><span>앱 시연 36초 · 처리 흐름도</span><span class="summary-hint">펼쳐 보기</span></summary><div class="detail-body media-grid">
+<figure class="evidence-figure">
+          <a href="assets/gabolle-trip-create.png" target="_blank" rel="noopener noreferrer" aria-label="가볼래 여행 생성과 재요청 처리 흐름도 원본 열기">
+            <img src="assets/gabolle-trip-create.png" alt="여행 앱, 생성 서비스와 PostgreSQL 사이에서 요청 키를 먼저 저장하고, 같은 키의 재요청에는 기존 여행을 반환하는 흐름" loading="lazy" width="1440" height="900">
+          </a>
+          <figcaption><strong>여행 생성 API의 중복 요청 처리</strong> 새 요청은 201, 같은 키·같은 내용의 재요청은 기존 결과와 200을 반환합니다. 여행 생성과 추천 일정 계산은 별도 API입니다. <a href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/docs/architecture/trip-create.png" target="_blank" rel="noopener noreferrer">저장소 원본 ↗</a></figcaption>
+        </figure>
+<figure class="app-screen">
+            <img src="assets/gabolle-plan.jpg" alt="가볼래 여행 만들기에서 출발지, 숙소, 이동수단과 여행 시간을 선택하는 화면" loading="lazy" width="540" height="1140">
+            <figcaption><strong>01 · 여행 조건 입력</strong>출발지·숙소·이동수단·시간을 설정합니다.</figcaption>
+          </figure>
+<figure class="app-screen">
+            <img src="assets/gabolle-route.jpg" alt="가볼래 앱의 부산 여행 경로 화면" loading="lazy" width="540" height="1140">
+            <figcaption><strong>02 · 여행 경로 확인</strong>여행 코스와 장소 간 이동 경로를 확인합니다.</figcaption>
+          </figure>
+<figure class="app-demo" id="gabolle-demo">
+          <video controls playsinline preload="none" poster="assets/gabolle-highlight.jpg" width="540" height="1140" aria-describedby="gabolle-demo-caption">
+            <source src="assets/gabolle-highlight.mp4" type="video/mp4">
+            <a href="assets/gabolle-highlight.mp4">가볼래 핵심 기능 시연 보기</a>
+          </video>
+          <figcaption id="gabolle-demo-caption"><strong>가볼래 · 36초 핵심 시연</strong><p>홈에서 여행 조건을 설정하고 지도에서 경로를 확인하는 실제 앱 시연입니다.</p><ol><li>00:00 · 홈 화면</li><li>00:06 · 날짜·인원 입력</li><li>00:16 · 여행 취향 선택</li><li>00:24 · 지도에서 경로 확인</li></ol><p>7분 46초 원본에서 네 구간을 발췌해 연결했습니다. 배속 없이 원래 속도로 재생하며, 음성은 제외했습니다.</p></figcaption>
+        </figure></div></details>
+      </article>
+
       <article class="project" id="bbiyong" aria-labelledby="bbiyong-title">
-        <header class="project-heading"><div><p class="project-kind">01 / 실시간 로봇 관제</p><h3 id="bbiyong-title">삐용 <small>BBIYONG</small></h3></div><div class="project-meta"><p>2026.07 — 08 · 6인 팀 · 팀장</p><span class="award">SSAFY 공통프로젝트 우수상 · 반 1등</span></div></header>
+        <header class="project-heading"><div><p class="project-kind">02 / 실시간 로봇 관제</p><h3 id="bbiyong-title">삐용 <small>BBIYONG</small></h3></div><div class="project-meta"><p>2026.07 — 08 · 6인 팀 · 팀장</p><span class="award">SSAFY 공통프로젝트 우수상 · 반 1등</span></div></header>
         <div class="project-intro">
           <div class="project-summary"><p class="service-intro">공장을 자율 순찰하는 로봇의 위치·영상·화재 경보를 웹에서 보고 원격으로 조종하는 시스템입니다. 저는 로봇과 웹 사이의 관제 서버를 만들고, 무선 환경에서 재전송된 경보도 한 번만 기록되게 했습니다.</p>
             <dl class="project-facts"><div><dt>제 담당</dt><dd>팀장 · Spring Boot 관제 서버, 로봇/웹 통신, 경보 저장·인증, 릴리스 통합</dd></div><div><dt>사용 기술</dt><dd>Java 17 · Spring Boot · WebSocket · STOMP · WebRTC(WHEP) · MySQL 8 · Docker</dd></div></dl>
@@ -90,45 +128,6 @@
           <figcaption id="bbiyong-demo-caption">실제 로봇 주행 시연 · 장애물을 배치한 실내 테스트 공간에서 로봇이 이동하는 20초 촬영 영상입니다. 원본 속도로 재생하며 음성은 없습니다.</figcaption>
         </figure><p class="media-note">지도 생성·관제 경보 영상은 팀 발표 자료의 GIF를 원래 속도의 무음 MP4로 변환했습니다. 로봇 매핑·주행과 웹 화면은 팀 결과물입니다. 서버는 매핑 진행 상태를 STOMP 알림과 상태 조회 API로 연결했습니다.</p></div></details>
       </article>
-
-      <article class="project" id="gabolle" aria-labelledby="gabolle-title">
-        <header class="project-heading"><div><p class="project-kind">02 / 여행 계획 서비스</p><h3 id="gabolle-title">가볼래 <small>GABOLLE</small></h3></div><div class="project-meta"><p>2026.08 — 09 · 6인 팀</p><span class="award">SSAFY 프로젝트 우수상</span></div></header>
-        <div class="project-intro">
-          <div class="project-summary"><p class="service-intro">외국인 여행객이 취향과 이동 조건에 맞춰 부산 여행 일정을 만드는 서비스입니다. 저는 여행·일정 API를 맡아, 재요청으로 여행이 중복 생성되거나 동행자의 수정이 서로 덮이거나 이벤트 기록이 사라지는 문제를 DB 단에서 막았습니다.</p>
-            <dl class="project-facts"><div><dt>제 담당</dt><dd>여행·일정 API, PostgreSQL 저장·검증, 이벤트 저장 경로 수정</dd></div><div><dt>사용 기술</dt><dd>Java 17 · Spring Boot · JPA · PostgreSQL · Flyway</dd></div></dl>
-            <ul class="contribution-list"><li><strong>재요청해도 여행은 하나만</strong><span>Idempotency-Key를 DB에 먼저 등록한 요청만 여행을 만들고, 같은 요청에는 기존 결과를 돌려줍니다.</span></li><li><strong>동시 수정해도 변경이 사라지지 않게</strong><span>읽은 버전과 DB 버전이 같을 때만 수정하고, 충돌하면 409로 최신 일정을 다시 받게 했습니다.</span></li><li><strong>재시작해도 남는 이벤트 기록</strong><span>메모리에 쌓이던 사용자 이벤트를 PostgreSQL Outbox 테이블에 저장하도록 바꿨습니다.</span></li></ul>
-            <div class="project-links"><a class="button button-small" href="https://github.com/jinsung-mo/gabolle-busan-travel" target="_blank" rel="noopener noreferrer">저장소 · 전체 설명 <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/test/java/com/gabolle/backend/itinerary/ItineraryPersistenceIntegrationTest.java" target="_blank" rel="noopener noreferrer">PostgreSQL 검증 <span aria-hidden="true">↗</span></a></div>
-          </div>
-          <figure class="project-preview phone-preview"><div class="phone-pair"><img src="assets/gabolle-plan.jpg" alt="가볼래 여행 조건 입력 화면" loading="lazy" width="540" height="1140"><img src="assets/gabolle-route.jpg" alt="가볼래 부산 여행 경로 화면" loading="lazy" width="540" height="1140"></div><figcaption>여행 조건 입력 → 지도에서 일정·경로 확인<br><span>앱 화면은 팀 결과물이며, 저는 여행·일정 API를 맡았습니다.</span></figcaption></figure>
-        </div>
-        <div class="verification"><p class="verification-label">검증한 범위</p><p><strong>중복 키·버전 제약과 실패한 수정의 롤백은 실제 PostgreSQL 통합 테스트로 검증했습니다.</strong> 동시 생성 8건 → 여행 1건, 동시 수정 8건 → 1건 성공·7건 409 거절은 서비스 테스트로 확인했습니다.</p></div>
-        <details class="project-detail" id="gabolle-cases"><summary><span>문제 해결과 검증 근거</span><span class="summary-hint">펼쳐 보기</span></summary><div class="detail-body"><div class="case-grid"><div class="story"><h4>응답을 못 받은 앱이 다시 요청하면 여행이 두 개 생겼습니다</h4><p>모바일 환경에서는 응답이 유실되면 같은 요청이 다시 옵니다. 요청 식별자(Idempotency-Key)를 DB에 먼저 등록한 요청만 새 여행을 만들도록 했습니다. 새 요청은 201, 같은 키·같은 내용의 재요청은 기존 결과와 함께 200, 같은 키에 내용이 다르면 409로 응답합니다.</p></div>
-<div class="story"><h4>동행자 두 명이 동시에 고치면 앞사람의 변경이 지워졌습니다</h4><p>사용자가 읽은 일정 버전을 요청에 담고, DB의 최신 버전과 같을 때만 수정하도록 했습니다. 충돌하면 409를 반환해 최신 일정을 다시 확인하게 합니다. 처음에는 SAVEPOINT로 일부 작업만 되돌리려 했는데, 메모리 테스트는 통과하고 PostgreSQL 통합 테스트에서만 예외가 났습니다. <code>INSERT ... ON CONFLICT DO NOTHING</code>으로 저장한 행이 0개면 충돌로 판단하고, 최신 버전은 조건부 <code>UPDATE</code>로 바꾸도록 고쳤습니다. <strong>실제 DB에서 테스트했기 때문에 찾을 수 있었던 문제였습니다.</strong></p></div>
-<div class="story story-wide"><h4>성공 응답을 받았는데 이벤트 기록이 사라졌습니다</h4><p>사용자 행동 이벤트 API가 메모리 저장소를 쓰고 있어서, 서버를 재시작하면 기록이 사라졌습니다. 저장소 호출을 추적해 PostgreSQL Outbox 테이블에 기록되도록 연결했습니다. Outbox 설계는 팀 작업이고, 저는 수집·저장 경로를 맡았습니다.</p></div></div><div class="evidence-links"><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java" target="_blank" rel="noopener noreferrer">중복 생성 방지 코드 <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java" target="_blank" rel="noopener noreferrer">일정 충돌 처리 코드 <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/event/application/EventIngestService.java" target="_blank" rel="noopener noreferrer">이벤트 저장 코드 <span aria-hidden="true">↗</span></a></div></div></details>
-      <details class="project-detail media-detail" id="gabolle-media"><summary><span>앱 시연 36초 · 처리 흐름도</span><span class="summary-hint">펼쳐 보기</span></summary><div class="detail-body media-grid">
-<figure class="evidence-figure">
-          <a href="assets/gabolle-trip-create.png" target="_blank" rel="noopener noreferrer" aria-label="가볼래 여행 생성과 재요청 처리 흐름도 원본 열기">
-            <img src="assets/gabolle-trip-create.png" alt="여행 앱, 생성 서비스와 PostgreSQL 사이에서 요청 키를 먼저 저장하고, 같은 키의 재요청에는 기존 여행을 반환하는 흐름" loading="lazy" width="1440" height="900">
-          </a>
-          <figcaption><strong>여행 생성 API의 중복 요청 처리</strong> 새 요청은 201, 같은 키·같은 내용의 재요청은 기존 결과와 200을 반환합니다. 여행 생성과 추천 일정 계산은 별도 API입니다. <a href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/docs/architecture/trip-create.png" target="_blank" rel="noopener noreferrer">저장소 원본 ↗</a></figcaption>
-        </figure>
-<figure class="app-screen">
-            <img src="assets/gabolle-plan.jpg" alt="가볼래 여행 만들기에서 출발지, 숙소, 이동수단과 여행 시간을 선택하는 화면" loading="lazy" width="540" height="1140">
-            <figcaption><strong>01 · 여행 조건 입력</strong>출발지·숙소·이동수단·시간을 설정합니다.</figcaption>
-          </figure>
-<figure class="app-screen">
-            <img src="assets/gabolle-route.jpg" alt="가볼래 앱의 부산 여행 경로 화면" loading="lazy" width="540" height="1140">
-            <figcaption><strong>02 · 여행 경로 확인</strong>여행 코스와 장소 간 이동 경로를 확인합니다.</figcaption>
-          </figure>
-<figure class="app-demo" id="gabolle-demo">
-          <video controls playsinline preload="none" poster="assets/gabolle-highlight.jpg" width="540" height="1140" aria-describedby="gabolle-demo-caption">
-            <source src="assets/gabolle-highlight.mp4" type="video/mp4">
-            <a href="assets/gabolle-highlight.mp4">가볼래 핵심 기능 시연 보기</a>
-          </video>
-          <figcaption id="gabolle-demo-caption"><strong>가볼래 · 36초 핵심 시연</strong><p>홈에서 여행 조건을 설정하고 지도에서 경로를 확인하는 실제 앱 시연입니다.</p><ol><li>00:00 · 홈 화면</li><li>00:06 · 날짜·인원 입력</li><li>00:16 · 여행 취향 선택</li><li>00:24 · 지도에서 경로 확인</li></ol><p>7분 46초 원본에서 네 구간을 발췌해 연결했습니다. 배속 없이 원래 속도로 재생하며, 음성은 제외했습니다.</p></figcaption>
-        </figure></div></details>
-      </article>
-
       <article class="project" id="binjari" aria-labelledby="binjari-title">
         <header class="project-heading"><div><p class="project-kind">03 / 영상 분석 서비스</p><h3 id="binjari-title">빈자리 <small>BINJARI</small></h3></div><div class="project-meta"><p>2024.12 — 2025.06 · 캡스톤 디자인 · 2인 팀</p><span class="award">교내 소프트웨어 전시회 인기상</span></div></header>
         <div class="project-intro">
