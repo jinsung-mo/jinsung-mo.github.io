@@ -288,3 +288,5 @@ button { font: inherit; cursor: pointer; }
   .site-footer a { display: none; }
   .footer-inner { padding: 10px 0; }
 }
+
+.story code, .contribution-list code { font-size: .88em; background: var(--pale); padding: 1px 5px; border-radius: 3px; overflow-wrap: anywhere; }
