@@ -316,3 +316,21 @@ button { font: inherit; cursor: pointer; }
 @media(max-width:760px) { .collaboration-section { padding: 44px 0; } .collaboration-grid { grid-template-columns: 1fr; gap: 26px; } .collaboration-intro { font-size: 15px; } .site-header nav { gap: 15px; } }
 @media(max-width:380px) { .site-header nav { gap: 10px; font-size: 11px; } }
 @media print { .collaboration-section { padding: 22px 0; background: #fff; } .collaboration-grid { gap: 20px; } .collaboration-grid article { break-inside: avoid; } .collaboration-grid h3 { font-size: 11pt; } .collaboration-grid p, .collaboration-intro, .collaboration-learning { font-size: 10pt; } }
+
+/* Actual service recording, readable without opening all supporting media. */
+.service-recording { margin: 28px 0; padding: 23px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); scroll-margin-top: 90px; }
+.service-recording-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 17px; }
+.service-recording-heading h4 { font-size: 19px; letter-spacing: -.025em; }
+.service-recording-heading > span { color: var(--accent); font-size: 12px; white-space: nowrap; }
+.service-recording-layout { display: grid; grid-template-columns: minmax(0,1.8fr) minmax(0,1fr); gap: 25px; align-items: start; }
+.service-recording video { width: 100%; height: auto; aspect-ratio: 16 / 9; background: #18251d; }
+.service-recording-copy p { font-size: 13px; line-height: 1.85; color: var(--muted); }
+.demo-chapters { list-style: none; padding: 0; margin: 16px 0; font-size: 12px; }
+.demo-chapters li { display: grid; grid-template-columns: 43px 1fr; gap: 8px; margin: 7px 0; }
+.demo-chapters time { color: var(--accent); font-variant-numeric: tabular-nums; }
+.service-recording-copy > a { font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
+.media-grid .service-recording-full, .media-grid #bbiyong-mapping { grid-column: 1 / -1; }
+.media-grid .service-recording-full video, .media-grid #bbiyong-mapping video { width: 100%; height: auto; max-height: none; aspect-ratio: 16 / 9; }
+@media(max-width:950px) { .service-recording-layout { grid-template-columns: 1fr; } .demo-chapters { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 18px; } }
+@media(max-width:760px) { .service-recording { padding: 16px; } .service-recording-heading { display: block; } .service-recording-heading h4 { font-size: 17px; } .service-recording-heading > span { display: block; margin-top: 5px; } .demo-chapters { display: block; } }
+@media print { .service-recording { display: none; } }

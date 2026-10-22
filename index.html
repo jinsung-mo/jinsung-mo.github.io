@@ -14,7 +14,7 @@
   <meta property="og:image:alt" content="삐용 프로젝트의 로봇 관제 웹 화면">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://jinsung-mo.github.io/">
-  <link rel="stylesheet" href="styles.css?v=20261022-collaboration-merge">
+  <link rel="stylesheet" href="styles.css?v=20261023-service-videos">
   <script src="script.js?v=20261022-collaboration-merge" defer></script>
   <title>모진성 | Java · Spring Boot 백엔드 개발자</title>
 </head>
@@ -96,6 +96,18 @@
           </div>
           <figure class="project-preview console-preview"><a href="assets/bbiyong-map-3d.png" target="_blank" rel="noopener noreferrer" aria-label="삐용 관제 화면 원본 열기"><img src="assets/bbiyong-map-3d.png" alt="로봇의 순찰 상태와 탐색 지도를 보여주는 삐용 관제 웹" loading="lazy" width="2048" height="1087"></a><figcaption>로봇 상태·지도·경보를 확인하는 관제 웹<br><span>화면·로봇 주행·AI 모델은 팀 결과물입니다.</span></figcaption></figure>
         </div>
+        <section class="service-recording" id="bbiyong-service-demo" aria-labelledby="bbiyong-service-title">
+          <div class="service-recording-heading"><h4 id="bbiyong-service-title">순찰 설정부터 화재 경보와 기록 확인까지</h4><span>핵심 시연 58초</span></div>
+          <div class="service-recording-layout">
+            <video controls playsinline preload="none" poster="assets/bbiyong-service.jpg" width="1920" height="1080" aria-describedby="bbiyong-service-caption"><source src="assets/bbiyong-service-highlight.mp4" type="video/mp4"><a href="assets/bbiyong-service-highlight.mp4">58초 서비스 시연 보기</a></video>
+            <div class="service-recording-copy" id="bbiyong-service-caption">
+              <p>관제 웹과 실제 로봇의 모습을 함께 보여주는 영상입니다. 순찰을 설정하고 현장을 확인한 뒤, 경보와 기록을 조회하는 흐름을 담았습니다.</p>
+              <ol class="demo-chapters"><li><time>00:00</time> 순찰 경로 설정과 시작</li><li><time>00:16</time> 3D 지도와 실제 순찰</li><li><time>00:24</time> 카메라와 열화상 확인</li><li><time>00:32</time> 과열과 화재 경보</li><li><time>00:46</time> 이벤트 영상 저장</li><li><time>00:52</time> 이벤트 상세 조회</li></ol>
+              <a href="#bbiyong-full-demo">전체 시연 2분 36초 보기 ↓</a>
+            </div>
+          </div>
+          <p class="scope-note">실내 테스트 공간에서 촬영한 팀 시연입니다. 저는 로봇과 웹의 통신, 경보 수신과 저장, 관련 API를 담당했습니다. 관제 화면, 로봇 주행과 AI 모델은 팀원들이 개발했습니다. 원본의 여섯 구간을 배속 없이 연결하고 소리는 제외했습니다.</p>
+        </section>
         <section class="deep-case" aria-label="화재 경보가 참조 오류로 저장되지 않을 수 있었습니다"><p class="deep-case-label">대표 사례 · 프로젝트 종료 후 개인 작업</p><h4>화재 경보가 참조 오류로 저장되지 않을 수 있었습니다</h4><ol><li><span>발견</span><p>프로젝트가 끝난 뒤 ERD를 다시 그려 보니 테이블 사이에 DB 외래키가 하나도 없었습니다. 확인해 보니 없는 이벤트 ID로 영상을 등록해도 API가 그대로 받아 주고 있었습니다.</p></li><li><span>판단</span><p>외래키를 모든 관계에 똑같이 걸지 않고, 삭제됐을 때 어떻게 되어야 하는지를 관계마다 정했습니다. 이벤트가 지워지면 의미가 없는 알림 발송 기록은 함께 삭제(CASCADE)하고, 증거로 남아야 하는 영상은 연결만 끊었습니다(SET NULL).</p></li><li><span>걸지 않은 외래키</span><p>경보가 참조하는 설비·지도에는 일부러 외래키를 걸지 않았습니다. 로봇이 등록되지 않은 설비를 기준으로 경보를 보내면 INSERT 자체가 실패하기 때문입니다. 화재 경보를 참조 오류로 잃는 것보다 어긋난 참조라도 남는 편이 낫다고 판단했고, 이런 경보는 정기 점검 쿼리로 찾아내도록 했습니다.</p></li><li><span>검증</span><p>스키마를 Flyway로 옮기고 전체 테스트 220건을 실제 MySQL 8에서 돌렸습니다. 앞의 영상 등록 문제가 테스트에서 드러나, 400으로 거절하도록 고쳤습니다.</p></li><li><span>남은 과제</span><p>알림 워커가 외부 HTTP 호출을 트랜잭션 안에서 해서, 전송 후 커밋이 실패하면 중복 발송될 수 있습니다. 외부 호출을 트랜잭션 밖으로 빼는 구조가 다음 과제입니다.</p></li></ol></section>
         <section class="followup" aria-labelledby="bbiyong-followup-title"><div class="followup-heading"><h4 id="bbiyong-followup-title">프로젝트 종료 후 개인 개선·검증</h4><a class="" href="https://github.com/jinsung-mo/-BBIYONG-autonomous_driving_factory_patrol_robot/blob/main/docs/post-project/README.md" target="_blank" rel="noopener noreferrer">측정 조건 · 재현 SQL <span aria-hidden="true">↗</span></a></div>
           <dl class="result-grid"><div><dt>같은 경보 100회 동시 발행</dt><dd><strong>1건</strong> 저장 · 중복 0<small>32개 스레드 · 실제 이벤트 수신 경로</small></dd></div><div><dt>최근 24시간 통계 쿼리</dt><dd><strong>55.9 → 4.9</strong> ms<small>인덱스 추가 · 검사 행 19.9만 → 6,642</small></dd></div><div><dt>특정 로봇 24시간 조회</dt><dd><strong>62.7 → 1.3</strong> ms<small>복합 인덱스 · 검사 행 19.9만 → 1,329</small></dd></div></dl>
@@ -105,7 +117,9 @@
 <div class="story"><h4>재접속한 로봇이 오프라인으로 보였습니다</h4><p>로봇이 다시 연결되면 새 세션이 먼저 등록된 뒤, 늦게 도착한 옛 연결의 종료 처리가 새 세션 정보까지 지우고 있었습니다. 새 연결을 등록할 때 옛 연결을 먼저 정리하고 닫도록 순서를 바꿨습니다. 조용히 끊긴 연결은 상태 수신이 15초 없으면 오프라인으로 판단합니다.</p></div>
 <div class="story"><h4>영상이 끊기고, 바꾼 뒤에도 6초 늦었습니다</h4><p>처음에는 영상을 STOMP로 중계했는데, 버퍼가 차면서 연결이 끊겼습니다. 팀과 함께 영상 경로를 제어 채널에서 분리했지만, 중간에 쓴 HLS는 약 6초 지연이 있어 원격 조종에 쓸 수 없었습니다. 저는 웹 재생을 WebRTC(WHEP)로 전환하는 작업을 맡았습니다. 전환 후에는 탐지 박스를 영상에 맞추는 화면 보정값을 6초에서 0.3초로 낮춰 운영했습니다.</p></div>
 <div class="story"><h4>무선 환경에서 같은 경보가 여러 번 들어왔습니다</h4><p>로봇은 응답을 못 받으면 같은 경보를 다시 보냅니다. 재전송해도 바뀌지 않는 messageId에 MySQL 고유 제약을 걸어, 몇 번이 들어와도 DB에는 한 건만 남게 했습니다. DB 저장은 전용 비동기 작업으로 옮겼습니다. 대기열이 가득 차면 경보를 버리는 대신 수신 스레드가 직접 저장하도록 해서, <strong>유실보다 지연을 택했습니다.</strong></p></div></div><p class="scope-note">0.3초는 직접 측정한 영상 전체 지연이 아니라 화면 보정 설정값입니다. 대기열이 가득 찬 상황의 전체 처리 순서는 보장하지 않습니다.</p></div></details>
-      <details class="project-detail media-detail" id="bbiyong-media"><summary><span>로봇 주행 20초 · 지도 생성·경보 시연 · 처리 흐름도</span><span class="summary-hint">펼쳐 보기</span></summary><div class="detail-body media-grid"><figure class="project-lead project-lead-wide"><a href="#bbiyong-demo" aria-label="삐용 실제 로봇 주행 시연 영상으로 이동"><img src="assets/bbiyong-driving.jpg" alt="장애물 사이를 자율주행하는 삐용 로봇의 실제 시연 장면" loading="lazy" width="960" height="512"></a><figcaption><strong>실제 로봇 주행 시연</strong>장애물을 배치한 실내 테스트 공간에서 이동하는 모습입니다. 아래에서 20초 영상을 볼 수 있습니다. 로봇 주행은 팀원이 담당했습니다.</figcaption></figure>
+      <details class="project-detail media-detail" id="bbiyong-media"><summary><span>전체 시연 2분 36초, 지도 생성 17초와 추가 자료</span><span class="summary-hint">펼쳐 보기</span></summary><div class="detail-body media-grid">
+<figure class="service-recording-full" id="bbiyong-full-demo"><video controls playsinline preload="none" poster="assets/bbiyong-service.jpg" width="1920" height="1080" aria-describedby="bbiyong-full-caption"><source src="assets/bbiyong-service-full.mp4" type="video/mp4"><a href="assets/bbiyong-service-full.mp4">전체 서비스 시연 보기</a></video><figcaption id="bbiyong-full-caption"><strong>전체 서비스 시연 / 2분 36초</strong>순찰 지점 설정, 2D와 3D 지도, 카메라와 열화상, 과열과 화재 경보, 이벤트 영상과 상세 기록을 확인하는 전체 흐름입니다. 제공된 영상의 화면 자막과 재생 속도를 유지한 무음 압축본입니다. <a href="assets/bbiyong-video-sources.json">원본과 편집 구간 기록</a></figcaption></figure>
+<figure class="project-lead project-lead-wide"><a href="#bbiyong-demo" aria-label="삐용 실제 로봇 주행 시연 영상으로 이동"><img src="assets/bbiyong-driving.jpg" alt="장애물 사이를 자율주행하는 삐용 로봇의 실제 시연 장면" loading="lazy" width="960" height="512"></a><figcaption><strong>실제 로봇 주행 시연</strong>장애물을 배치한 실내 테스트 공간에서 이동하는 모습입니다. 아래에서 20초 영상을 볼 수 있습니다. 로봇 주행은 팀원이 담당했습니다.</figcaption></figure>
 
 <figure class="evidence-figure">
           <a href="assets/bbiyong-alert-flow.png" target="_blank" rel="noopener noreferrer" aria-label="삐용 경보 저장 흐름도 원본 열기">
@@ -114,8 +128,8 @@
           <figcaption><strong>서버가 맡은 경보 처리</strong> 수신과 DB 저장을 분리하고, 중복 여부는 MySQL의 고유 제약으로 최종 확인합니다. <a href="https://github.com/jinsung-mo/-BBIYONG-autonomous_driving_factory_patrol_robot/blob/main/docs/assets/readme/architecture-fire-alert.png" target="_blank" rel="noopener noreferrer">저장소 원본 ↗</a></figcaption>
         </figure>
 <figure id="bbiyong-mapping">
-              <video controls playsinline preload="none" poster="assets/bbiyong-mapping.jpg" width="960" height="540" aria-describedby="mapping-demo-caption"><source src="assets/bbiyong-mapping.mp4" type="video/mp4"><a href="assets/bbiyong-mapping.mp4">지도 생성 시연 보기</a></video>
-              <figcaption id="mapping-demo-caption"><strong>01 · 지도 생성 · 약 10초</strong>관측이 쌓이며 벽과 이동 가능한 공간이 드러나는 과정입니다.</figcaption>
+              <video controls playsinline preload="none" poster="assets/bbiyong-mapping-live.jpg" width="1920" height="1080" aria-describedby="mapping-demo-caption"><source src="assets/bbiyong-mapping-live.mp4" type="video/mp4"><a href="assets/bbiyong-mapping-live.mp4">지도 생성 시연 보기</a></video>
+              <figcaption id="mapping-demo-caption"><strong>01 / 관제 화면의 지도 생성 / 17초</strong>관제 웹의 지도가 만들어지는 과정과 실제 로봇의 모습을 함께 확인합니다. 제공된 17초 영상을 추가 배속 없이 사용했습니다.</figcaption>
             </figure>
 <figure>
               <video controls playsinline preload="none" poster="assets/bbiyong-alert.jpg" width="960" height="538" aria-describedby="alert-demo-caption"><source src="assets/bbiyong-alert.mp4" type="video/mp4"><a href="assets/bbiyong-alert.mp4">관제 경보 시연 보기</a></video>
@@ -127,7 +141,7 @@
             <a href="assets/bbiyong-driving.mp4">실제 로봇 주행 영상 보기</a>
           </video>
           <figcaption id="bbiyong-demo-caption">실제 로봇 주행 시연 · 장애물을 배치한 실내 테스트 공간에서 로봇이 이동하는 20초 촬영 영상입니다. 원본 속도로 재생하며 음성은 없습니다.</figcaption>
-        </figure><p class="media-note">지도 생성·관제 경보 영상은 팀 발표 자료의 GIF를 원래 속도의 무음 MP4로 변환했습니다. 로봇 매핑·주행과 웹 화면은 팀 결과물입니다. 서버는 매핑 진행 상태를 STOMP 알림과 상태 조회 API로 연결했습니다.</p></div></details>
+        </figure><p class="media-note">17초 지도 생성과 2분 36초 전체 시연은 제공된 MP4 녹화본을 웹용으로 압축했습니다. 짧은 관제 경보 영상은 기존 발표 GIF를 변환한 자료입니다. 로봇 주행과 웹 화면은 팀 결과물이며, 서버는 매핑 진행 상태를 STOMP 알림과 조회 API로 연결했습니다.</p></div></details>
       </article>
       <article class="project" id="binjari" aria-labelledby="binjari-title">
         <header class="project-heading"><div><p class="project-kind">03 / 영상 분석 서비스</p><h3 id="binjari-title">빈자리 <small>BINJARI</small></h3></div><div class="project-meta"><p>2024.12 — 2025.06 · 캡스톤 디자인 · 2인 팀</p><span class="award">교내 소프트웨어 전시회 인기상</span></div></header>
