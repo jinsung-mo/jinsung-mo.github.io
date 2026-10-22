@@ -290,3 +290,14 @@ button { font: inherit; cursor: pointer; }
 }
 
 .story code, .contribution-list code { font-size: .88em; background: var(--pale); padding: 1px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+
+.deep-case { margin: 28px 0 22px; padding: 24px 26px 10px; border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: var(--radius); }
+.deep-case-label { color: var(--accent); font-size: 12px; font-weight: 750; letter-spacing: .02em; margin-bottom: 6px; }
+.deep-case h4 { font-size: 19px; letter-spacing: -.03em; margin-bottom: 16px; }
+.deep-case ol { list-style: none; margin: 0; padding: 0; }
+.deep-case li { display: grid; grid-template-columns: 112px minmax(0,1fr); gap: 20px; padding: 14px 0; border-top: 1px solid var(--line); }
+.deep-case li > span { color: var(--accent); font-size: 12px; font-weight: 700; padding-top: 4px; }
+.deep-case li p { color: #46564b; font-size: 14px; line-height: 1.9; margin: 0; }
+.deep-case code { font-size: .88em; background: var(--pale); padding: 1px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+@media (max-width: 760px) { .deep-case { padding: 20px 18px 6px; } .deep-case li { grid-template-columns: 1fr; gap: 4px; } }
+@media print { .deep-case { break-inside: avoid; } }
