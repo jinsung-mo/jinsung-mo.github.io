@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="797" viewBox="0 0 1280 797" role="img" aria-label="axMap 선점 충돌 시연: A가 src/auth를 선점하고, B의 src/auth/login.ts 선점은 거절되며, src/authz는 통과하고, A 반납 뒤 B가 이어받는다">
+<style>text{font-family:'D2Coding','Cascadia Mono',Consolas,'Malgun Gothic',monospace;font-size:14.5px;white-space:pre}.bg{fill:#0f1117}.pane{fill:#161b22;stroke:#30363d}.bar{fill:#1f2630}.title{fill:#e6edf3;font-size:15px;font-weight:700}.sub{fill:#8b949e;font-size:13px}.cmd{fill:#79c0ff;font-weight:700}.ok{fill:#7ee787}.err{fill:#ff7b72;font-weight:700}.warn{fill:#e3b341}.dim{fill:#8b949e}.txt{fill:#c9d1d9}.cap{fill:#ffffff;font-size:16px;font-weight:700}.capbg{fill:#5b3fd6}.cstatic{opacity:0}@keyframes s0{0%,2.73%{opacity:0}3.86%,94.55%{opacity:1}100%{opacity:0}}.s0{opacity:0;animation:s0 22.0s linear infinite}@keyframes c0{0%,2.73%{opacity:0}3.86%,15.91%{opacity:1}16.36%,100%{opacity:0}}.c0{opacity:0;animation:c0 22.0s linear infinite}@keyframes s1{0%,16.36%{opacity:0}17.50%,94.55%{opacity:1}100%{opacity:0}}.s1{opacity:0;animation:s1 22.0s linear infinite}@keyframes c1{0%,16.36%{opacity:0}17.50%,43.18%{opacity:1}43.64%,100%{opacity:0}}.c1{opacity:0;animation:c1 22.0s linear infinite}@keyframes s2{0%,43.64%{opacity:0}44.77%,94.55%{opacity:1}100%{opacity:0}}.s2{opacity:0;animation:s2 22.0s linear infinite}@keyframes c2{0%,43.64%{opacity:0}44.77%,56.82%{opacity:1}57.27%,100%{opacity:0}}.c2{opacity:0;animation:c2 22.0s linear infinite}@keyframes s3{0%,57.27%{opacity:0}58.41%,94.55%{opacity:1}100%{opacity:0}}.s3{opacity:0;animation:s3 22.0s linear infinite}@keyframes c3{0%,57.27%{opacity:0}58.41%,70.45%{opacity:1}70.91%,100%{opacity:0}}.c3{opacity:0;animation:c3 22.0s linear infinite}@keyframes s4{0%,70.91%{opacity:0}72.05%,94.55%{opacity:1}100%{opacity:0}}.s4{opacity:0;animation:s4 22.0s linear infinite}@keyframes c4{0%,70.91%{opacity:0}72.05%,94.09%{opacity:1}94.55%,100%{opacity:0}}.c4{opacity:0;animation:c4 22.0s linear infinite}@media (prefers-reduced-motion:reduce){.s0,.s1,.s2,.s3,.s4{animation:none;opacity:1}.c0,.c1,.c2,.c3,.c4{animation:none;opacity:0}.cstatic{opacity:1}}</style>
+<rect class="bg" width="1280" height="797" rx="14"/>
+<text class="title" x="24" y="34">axMap · 작업 선점 충돌 판정</text>
+<text class="sub" x="24" y="56">실제 axmap-cli 1.4.0 출력 · 같은 원격을 공유하는 두 클론(A, B)</text>
+<rect class="pane" x="24" y="68" width="620" height="643" rx="8"/>
+<rect class="bar" x="25" y="69" width="618" height="22" rx="7"/>
+<text class="dim" x="36" y="85">터미널 A — 에이전트 A</text>
+<text class="cmd s0" x="38" y="110">① $ axmap claim src/auth --task 로그인 --intent "토큰 갱신 수정"</text>
+<text class="ok s0" x="38" y="131">claim 성공 - A</text>
+<text class="ok s0" x="38" y="152">  + src/auth</text>
+<text class="dim s0" x="38" y="173">  TTL 30분 (만료 2026-10-27T02:32:20.832Z)</text>
+<text class="dim s0" x="38" y="194">→ 종료 코드 0</text>
+<text class="cmd s3" x="38" y="236">④ $ axmap release</text>
+<text class="ok s3" x="38" y="257">release 완료 - A (전부 반납)</text>
+<text class="dim s3" x="38" y="278">→ 종료 코드 0</text>
+<rect class="pane" x="660" y="68" width="620" height="643" rx="8"/>
+<rect class="bar" x="661" y="69" width="618" height="22" rx="7"/>
+<text class="dim" x="672" y="85">터미널 B — 에이전트 B</text>
+<text class="cmd s1" x="674" y="110">② $ axmap claim src/auth/login.ts --task 소셜로그인</text>
+<text class="err s1" x="674" y="131">claim 거부 - 다른 에이전트가 점유 중인 경로가 있습니다.</text>
+<text class="err s1" x="674" y="173">  x src/auth/login.ts</text>
+<text class="warn s1" x="674" y="194">      (A 가 잡은 src/auth 에 포함됨)</text>
+<text class="warn s1" x="674" y="215">      점유자 : A (로그인)</text>
+<text class="warn s1" x="674" y="236">      작업   : 토큰 갱신 수정</text>
+<text class="warn s1" x="674" y="257">      시작   : 2026-10-27T02:02:20.832Z</text>
+<text class="warn s1" x="674" y="278">      TTL    : 30분 남음</text>
+<text class="dim s1" x="674" y="320">다음 중 하나를 하세요:</text>
+<text class="dim s1" x="674" y="341">  - 겹치지 않는 다른 경로로 작업을 시작한다</text>
+<text class="dim s1" x="674" y="362">  - axmap status 로 비어 있는 영역을 확인한다</text>
+<text class="dim s1" x="674" y="383">  - 점유자의 TTL 만료를 기다린다</text>
+<text class="err s1" x="674" y="404">→ 종료 코드 2</text>
+<text class="cmd s2" x="674" y="446">③ $ axmap claim src/authz --task 권한정책</text>
+<text class="ok s2" x="674" y="467">claim 성공 - B</text>
+<text class="ok s2" x="674" y="488">  + src/authz</text>
+<text class="dim s2" x="674" y="509">  TTL 30분 (만료 2026-10-27T02:32:28.570Z)</text>
+<text class="dim s2" x="674" y="530">→ 종료 코드 0</text>
+<text class="cmd s4" x="674" y="572">⑤ $ axmap claim src/auth/login.ts --task 소셜로그인</text>
+<text class="ok s4" x="674" y="593">claim 성공 - B</text>
+<text class="ok s4" x="674" y="614">  + src/auth/login.ts</text>
+<text class="ok s4" x="674" y="635">  + src/authz</text>
+<text class="dim s4" x="674" y="656">  TTL 30분 (만료 2026-10-27T02:32:40.147Z)</text>
+<text class="dim s4" x="674" y="677">→ 종료 코드 0</text>
+<rect class="capbg" x="24" y="751" width="1232" height="34" rx="8"/>
+<text class="cap c0" x="40" y="774">① A가 src/auth 폴더를 선점합니다</text>
+<text class="cap c1" x="40" y="774">② B가 그 안의 파일을 잡으려 하자, 시작 전에 거절하고 누가·왜 잡았는지 알려줍니다</text>
+<text class="cap c2" x="40" y="774">③ 이름이 비슷해도 다른 폴더(src/authz)는 막지 않습니다</text>
+<text class="cap c3" x="40" y="774">④ A가 작업을 마치고 반납합니다</text>
+<text class="cap c4" x="40" y="774">⑤ 이제 B가 같은 파일을 이어받습니다</text>
+<text class="cap cstatic" x="40" y="774">① 선점 → ② 겹치면 시작 전에 거절 → ③ 다른 폴더는 통과 → ④ 반납 → ⑤ 이어받기</text>
+</svg>

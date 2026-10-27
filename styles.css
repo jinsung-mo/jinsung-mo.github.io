@@ -334,3 +334,7 @@ button { font: inherit; cursor: pointer; }
 @media(max-width:950px) { .service-recording-layout { grid-template-columns: 1fr; } .demo-chapters { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 18px; } }
 @media(max-width:760px) { .service-recording { padding: 16px; } .service-recording-heading { display: block; } .service-recording-heading h4 { font-size: 17px; } .service-recording-heading > span { display: block; margin-top: 5px; } .demo-chapters { display: block; } }
 @media print { .service-recording { display: none; } }
+
+.axmap-media { margin-top: 30px; }
+.axmap-media .evidence-figure img { max-height: none; }
+@media print { #axmap-demo { display: none; } }

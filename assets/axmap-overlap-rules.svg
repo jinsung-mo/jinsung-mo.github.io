@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="710" viewBox="0 0 1280 710" role="img" aria-label="axMap 선점 충돌 판정 흐름과 겹침 규칙: 입력 검증과 경로 정규화 뒤, 최신 장부를 받아 만료 선점을 제외하고 겹침을 판정한다. 겹치면 거절하고, 통과하면 장부에 기록해 push하며, push가 거부되면 최신 장부를 받아 다시 판정한다. A가 src/auth를 잡고 있을 때 하위 파일과 상위 폴더는 거절, src/authz는 통과한다.">
+<style>
+text{font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;fill:#1f2328}
+.mono{font-family:'D2Coding','Cascadia Mono',Consolas,'Malgun Gothic',monospace}
+.h{font-size:22px;font-weight:800}.h2{font-size:17px;font-weight:700}.s{font-size:13.5px;fill:#57606a}.b{font-size:15px}
+.box{fill:#ffffff;stroke:#d0d7de;stroke-width:1.5}.step{fill:#f3f0ff;stroke:#7c5cff;stroke-width:1.5}
+.team{fill:#ffffff;stroke:#8c959f;stroke-width:1.5;stroke-dasharray:6 4}
+.no{fill:#fff1f0;stroke:#ff7b72;stroke-width:1.5}.yes{fill:#effbf1;stroke:#2da44e;stroke-width:1.5}
+.line{stroke:#7c5cff;stroke-width:2;fill:none}.tline{stroke:#8c959f;stroke-width:2;fill:none;stroke-dasharray:6 4}
+.red{fill:#cf222e;font-weight:700}.green{fill:#1a7f37;font-weight:700}.violet{fill:#5b3fd6;font-weight:700}.gray{fill:#57606a;font-weight:700}
+</style>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7c5cff"/></marker>
+<marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8c959f"/></marker>
+</defs>
+<rect width="1280" height="710" rx="16" fill="#f6f8fa"/>
+<text class="h" x="32" y="46">선점 충돌 판정 — 내가 구현한 부분</text>
+<text class="s" x="32" y="70">“내가 요청한 경로가, 나 아닌 누군가가 지금 잡고 있는 경로와 겹치는가?”를 작업 시작 전에 답한다. 근거: src/protocol.mjs, bin/axmap.mjs</text>
+
+<!-- pipeline -->
+<text class="h2" x="32" y="104">① 판정 흐름</text>
+<rect class="step" x="150" y="92" width="22" height="14" rx="3"/><text class="s" x="178" y="104">내 구현</text>
+<rect class="team" x="240" y="92" width="22" height="14" rx="3"/><text class="s" x="268" y="104">팀 공동 구현</text>
+
+<rect class="step" x="32" y="128" width="166" height="86" rx="10"/>
+<text class="b" x="46" y="156" font-weight="700">입력 검증</text>
+<text class="s" x="46" y="178">빈 경로·저장소 전체·</text><text class="s" x="46" y="197">절대 경로·../ 는 거부</text>
+
+<rect class="step" x="224" y="128" width="166" height="86" rx="10"/>
+<text class="b" x="238" y="156" font-weight="700">경로 정규화</text>
+<text class="s mono" x="238" y="178">.\src\auth\</text><text class="s" x="238" y="197">→ src/auth 로 통일</text>
+
+<rect class="team" x="416" y="128" width="166" height="86" rx="10"/>
+<text class="b gray" x="430" y="156">최신 장부 받기</text>
+<text class="s" x="430" y="178">원격 장부를 받아</text><text class="s" x="430" y="197">남의 새 선점 반영</text>
+
+<rect class="step" x="608" y="128" width="166" height="86" rx="10"/>
+<text class="b" x="622" y="156" font-weight="700">만료 선점 제외</text>
+<text class="s" x="622" y="178">TTL이 지난 선점은</text><text class="s" x="622" y="197">아무것도 막지 않음</text>
+
+<rect class="step" x="800" y="128" width="166" height="86" rx="10"/>
+<text class="b" x="814" y="156" font-weight="700">겹침 판정</text>
+<text class="s" x="814" y="178">같은 경로이거나 한쪽이</text><text class="s" x="814" y="197">상위 폴더인가</text>
+
+<path class="line" d="M198 171H220" marker-end="url(#ar)"/>
+<path class="tline" d="M390 171H412" marker-end="url(#ag)"/>
+<path class="tline" d="M582 171H604" marker-end="url(#ag)"/>
+<path class="line" d="M774 171H796" marker-end="url(#ar)"/>
+<path class="line" d="M966 158C982 158 980 141 990 141" marker-end="url(#ar)"/>
+<path class="line" d="M966 184C982 184 980 217 990 217" marker-end="url(#ar)"/>
+
+<rect class="no" x="994" y="106" width="254" height="70" rx="10"/>
+<text class="b red" x="1008" y="128">겹침 → 거절 · 종료 코드 2</text>
+<text class="s" x="1008" y="149">점유자·작업·남은 시간 안내</text>
+<text class="s" x="1008" y="167">장부에는 기록하지 않음</text>
+
+<rect class="yes" x="994" y="182" width="254" height="70" rx="10"/>
+<text class="b green" x="1008" y="204">안 겹침 → 장부 기록·push</text>
+<text class="s" x="1008" y="225">push가 성공하면 선점 완료,</text>
+<text class="s" x="1008" y="243">팀 전체에 공유됨</text>
+
+<!-- retry loop (team) -->
+<path class="tline" d="M1121 252V276H499V218" marker-end="url(#ag)"/>
+<text class="s" x="520" y="298"><tspan class="gray">push 거부</tspan> = 그 사이 누가 먼저 장부를 바꿈 → 최신 장부를 받아 <tspan class="gray">처음부터 다시 판정</tspan> (최대 5회, 지터 있는 대기)</text>
+
+<!-- rules -->
+<g transform="translate(0,50)">
+<text class="h2" x="32" y="284">② 겹침 규칙 — A가 <tspan class="mono violet">src/auth</tspan> 를 잡고 있을 때 B의 요청</text>
+<rect class="box" x="32" y="300" width="380" height="320" rx="12"/>
+<text class="s" x="52" y="330">저장소</text>
+<text class="b mono" x="52" y="362">src/</text>
+<rect x="72" y="376" width="300" height="104" rx="8" fill="#f3f0ff" stroke="#7c5cff" stroke-dasharray="5 4"/>
+<text class="b mono violet" x="88" y="402">auth/   ← A 선점</text>
+<text class="b mono" x="112" y="432">login.ts</text>
+<text class="b mono" x="112" y="462">token.ts</text>
+<text class="b mono" x="88" y="512">authz/</text>
+<text class="b mono" x="112" y="542">policy.ts</text>
+<text class="s" x="52" y="596">점선 안이 A가 잡은 범위다.</text>
+
+<rect class="no" x="440" y="300" width="400" height="66" rx="10"/>
+<text class="b mono" x="458" y="326">src/auth/login.ts</text><text class="b red" x="760" y="326">거절</text>
+<text class="s" x="458" y="350">하위 파일 — 폴더 선점이 그 아래를 덮는다</text>
+<rect class="no" x="440" y="378" width="400" height="66" rx="10"/>
+<text class="b mono" x="458" y="404">src</text><text class="b red" x="760" y="404">거절</text>
+<text class="s" x="458" y="428">상위 폴더 — 반대 방향도 막는다</text>
+<rect class="no" x="440" y="456" width="400" height="66" rx="10"/>
+<text class="b mono" x="458" y="482">.\src\auth\</text><text class="b red" x="760" y="482">거절</text>
+<text class="s" x="458" y="506">표기만 다른 같은 경로 — 정규화 후 비교</text>
+<rect class="yes" x="440" y="534" width="400" height="86" rx="10"/>
+<text class="b mono" x="458" y="560">src/authz</text><text class="b green" x="760" y="560">통과</text>
+<text class="s" x="458" y="584">문자열은 src/auth로 시작하지만 다른 폴더.</text>
+<text class="s" x="458" y="604">prefix가 아니라 '/' 경계로 비교한다</text>
+
+<rect class="box" x="868" y="300" width="380" height="320" rx="12"/>
+<text class="h2" x="888" y="332">왜 이렇게 만들었나</text>
+<text class="b" x="888" y="368">· 애매한 입력은 고쳐서 받지 않는다</text>
+<text class="s" x="904" y="390">서로 다른 요청이 같은 경로가 되면</text>
+<text class="s" x="904" y="408">그 자체가 소유권 충돌이다</text>
+<text class="b" x="888" y="442">· 거절은 종료 코드 2</text>
+<text class="s" x="904" y="464">일반 실패(1)와 구분해 AI 에이전트가</text>
+<text class="s" x="904" y="482">재시도 대신 다른 작업을 고르게 한다</text>
+<text class="b" x="888" y="516">· 판정은 순수 함수</text>
+<text class="s" x="904" y="538">git·파일·시계 없이 시각과 장부만 받는다.</text>
+<text class="s" x="904" y="556">그래서 push 재시도 때 그대로 다시 부르고,</text>
+<text class="s" x="904" y="574">지난 장부로 과거 판정도 재생(audit)한다</text>
+<text class="s" x="888" y="604">한계: 경로로만 판단, 편집 자체는 막지 않음</text>
+</g>
+</svg>
