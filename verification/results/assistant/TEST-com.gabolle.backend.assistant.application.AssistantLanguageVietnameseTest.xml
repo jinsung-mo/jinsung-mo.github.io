@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="com.gabolle.backend.assistant.application.AssistantLanguageVietnameseTest" tests="1" failures="0" errors="0" skipped="0" time="0.001" timestamp="2026-10-27T14:40:35.955Z">
+  <testcase name="🔴 Accept-Language 가 vi 면 답변 언어는 vi 다 — 전에는 ko 로 떨어져 한국어로 답했다" classname="com.gabolle.backend.assistant.application.AssistantLanguageVietnameseTest" time="0.0" />
+</testsuite>

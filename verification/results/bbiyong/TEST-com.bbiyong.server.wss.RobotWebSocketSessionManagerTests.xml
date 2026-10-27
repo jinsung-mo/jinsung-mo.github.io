@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" tests="35" failures="0" errors="0" skipped="0" time="0.221" timestamp="2026-10-27T14:43:38.853Z">
+  <testcase name="closeAllClearsBothMapsBeforeExternalCloseCallback()" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.006" />
+  <testcase name="currentSessionRemovalReturnsRobotExactlyOnce()" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.0" />
+  <testcase name="alreadyEnteredCloseAndReconnectCannotSplitTheTwoMaps()" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.001" />
+  <testcase name="synchronousCloseCallbackSeesReplacementAndReturnsNoOfflineRobot()" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.001" />
+  <testcase name="staleAndDuplicateCloseCallbacksCannotRemoveReplacement()" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.016" />
+  <testcase name="handlerDoesNotPublishOfflineForStaleCallbackAndPublishesCurrentOnlyOnce()" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.004" />
+  <testcase name="sameSessionCannotBeReboundToAnotherRobot()" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.001" />
+  <testcase name="registeringSameSessionDoesNotPublishAnotherOnlineOrCloseIt()" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.0" />
+  <testcase name="failedOldSessionCloseDoesNotRollbackReplacement()" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.001" />
+  <testcase name="repetition 1 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.008" />
+  <testcase name="repetition 2 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.007" />
+  <testcase name="repetition 3 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.006" />
+  <testcase name="repetition 4 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.005" />
+  <testcase name="repetition 5 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.005" />
+  <testcase name="repetition 6 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.006" />
+  <testcase name="repetition 7 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.008" />
+  <testcase name="repetition 8 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.005" />
+  <testcase name="repetition 9 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.005" />
+  <testcase name="repetition 10 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.004" />
+  <testcase name="repetition 11 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.004" />
+  <testcase name="repetition 12 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.004" />
+  <testcase name="repetition 13 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.003" />
+  <testcase name="repetition 14 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.004" />
+  <testcase name="repetition 15 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.005" />
+  <testcase name="repetition 16 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.003" />
+  <testcase name="repetition 17 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.003" />
+  <testcase name="repetition 18 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.003" />
+  <testcase name="repetition 19 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.004" />
+  <testcase name="repetition 20 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.004" />
+  <testcase name="repetition 21 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.003" />
+  <testcase name="repetition 22 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.005" />
+  <testcase name="repetition 23 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.004" />
+  <testcase name="repetition 24 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.003" />
+  <testcase name="repetition 25 of 25" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.003" />
+  <testcase name="blockingCloseIoDoesNotHoldRegistryLock()" classname="com.bbiyong.server.wss.RobotWebSocketSessionManagerTests" time="0.002" />
+</testsuite>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="com.gabolle.backend.assistant.application.AssistantChatServiceTest" tests="13" failures="0" errors="0" skipped="0" time="0.424" timestamp="2026-10-27T14:40:35.531Z">
+  <testcase name="itineraryId 가 없으면 동의를 확인하지도, 일정을 조회하지도 않는다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.381" />
+  <testcase name="🔴 1분 한도를 넘기면 벤더를 부르지 않고 거부한다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.005" />
+  <testcase name="정상 메시지는 벤더를 한 번 불러 답을 그대로 돌려준다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.001" />
+  <testcase name="🔴 동의가 없으면 벤더를 부르지 않고 그대로 막는다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.015" />
+  <testcase name="🔴 q값이 섞인 헤더는 첫 태그만 본다 — MR !1066 AI 리뷰로 발견" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.001" />
+  <testcase name="모르는 언어 값은 한국어로 떨어진다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.0" />
+  <testcase name="다른 사용자는 서로의 한도에 영향을 주지 않는다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.0" />
+  <testcase name="itineraryId 가 있으면 동의부터 확인하고, 통과하면 일정을 조회해 벤더에 얹는다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.007" />
+  <testcase name="히스토리는 설정된 개수만큼만 벤더에 전달된다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.005" />
+  <testcase name="빈 메시지는 벤더를 부르지 않고 바로 거부한다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.001" />
+  <testcase name="너무 긴 메시지는 벤더를 부르지 않고 바로 거부한다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.001" />
+  <testcase name="🔴 업체 호출이 실패하면 그대로 위로 올라간다 — 미리 정해 둔 답으로 숨기지 않는다" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.001" />
+  <testcase name="🔴 프론트가 보내는 5개 언어(ko/en/ja/zh-Hans/zh-Hant)가 각각 그대로 벤더에 전달된다 — S15P21E201-1109" classname="com.gabolle.backend.assistant.application.AssistantChatServiceTest" time="0.001" />
+</testsuite>

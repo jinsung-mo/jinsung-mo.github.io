@@ -1,0 +1,92 @@
+{
+  "execution_date": "2026-10-27",
+  "packaged_from_existing_results": true,
+  "gabolle_ref": "36bad5d7a945f054a40c4007fabfa3664f361b4d",
+  "bbiyong_base_ref": "a6ae2a44a934ce70be4ebe6934d44c2ac2b94395",
+  "reports": [
+    {
+      "source_name": "TEST-com.gabolle.verification.PortfolioPostgresConcurrencyTest.xml",
+      "original_sha256": "788f83ab4b48ab7d67fd4996c6052a6bdfc997408a5545bdfa44a850574121b1",
+      "excerpt": "results/postgres-concurrency/TEST-com.gabolle.verification.PortfolioPostgresConcurrencyTest.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.gabolle.backend.itinerary.ItineraryPersistenceIntegrationTest.xml",
+      "original_sha256": "de2e8aafd8631f913e14a99a53f74d09f3925e636208592e2f6012308a134215",
+      "excerpt": "results/existing-postgres/TEST-com.gabolle.backend.itinerary.ItineraryPersistenceIntegrationTest.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.gabolle.backend.trip.TripPersistenceIntegrationTest.xml",
+      "original_sha256": "171ce8200c374f1c62f8bacf9697643bb7da0f51fe57f60706bf3e24012bd108",
+      "excerpt": "results/existing-postgres/TEST-com.gabolle.backend.trip.TripPersistenceIntegrationTest.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.gabolle.backend.assistant.adapter.GeminiAssistantAdapterTest.xml",
+      "original_sha256": "03ef7968358e4dba219f7bb535c09f0021d3eefba1b8148e616c78e27a1fbc92",
+      "excerpt": "results/assistant/TEST-com.gabolle.backend.assistant.adapter.GeminiAssistantAdapterTest.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.gabolle.backend.assistant.adapter.GeminiVietnameseDirectiveTest.xml",
+      "original_sha256": "5f5d118b9195a856f88161af87d62c4649803e45fb1780b19c1d8a4c5aa906f3",
+      "excerpt": "results/assistant/TEST-com.gabolle.backend.assistant.adapter.GeminiVietnameseDirectiveTest.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.gabolle.backend.assistant.application.AssistantChatServiceTest.xml",
+      "original_sha256": "2576a68ed95b6515ec6c3551d19789026139dc5e1f7325bddfea4e00983c661b",
+      "excerpt": "results/assistant/TEST-com.gabolle.backend.assistant.application.AssistantChatServiceTest.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.gabolle.backend.assistant.application.AssistantLanguageVietnameseTest.xml",
+      "original_sha256": "fa82731a4da9fedaca6db97cee7ea93c0527fca3aa37a1106ccb432027bad7cc",
+      "excerpt": "results/assistant/TEST-com.gabolle.backend.assistant.application.AssistantLanguageVietnameseTest.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.gabolle.backend.assistant.presentation.AssistantControllerTest.xml",
+      "original_sha256": "b04bf914e8285657cc099e86f8b084d63f03d882fbf319f2a4ed94bf140774ab",
+      "excerpt": "results/assistant/TEST-com.gabolle.backend.assistant.presentation.AssistantControllerTest.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.bbiyong.server.wss.RobotHandshakeAuthInterceptorTests.xml",
+      "original_sha256": "aedcf9746f4b5d1f86802dd22347991301be339c61d06ccd5dd6cbc098242621",
+      "excerpt": "results/bbiyong/TEST-com.bbiyong.server.wss.RobotHandshakeAuthInterceptorTests.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.bbiyong.server.wss.RobotWebSocketBinaryTests.xml",
+      "original_sha256": "2adf6ca1fcf53dcdcd621a6dbbd77efd13aac98d04f4a9107950e7c4a7e46036",
+      "excerpt": "results/bbiyong/TEST-com.bbiyong.server.wss.RobotWebSocketBinaryTests.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.bbiyong.server.wss.RobotWebSocketSessionManagerTests.xml",
+      "original_sha256": "c074901e1c2002974185eed0151dc15c724faec9b6a73dbc9eecf5236220c0ed",
+      "excerpt": "results/bbiyong/TEST-com.bbiyong.server.wss.RobotWebSocketSessionManagerTests.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    },
+    {
+      "source_name": "TEST-com.bbiyong.server.wss.dto.H264BinaryFrameTests.xml",
+      "original_sha256": "f194e15a0c17f23dbaa318cb7f84a93dbb7f9fcd5e23abe996675e2ef1c49cc4",
+      "excerpt": "results/bbiyong/TEST-com.bbiyong.server.wss.dto.H264BinaryFrameTests.xml",
+      "retained": "suite counts, names, timings, timestamps",
+      "removed": "hostnames, properties, system output, local paths"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+def portfolioVerifySource = System.getenv('PORTFOLIO_VERIFY_SRC')
+if (!portfolioVerifySource || !new File(portfolioVerifySource).isDirectory()) {
+    throw new GradleException('Set PORTFOLIO_VERIFY_SRC to verification/gabolle/src from this bundle.')
+}
+allprojects {
+    afterEvaluate {
+        if (plugins.hasPlugin('java')) {
+            sourceSets.test.java.srcDir(portfolioVerifySource)
+        }
+    }
+}

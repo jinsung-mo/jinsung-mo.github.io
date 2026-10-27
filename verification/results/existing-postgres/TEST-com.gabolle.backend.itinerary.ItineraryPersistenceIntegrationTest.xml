@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="com.gabolle.backend.itinerary.ItineraryPersistenceIntegrationTest" tests="6" failures="0" errors="0" skipped="0" time="4.256" timestamp="2026-10-27T14:42:26.589Z">
+  <testcase name="duplicateVersionIsRejectedAsConflict()" classname="com.gabolle.backend.itinerary.ItineraryPersistenceIntegrationTest" time="0.304" />
+  <testcase name="pointerMoveIsVisibleInTheSamePersistenceContext()" classname="com.gabolle.backend.itinerary.ItineraryPersistenceIntegrationTest" time="0.01" />
+  <testcase name="pointerMovedElsewhereIsRejectedAndRollsBack()" classname="com.gabolle.backend.itinerary.ItineraryPersistenceIntegrationTest" time="0.011" />
+  <testcase name="appendMovesLatestVersionPointer()" classname="com.gabolle.backend.itinerary.ItineraryPersistenceIntegrationTest" time="0.054" />
+  <testcase name="🔴 다시 고르면 고른 시각이 옮겨진다 — C 를 골랐다가 A 로 되돌아오면 A 가 확정이 되는 근거" classname="com.gabolle.backend.itinerary.ItineraryPersistenceIntegrationTest" time="0.008" />
+  <testcase name="일정이 생기면 고른 시각이 채워진다 — 일정을 만드는 길 어디서도 따로 적지 않아도 된다" classname="com.gabolle.backend.itinerary.ItineraryPersistenceIntegrationTest" time="0.006" />
+</testsuite>

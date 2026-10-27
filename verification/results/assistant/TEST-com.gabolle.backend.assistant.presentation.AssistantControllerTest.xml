@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="com.gabolle.backend.assistant.presentation.AssistantControllerTest" tests="6" failures="0" errors="0" skipped="0" time="0.531" timestamp="2026-10-27T14:40:35.956Z">
+  <testcase name="여행 만들기 요청은 200 과 kind=navigate, href=/plan 을 담아 온다" classname="com.gabolle.backend.assistant.presentation.AssistantControllerTest" time="0.477" />
+  <testcase name="빈 메시지는 400 이다" classname="com.gabolle.backend.assistant.presentation.AssistantControllerTest" time="0.014" />
+  <testcase name="itineraryId·dayIndex 를 보내면 동의 확인 후 일정 요약을 벤더에 실어 보낸다" classname="com.gabolle.backend.assistant.presentation.AssistantControllerTest" time="0.01" />
+  <testcase name="history 를 함께 보내도 그대로 받아 벤더에 전달한다" classname="com.gabolle.backend.assistant.presentation.AssistantControllerTest" time="0.009" />
+  <testcase name="🔴 업체 호출이 실패하면 502 이고 응답에 실패가 분명히 담긴다 — 200 으로 숨기지 않는다" classname="com.gabolle.backend.assistant.presentation.AssistantControllerTest" time="0.011" />
+  <testcase name="🔴 1분 한도를 넘기면 429 다" classname="com.gabolle.backend.assistant.presentation.AssistantControllerTest" time="0.009" />
+</testsuite>

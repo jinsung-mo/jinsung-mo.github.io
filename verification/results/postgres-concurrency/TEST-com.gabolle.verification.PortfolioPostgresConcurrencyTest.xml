@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="com.gabolle.verification.PortfolioPostgresConcurrencyTest" tests="11" failures="0" errors="0" skipped="0" time="4.525" timestamp="2026-10-27T14:43:26.208Z">
+  <testcase name="same-base itinerary edit [1/3]" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.394" />
+  <testcase name="same-base itinerary edit [2/3]" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.039" />
+  <testcase name="same-base itinerary edit [3/3]" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.028" />
+  <testcase name="mixed-body same-key create [1/3]" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.021" />
+  <testcase name="mixed-body same-key create [2/3]" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.035" />
+  <testcase name="mixed-body same-key create [3/3]" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.019" />
+  <testcase name="serviceCreationParticipatesInTransactionAndLeavesNoKeyOrTripAfterRollback()" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.015" />
+  <testcase name="failedPointerCompareAndSwapRollsBackCandidateVersionAndCopiedItems()" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.028" />
+  <testcase name="identical same-key create [1/3]" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.029" />
+  <testcase name="identical same-key create [2/3]" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.022" />
+  <testcase name="identical same-key create [3/3]" classname="com.gabolle.verification.PortfolioPostgresConcurrencyTest" time="0.02" />
+</testsuite>

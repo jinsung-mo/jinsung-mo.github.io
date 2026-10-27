@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="com.bbiyong.server.wss.RobotHandshakeAuthInterceptorTests" tests="5" failures="0" errors="0" skipped="0" time="0.077" timestamp="2026-10-27T14:43:38.300Z">
+  <testcase name="validQueryParamTokenAccepted()" classname="com.bbiyong.server.wss.RobotHandshakeAuthInterceptorTests" time="0.059" />
+  <testcase name="wrongTokenRejectedWith401()" classname="com.bbiyong.server.wss.RobotHandshakeAuthInterceptorTests" time="0.004" />
+  <testcase name="missingTokenRejectedWith401()" classname="com.bbiyong.server.wss.RobotHandshakeAuthInterceptorTests" time="0.0" />
+  <testcase name="blankConfiguredTokenRejectsHandshake()" classname="com.bbiyong.server.wss.RobotHandshakeAuthInterceptorTests" time="0.0" />
+  <testcase name="validHeaderTokenAccepted()" classname="com.bbiyong.server.wss.RobotHandshakeAuthInterceptorTests" time="0.0" />
+</testsuite>
