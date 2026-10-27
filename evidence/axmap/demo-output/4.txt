@@ -1,0 +1,2 @@
+release 완료 - A (전부 반납)
+exit=0

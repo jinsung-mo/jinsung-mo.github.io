@@ -14,6 +14,7 @@ Java·Spring Boot 백엔드 개발 직무 지원을 위한 포트폴리오입니
 - `styles.css`: 화면 구성과 모바일 스타일
 - `script.js`: 상세 시연으로 직접 이동, 영상 정지, 인쇄 시 상세 설명 표시
 - `assets/`: 프로젝트 화면, 구조도, 시연 영상
+- `evidence/`: 성과 수치의 원본 응답과 그림 재현 스크립트
 
 GitHub Pages는 `main` 브랜치의 루트(`/`)를 배포합니다.
 
@@ -30,6 +31,6 @@ python -m http.server 8766 --bind 127.0.0.1
 ## 성과 수치의 출처
 
 - 가볼래: [PostgreSQL 통합 테스트](https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/test/java/com/gabolle/backend/itinerary/ItineraryPersistenceIntegrationTest.java)
-- 가볼래 axMap: [npm 다운로드 통계 API](https://api.npmjs.org/downloads/point/2026-08-28:2026-10-25/axmap-cli)(2026-10-26 조회, CI·미러 포함)와 팀 저장소 선점 장부 커밋 수. 판정 코드는 [axMap 공개 저장소](https://github.com/rl2aderjoon/axmap/blob/f4609cb139fe97d06e6c3014cdf3b32ca22b4380/src/protocol.mjs#L10-L165)에 있으며, 저장소 통합으로 커밋 작성자는 팀원 한 명으로 표시됩니다.
+- 가볼래 axMap: [npm 통계 원본과 재현 스크립트](evidence/axmap/README.md)(2026-10-26 조회, CI·미러 포함)와 팀 저장소 선점 장부 커밋 수. 판정 코드는 [axMap 공개 저장소](https://github.com/rl2aderjoon/axmap/blob/f4609cb139fe97d06e6c3014cdf3b32ca22b4380/src/protocol.mjs#L10-L165)에 있으며, 저장소 통합으로 커밋 작성자는 팀원 한 명으로 표시됩니다.
 - 삐용: [프로젝트 종료 후 개인 검증 기록](https://github.com/jinsung-mo/-BBIYONG-autonomous_driving_factory_patrol_robot/blob/main/docs/post-project/README.md). 합성 데이터 쿼리 측정 환경과 개인 저장소에서만 진행한 작업임을 본문에 함께 표시했습니다.
 - 빈자리: [모델·실행 기록](https://github.com/jinsung-mo/Smart-Parking-Lot-Monitoring-Service_BINJAIR/blob/main/docs/MODEL.md). 프레임 감소율과 실제 처리 성능, 기록 재생 시연과 운영 중계를 구분했습니다.

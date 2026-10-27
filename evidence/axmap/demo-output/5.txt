@@ -1,0 +1,5 @@
+claim 성공 - B
+  + src/auth/login.ts
+  + src/authz
+  TTL 30분 (만료 2026-10-27T02:32:40.147Z)
+exit=0

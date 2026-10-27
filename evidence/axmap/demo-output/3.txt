@@ -1,0 +1,4 @@
+claim 성공 - B
+  + src/authz
+  TTL 30분 (만료 2026-10-27T02:32:28.570Z)
+exit=0
