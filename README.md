@@ -6,7 +6,7 @@ Java·Spring Boot 백엔드 개발 직무 지원을 위한 포트폴리오입니
 - 연락처: [ahwlstjd57@gmail.com](mailto:ahwlstjd57@gmail.com)
 - 프로젝트: 가볼래, 삐용, 빈자리
 
-각 프로젝트에서 맡은 일과 검증 결과를 먼저 보여주고, 문제 해결 과정과 추가 시연은 펼쳐 읽을 수 있도록 구성했습니다. 팀 결과물과 프로젝트 종료 후 개인 개선은 구분해 적었습니다. 협업 섹션에는 메시지 규격 유지, Jira 작업 연결, 로봇 연동 경험과 다음 협업에서 보완할 점을 담았습니다.
+각 프로젝트에서 맡은 일과 검증 결과를 먼저 보여주고, 문제 해결 과정과 추가 시연은 펼쳐 읽을 수 있도록 구성했습니다. 팀 결과물과 프로젝트 종료 후 개인 개선은 구분해 적었습니다. 협업 섹션에는 꾸준함·도전정신이라는 강점, 지나친 배려라는 약점과 이를 고친 팀장 경험, 다음 협업에서 보완할 점을 담았습니다.
 
 ## 파일 구성
 
@@ -31,6 +31,6 @@ python -m http.server 8766 --bind 127.0.0.1
 ## 성과 수치의 출처
 
 - 가볼래: [PostgreSQL 통합 테스트](https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/test/java/com/gabolle/backend/itinerary/ItineraryPersistenceIntegrationTest.java)
-- 가볼래 axMap: [npm 통계 원본과 재현 스크립트](evidence/axmap/README.md)(2026-10-26 조회, CI·미러 포함)와 팀 저장소 선점 장부 커밋 수. 판정 코드는 [axMap 공개 저장소](https://github.com/rl2aderjoon/axmap/blob/f4609cb139fe97d06e6c3014cdf3b32ca22b4380/src/protocol.mjs#L10-L165)에 있으며, 저장소 통합으로 커밋 작성자는 팀원 한 명으로 표시됩니다.
+- 가볼래 axMap: [npm 통계 원본과 재현 스크립트](evidence/axmap/README.md)(2026-10-26 조회, CI·미러 포함)와 팀 저장소 선점 장부 커밋 수. 판정 코드는 [axMap 공개 저장소](https://github.com/rl2aderjoon/axmap/blob/f4609cb139fe97d06e6c3014cdf3b32ca22b4380/src/protocol.mjs#L10-L165)에 있으며, 토큰 비용 때문에 한 사람의 개인 계정으로만 AI 코드 생성을 진행해 커밋 작성자는 팀원 한 명으로 표시됩니다.
 - 삐용: [프로젝트 종료 후 개인 검증 기록](https://github.com/jinsung-mo/-BBIYONG-autonomous_driving_factory_patrol_robot/blob/main/docs/post-project/README.md). 합성 데이터 쿼리 측정 환경과 개인 저장소에서만 진행한 작업임을 본문에 함께 표시했습니다.
 - 빈자리: [모델·실행 기록](https://github.com/jinsung-mo/Smart-Parking-Lot-Monitoring-Service_BINJAIR/blob/main/docs/MODEL.md). 프레임 감소율과 실제 처리 성능, 기록 재생 시연과 운영 중계를 구분했습니다.

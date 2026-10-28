@@ -338,3 +338,7 @@ button { font: inherit; cursor: pointer; }
 .axmap-media { margin-top: 30px; }
 .axmap-media .evidence-figure img { max-height: none; }
 @media print { #axmap-demo { display: none; } }
+.collaboration-section .deep-case { background: var(--white); margin: 34px 0 0; scroll-margin-top: 90px; }
+.collaboration-section .deep-case li p { color: #45564b; }
+.axmap-lead { margin: 0 0 22px; padding: 18px 22px; background: var(--pale); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; font-size: 15px; line-height: 1.9; }
+.axmap-lead strong { color: var(--ink); }
