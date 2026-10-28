@@ -354,7 +354,8 @@ button { font: inherit; cursor: pointer; }
 .arch-figure figcaption { margin-top: 12px; font-size: 12px; line-height: 1.8; color: var(--muted); }
 .arch-figure figcaption strong { color: var(--ink); margin-right: 6px; }
 .arch-figure figcaption a { text-decoration: underline; text-underline-offset: 4px; }
-.arch-block { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 22px; align-items: start; margin-top: 26px; }
+.arch-block { display: grid; grid-template-columns: minmax(0,1fr); gap: 18px; margin-top: 26px; }
+.arch-block .arch-figure img { max-height: none; }
 .arch-block .arch-figure { margin: 0; }
 .arch-block .code-snippet { margin: 0; }
 .code-snippet { margin: 18px 0 14px; min-width: 0; }
