@@ -10,11 +10,11 @@
 | 같은 기간 일별 다운로드 | 59일, 합계가 위 값과 같음 | [`npm/range_2026-08-28_2026-10-25.json`](npm/range_2026-08-28_2026-10-25.json) |
 | 최근 1주 (2026-10-16 ~ 10-22) | 795회 | [`npm/point_last-week.json`](npm/point_last-week.json) |
 | 조회 시각 | 2026-10-26T03:35:37Z | [`npm/queried_at_utc.txt`](npm/queried_at_utc.txt) |
-| 가볼래 선점 장부 (2026-08-25 ~ 09-30) | 선점 3,662회 · 반납 2,240회 · 연장 68회 | 팀 저장소의 장부 브랜치 커밋 수 (아래 명령) |
+| 가볼래 선점 장부 (2026-08-25 ~ 09-30) | 선점 3,629회 · 반납 2,224회 · 연장 68회 | 팀 저장소의 장부 브랜치 커밋 수 (아래 명령) |
 
 - npm 응답은 `https://api.npmjs.org/downloads/point/<기간>/axmap-cli`, `.../range/<기간>/axmap-cli`를 그대로 저장했습니다.
 - npm 집계에는 CI 서버, 미러, 봇의 다운로드가 포함됩니다. 이 기간에 21개 버전이 배포돼 미러 다운로드도 함께 늘었습니다. 사용자 수가 아닙니다.
-- 장부 수치는 팀 저장소 로컬 사본에서 `git -C .axmap/ledger log --format=%s | grep -oE '^(claim|release|renew)\(' | sort | uniq -c`로 셌습니다. 거절된 선점은 장부에 남지 않아, 막은 충돌 횟수는 셀 수 없습니다.
+- 장부 수치는 팀 저장소의 장부 브랜치에서 `git log origin/axmap/claims --format=%s | grep -oE '^(claim|release|renew)\(' | sort | uniq -c`로 셌습니다. 거절된 선점은 장부에 남지 않아, 막은 충돌 횟수는 셀 수 없습니다.
 
 ## 그림
 
@@ -36,4 +36,4 @@ python -I tools/gen_terminal_svg.py /tmp/axmap-demo/out axmap-claim-conflict.svg
 
 ## 기여 범위
 
-axMap의 아이디어와 처리 흐름은 가볼래 팀 회의에서 함께 정했습니다. 저는 선점 충돌 판정(겹침 판정, 입력 거부, 거절 응답)을 구현했습니다. 저장소를 통합하면서 커밋 이력이 합쳐져, [공개 저장소](https://github.com/rl2aderjoon/axmap)에는 작성자가 팀원 한 명으로 표시됩니다.
+axMap의 아이디어와 처리 흐름은 가볼래 팀 회의에서 함께 정했습니다. 저는 그중 선점이 서로 겹치는지 판단하는 규칙을 설계하고, 만들어진 코드가 규칙대로 동작하는지 검증했습니다. 토큰 비용 때문에 팀 회의에서 한 사람의 개인 계정으로만 코드를 생성하기로 정해, [공개 저장소](https://github.com/rl2aderjoon/axmap)에는 작성자가 팀원 한 명으로 표시됩니다.
