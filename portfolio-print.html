@@ -94,15 +94,15 @@
     <div>
       <h1>요청이 몇 번 와도,<br><span>데이터는 한 번만 정확하게.</span></h1>
       <p style="font-size:13pt;margin-bottom:3mm">백엔드 개발자 <strong>모진성</strong></p>
-      <p class="intro">사람들이 실제로 불편해하는 부분을 기술로 풀어낼 때 가장 큰 보람을 느낍니다. Java와 Spring Boot로 여행 일정 API와 로봇 관제 서버를 만들었습니다. 특히 버튼을 두 번 누르거나, 로봇이 같은 경보를 다시 보내거나, 두 사람이 같은 일정을 동시에 고칠 때 데이터가 꼬이지 않게 하는 일에 관심이 많습니다. 막는 방법은 DB에 맡기고, 정말 막히는지는 되도록 실제 DB에서 테스트로 확인합니다. 지금은 로보터블과 함께 조리 영상에서 동작 구간을 찾는 기업연계 프로젝트를 하고 있습니다.</p>
+      <p class="intro">사람들이 실제로 불편해하는 부분을 기술로 풀어낼 때 가장 큰 보람을 느낍니다. Java와 Spring Boot로 여행 일정 API와 로봇 관제 서버를 만들었습니다. 특히 버튼을 두 번 누르거나, 로봇이 같은 경보를 다시 보내거나, 두 사람이 같은 일정을 동시에 고칠 때 데이터가 꼬이지 않게 하는 일에 관심이 많습니다. 막는 방법은 DB에 맡기고, 정말 막히는지는 되도록 실제 DB에서 테스트로 확인합니다. 지금은 로보터블과 함께 요리 영상을 행동별 구간으로 나누는 기업연계 프로젝트를 하고 있습니다.</p>
       <div class="contact"><p><span>Email</span>ahwlstjd57@gmail.com</p><p><span>GitHub</span>github.com/jinsung-mo</p><p><span>Web</span>jinsung-mo.github.io</p></div>
     </div>
     <img src="assets/profile.png" alt="모진성 프로필 사진">
   </div>
   <dl class="metrics">
-    <div><dt>같은 경보 100회 동시 발행</dt><dd>1건만 저장<small>삐용, 실제 MySQL 8</small></dd></div>
-    <div><dt>최근 24시간 통계 쿼리</dt><dd>55.9 → 4.9ms<small>삐용, 인덱스 추가</small></dd></div>
-    <div><dt>같은 키 동시 요청 8건</dt><dd>여행 1건만 생성<small>가볼래, 멱등성 키</small></dd></div>
+    <div><dt>같은 경보가 100번 동시에 와도</dt><dd>1건만 저장<small>삐용, 실제 MySQL 8</small></dd></div>
+    <div><dt>경보 통계 조회 시간</dt><dd>55.9 → 4.9ms<small>삐용, 인덱스 추가</small></dd></div>
+    <div><dt>같은 여행 생성 요청 8건이 동시에 와도</dt><dd>여행 1건만 생성<small>가볼래, 멱등성 키</small></dd></div>
     <div><dt>SSAFY 프로젝트</dt><dd>우수상 2회<small>전체 수상 6건</small></dd></div>
   </dl>
   <div class="footer"><span>모진성, Backend Developer</span><span>1</span></div>
@@ -153,20 +153,20 @@
   <div class="cols" style="margin-top:3mm;grid-template-columns:1fr 1.3fr">
     <div>
       <p>공장을 자율 순찰하는 로봇의 위치, 영상, 화재 경보를 웹에서 보고 원격으로 조종하는 시스템입니다. 저는 로봇과 웹 사이의 관제 서버를 만들고, 무선 환경에서 재전송된 경보도 한 번만 기록되게 했습니다.</p>
-      <dl class="facts"><div><dt>제 담당</dt><dd>팀장, Spring Boot 관제 서버, 로봇/웹 통신, 경보 저장과 인증, 릴리스 통합</dd></div><div><dt>사용 기술</dt><dd>Java 17, Spring Boot, WebSocket, STOMP, WebRTC(WHEP), MySQL 8, Docker</dd></div></dl>
+      <dl class="facts"><div><dt>맡은 역할</dt><dd>팀장, Spring Boot 관제 서버, 로봇/웹 통신, 경보 저장과 인증, 릴리스 통합</dd></div><div><dt>사용 기술</dt><dd>Java 17, Spring Boot, WebSocket, STOMP, WebRTC(WHEP), MySQL 8, Docker</dd></div></dl>
       <ul class="points">
-        <li><strong>재전송돼도 경보는 한 번만 저장</strong><span>messageId와 MySQL 고유 제약으로 중복을 막고, DB 저장은 비동기로 분리해 수신을 막지 않게 했습니다.</span></li>
-        <li><strong>원격 조종용 저지연 영상</strong><span>약 6초 늦던 HLS 재생을 WebRTC(WHEP)로 전환했습니다.</span></li>
-        <li><strong>로봇↔웹 실시간 연결</strong><span>로봇 측 연결 코드가 없던 시점에는 <code>cloud_bridge.py</code>를 직접 작성해 통신부터 열었습니다.</span></li>
-        <li><strong>6인 팀 개발과 통합 리드</strong><span>Jira 운영 규칙과 브랜치 전략을 정하고, 파트별 코드를 릴리스로 통합했습니다.</span></li>
+        <li><strong>같은 경보가 여러 번 와도 1건만 저장</strong><span>messageId와 MySQL 고유 제약으로 중복을 막고, DB 저장은 비동기로 분리해 수신을 막지 않게 했습니다.</span></li>
+        <li><strong>6초 늦던 원격 조종 영상을 WebRTC로 전환</strong><span>HLS 재생이 약 6초 늦어 원격 조종에 쓸 수 없었습니다. WebRTC(WHEP)로 바꾼 뒤 탐지 박스를 영상에 맞추는 보정값을 6초에서 0.3초로 줄였습니다.</span></li>
+        <li><strong>로봇과 관제 웹의 실시간 통신 구축</strong><span>로봇 측 연결 코드가 없던 시점에는 <code>cloud_bridge.py</code>를 직접 작성해 통신부터 열었습니다.</span></li>
+        <li><strong>팀장으로 6인 팀의 개발 규칙과 코드 통합</strong><span>Jira 운영 규칙과 브랜치 전략을 정하고, 파트별 코드를 릴리스로 통합했습니다.</span></li>
       </ul>
     </div>
     <div>
       <figure><img src="assets/bbiyong-alert-flow.svg" alt="경보 처리 흐름"><figcaption>서버가 맡은 경보 처리: 수신과 DB 저장을 분리하고, 중복은 MySQL 고유 제약으로 최종 확인합니다.</figcaption></figure>
       <dl class="results" style="margin-top:6mm">
-        <div><dt>같은 경보 100회 동시 발행</dt><dd>1건 저장<small>32개 스레드, 중복 0</small></dd></div>
-        <div><dt>최근 24시간 통계 쿼리</dt><dd>55.9 → 4.9ms<small>검사 행 19.9만 → 6,642</small></dd></div>
-        <div><dt>특정 로봇 24시간 조회</dt><dd>62.7 → 1.3ms<small>복합 인덱스</small></dd></div>
+        <div><dt>같은 경보 100번 동시 수신</dt><dd>1건 저장<small>32개 스레드, 중복 0</small></dd></div>
+        <div><dt>최근 24시간 경보 통계 조회</dt><dd>55.9 → 4.9ms<small>검사 행 19.9만 → 6,642</small></dd></div>
+        <div><dt>특정 로봇의 24시간 기록 조회</dt><dd>62.7 → 1.3ms<small>복합 인덱스</small></dd></div>
       </dl>
     </div>
   </div>
@@ -175,18 +175,18 @@
 
 <!-- 4. 삐용 대표 사례 -->
 <section class="page">
-  <p class="label">02 / 프로젝트 1: 대표 사례 (프로젝트 종료 후 개인 작업)</p>
-  <h2 style="font-size:16pt">화재 경보가 참조 오류로 저장되지 않을 수 있었습니다</h2>
+  <p class="label">02 / 프로젝트 1: 트러블슈팅 (프로젝트 종료 후 개인 작업)</p>
+  <h2 style="font-size:16pt">외래키가 없어 잘못된 참조가 그대로 저장되던 문제</h2>
   <div class="cols c32" style="margin-top:4mm">
     <ol class="steps">
-      <li><span>무엇을 봤나</span><p>프로젝트가 끝나고 ERD를 다시 그려 보니, 테이블 사이에 외래키가 하나도 없었습니다. 실제로 없는 이벤트 ID로 영상을 등록해도 API가 아무 문제 없이 받아 주고 있었습니다.</p></li>
-      <li><span>어떻게 정했나</span><p>외래키를 모든 관계에 똑같이 걸지 않고, “이벤트가 지워지면 이 데이터는 어떻게 돼야 하지?”를 관계마다 따졌습니다. 알림 발송 기록은 같이 지우고(CASCADE), 증거로 남아야 하는 영상은 연결만 끊었습니다(SET NULL).</p></li>
-      <li><span>일부러 비워 둔 곳</span><p>경보가 가리키는 설비와 지도에는 외래키를 걸지 않았습니다. 등록되지 않은 설비 기준으로 경보가 오면 저장 자체가 실패하기 때문입니다. 화재 경보를 통째로 잃는 것보다 참조가 조금 어긋나도 남는 편이 낫다고 봤습니다.</p></li>
+      <li><span>문제</span><p>프로젝트가 끝나고 ERD를 다시 그려 보니, 테이블 사이에 외래키가 하나도 없었습니다. 실제로 없는 이벤트 ID로 영상을 등록해도 API가 아무 문제 없이 받아 주고 있었습니다.</p></li>
+      <li><span>해결</span><p>외래키를 모든 관계에 똑같이 걸지 않고, “이벤트가 지워지면 이 데이터는 어떻게 돼야 하지?”를 관계마다 따졌습니다. 알림 발송 기록은 같이 지우고(CASCADE), 증거로 남아야 하는 영상은 연결만 끊었습니다(SET NULL).</p></li>
+      <li><span>고려한 점</span><p>경보가 가리키는 설비와 지도에는 외래키를 걸지 않았습니다. 등록되지 않은 설비 기준으로 경보가 오면 저장 자체가 실패하기 때문입니다. 화재 경보를 통째로 잃는 것보다 참조가 조금 어긋나도 남는 편이 낫다고 봤습니다.</p></li>
       <li><span>결과</span><p>스키마를 Flyway로 옮기고, 테스트 <strong>220건</strong>이 GitHub Actions에서 실제 MySQL 8 위로 자동 실행되게 했습니다. 처음 봤던 영상 등록 문제가 이 테스트에서 걸려, 지금은 400으로 거절합니다.</p></li>
-      <li><span>아직 남은 일</span><p>알림 워커가 외부 HTTP 호출을 트랜잭션 안에서 해서, 커밋이 실패하면 같은 알림이 두 번 나갈 수 있습니다. 외부 호출을 트랜잭션 밖으로 빼는 것이 다음 할 일입니다.</p></li>
+      <li><span>남은 과제</span><p>알림 워커가 외부 HTTP 호출을 트랜잭션 안에서 해서, 커밋이 실패하면 같은 알림이 두 번 나갈 수 있습니다. 외부 호출을 트랜잭션 밖으로 빼는 것이 다음 할 일입니다.</p></li>
     </ol>
     <div>
-      <h3>그 밖의 문제 해결</h3>
+      <h3>다른 트러블슈팅</h3>
       <ul class="points">
         <li><strong>배포 서버 방화벽에 로봇 연결이 막혔습니다</strong><span>TCP 9000을 Nginx 경유 WSS 443으로 바꾸고 메시지 형식은 그대로 둬, 로봇과 웹 파트는 연결 주소만 바꾸면 되게 했습니다.</span></li>
         <li><strong>다시 연결된 로봇이 오프라인으로 보였습니다</strong><span>늦게 도착한 옛 연결의 종료 처리가 새 연결 정보를 지우고 있어, 새 연결을 등록하기 전에 옛 연결부터 정리하도록 순서를 바꿨습니다.</span></li>
@@ -216,12 +216,12 @@
   <p class="meta">2026.08 ~ 진행 중, 6인 팀, 여행과 일정 API 담당, Java 17, Spring Boot, JPA, PostgreSQL, Flyway, FLY ASIA 2026 전시(2026.10)</p>
   <div class="cols c2" style="margin-top:3mm">
     <div>
-      <h3>대표 사례: 여행 만들기를 다시 누르면 여행이 두 개 생겼습니다</h3>
+      <h3>트러블슈팅: 같은 요청이 동시에 오면 여행이 중복 생성되던 문제</h3>
       <ol class="steps">
-        <li><span>무슨 일이</span><p>응답을 못 받은 사용자가 같은 요청을 다시 보내면, “키가 있나?” 조회와 저장 사이의 틈 때문에 두 요청 모두 여행을 만들었습니다.</p></li>
-        <li><span>고민한 점</span><p>서버 안의 락은 서버가 여러 대면 소용이 없어, 모든 서버가 같이 쓰는 DB에 판단을 맡겼습니다.</p></li>
-        <li><span>바꾼 방법</span><p>요청 키를 먼저 DB에 넣어 보고, 들어간 요청만 여행을 만듭니다. 같은 내용이면 기존 결과(200), 다른 내용이면 409입니다.</p></li>
-        <li><span>한 번 더 막힌 곳</span><p>SAVEPOINT 방식이 PostgreSQL 테스트에서만 실패해, <code>ON CONFLICT DO NOTHING</code>으로 저장된 행이 0개인지 보고 판단하게 바꿨습니다.</p></li>
+        <li><span>문제</span><p>응답을 못 받은 사용자가 같은 요청을 다시 보내면, “키가 있나?” 조회와 저장 사이의 틈 때문에 두 요청 모두 여행을 만들었습니다.</p></li>
+        <li><span>고려한 점</span><p>서버 안의 락은 서버가 여러 대면 소용이 없어, 모든 서버가 같이 쓰는 DB에 판단을 맡겼습니다.</p></li>
+        <li><span>해결</span><p>요청 키를 먼저 DB에 넣어 보고, 들어간 요청만 여행을 만듭니다. 같은 내용이면 기존 결과(200), 다른 내용이면 409입니다.</p></li>
+        <li><span>추가 문제</span><p>SAVEPOINT 방식이 PostgreSQL 테스트에서만 실패해, <code>ON CONFLICT DO NOTHING</code>으로 저장된 행이 0개인지 보고 판단하게 바꿨습니다.</p></li>
         <li><span>결과</span><p>같은 키로 요청 8건을 동시에 보내도 여행은 <strong>1건</strong>만 생깁니다.</p></li>
       </ol>
 <div class="ide" style="margin-top:3mm"><div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">JpaTripRepository.java</span><span class="code-lang">Java</span></div><pre><code><span class="ln"><span class="k">int</span> inserted = entityManager.<span class="f">createNativeQuery</span>(</span>
@@ -238,9 +238,9 @@
     </div>
     <div>
       <ul class="points" style="margin-top:-2mm">
-        <li><strong>동시 수정해도 변경이 사라지지 않게</strong><span>“내가 본 버전”이 DB 최신 버전과 같을 때만 수정하고, 다르면 409로 최신 일정을 다시 받게 했습니다.</span></li>
-        <li><strong>재시작해도 남는 이벤트 기록</strong><span>메모리에 쌓이던 사용자 이벤트를 PostgreSQL Outbox 테이블에 저장하도록 바꿨습니다.</span></li>
-        <li><strong>팀원들의 AI가 같은 파일을 고치지 않게 (axMap)</strong><span>고치기 전에 파일을 먼저 예약하는 팀 도구입니다. 저는 예약이 겹치는지 판단하는 규칙을 설계하고 검증했습니다. 경로를 <code>/</code> 단위로 비교해 <code>src/auth</code> 예약이 <code>src/authz</code>까지 막지 않게 했습니다. 개발 기간 예약 3,629회, npm 누적 다운로드 23,794회.</span></li>
+        <li><strong>두 사람이 동시에 고쳐도 변경이 사라지지 않게</strong><span>“내가 본 버전”이 DB 최신 버전과 같을 때만 수정하고, 다르면 409로 최신 일정을 다시 받게 했습니다.</span></li>
+        <li><strong>서버를 재시작하면 사라지던 이벤트 기록을 DB에 저장</strong><span>메모리에 쌓이던 사용자 이벤트를 PostgreSQL Outbox 테이블에 저장하도록 바꿨습니다.</span></li>
+        <li><strong>팀원들의 AI 코딩 도구가 같은 파일을 고치지 않게 (axMap)</strong><span>고치기 전에 파일을 먼저 예약하는 팀 도구입니다. 저는 예약이 겹치는지 판단하는 규칙을 설계하고 검증했습니다. 경로를 <code>/</code> 단위로 비교해 <code>src/auth</code> 예약이 <code>src/authz</code>까지 막지 않게 했습니다. 개발 기간 예약 3,629회, npm 누적 다운로드 23,794회.</span></li>
       </ul>
       <figure style="margin-top:4mm"><img src="assets/gabolle-trip-create.png" alt="여행 생성 중복 요청 처리 흐름"><figcaption>여행 생성 API의 중복 요청 처리 흐름</figcaption></figure>
     </div>
@@ -250,22 +250,22 @@
 
 <!-- 6. 로보터블 기업연계 -->
 <section class="page">
-  <p class="label">04 / 프로젝트 3: 기업연계 프로젝트 (진행 중)</p>
-  <h2>조리 영상 구간 검출<small>ROBOTABLE × SSAFY</small> <span class="award">로보터블 기업연계</span></h2>
+  <p class="label">04 / 프로젝트 3: 요리 영상 분석 (기업연계, 진행 중)</p>
+  <h2>요리 영상 구간 분할<small>ROBOTABLE × SSAFY</small> <span class="award">로보터블 기업연계</span></h2>
   <p class="meta">2026.10 ~ 진행 중, 6인 팀, Python, PyTorch, scikit-learn, OpenCV, FFmpeg, Gemini API</p>
   <div class="cols c2" style="margin-top:3mm">
     <div>
-      <p>조리 로봇이 요리 영상을 보고 배우려면 몇 초부터 몇 초까지가 어떤 동작인지 표시한 데이터가 필요합니다. 로보터블과 함께 동작 구간의 경계를 찾는 파이프라인을 만들고 있습니다. 비슷한 장면까지 모두 VLM에 보내면 비용이 커서, 장면을 적게 보내면서도 경계를 놓치지 않는 것이 핵심입니다. 저는 VLM에 무엇을 보낼지 바꾸는 실험과, 팀에서 나온 점수가 사람이 검수한 정답에서도 유지되는지 확인하는 일을 맡고 있습니다.</p>
+      <p>고정된 화각의 요리 영상을 행동별 구간으로 나누는 프로젝트입니다. VLM으로 영상 전체를 분석하면 토큰을 너무 많이 써서, 토큰을 줄이면서 구간을 찾는 방법론을 찾는 것이 과제입니다. 팀원마다 경계 검출 논문을 적용해 S1(예상 구간 추출) 방법을 고르고, 이를 근거로 S2~S4의 최적 방법을 찾고 있습니다. 저는 S1 방법 비교와 VLM 입력 방식 실험을 맡고 있습니다.</p>
       <ul class="points" style="margin-top:2mm">
         <li><strong>사진 대신 영상 조각을 보내 판독 토큰 90% 절감</strong><span>원본 시각을 새긴 480px 영상 조각으로 바꿔, 사람 검수 16편에서 토큰은 팀 방식의 9.4%, 경계 F1(±5초)은 0.674 → 0.708로 떨어지지 않았습니다.</span></li>
-        <li><strong>경계 검출 방법을 같은 조건에서 비교</strong><span>KTS부터 지도학습 TCN까지 요리 단위 교차검증으로 비교했습니다. 최고 F1(±3초) 0.800으로 목표 0.90에 못 미쳤고, 병목이 동작 상태 판독에 있음을 확인했습니다.</span></li>
+        <li><strong>경계 검출 논문의 방법을 S1에 적용해 비교</strong><span>KTS, PELT, GEBD 방법부터 지도학습 TCN까지 같은 조건으로 비교했습니다. 최고 F1(±3초) 0.800으로 목표 0.90에 못 미쳤고, 병목이 행동 상태 판독에 있음을 확인했습니다.</span></li>
       </ul>
-      <h3 style="margin-top:4mm">대표 사례: AI 라벨에서 0.79였던 점수가 사람 정답에서는 무작위와 같았습니다</h3>
+      <h3 style="margin-top:4mm">트러블슈팅: AI 라벨로는 0.79였던 모델 점수가 사람 정답에서는 무작위 수준이던 문제</h3>
       <ol class="steps">
-        <li><span>무엇을 봤나</span><p>AI 라벨로 학습하고 평가해 F1(±3초) 0.792가 나온 팀 모델이 있었습니다. 학습과 같은 AI 라벨로 매긴 점수였습니다.</p></li>
-        <li><span>확인한 방법</span><p>모델을 고치지 않고 사람 검수 16편에 적용하고, 같은 개수를 무작위로 찍은 기준선과 Gemini 판독을 같은 정답·매칭 코드로 채점했습니다.</p></li>
+        <li><span>문제</span><p>AI 라벨로 학습하고 평가해 F1(±3초) 0.792가 나온 팀 모델이 있었습니다. 학습과 같은 AI 라벨로 매긴 점수였습니다.</p></li>
+        <li><span>검증 방법</span><p>모델을 고치지 않고 사람 검수 16편에 적용하고, 같은 개수를 무작위로 찍은 기준선과 Gemini 판독을 같은 정답·매칭 코드로 채점했습니다.</p></li>
         <li><span>결과와 원인</span><p>F1 <strong>0.204</strong>, 무작위 0.196과 같았습니다. AI 라벨은 분당 23.4개의 경계를 가르쳤고 사람 정답은 분당 3.8개였습니다.</p></li>
-        <li><span>제안</span><p>학습 라벨의 경계 기준을 사람 쪽에 맞추는 일을 먼저 하자고 제안했습니다. 조리 단계 중심 규칙으로 다시 학습하자 0.204 → 0.385가 됐습니다.</p></li>
+        <li><span>해결 제안</span><p>학습 라벨의 경계 기준을 사람 쪽에 맞추는 일을 먼저 하자고 제안했습니다. 조리 단계 중심 규칙으로 다시 학습하자 0.204 → 0.385가 됐습니다.</p></li>
       </ol>
     </div>
     <div>
@@ -279,8 +279,9 @@
       <dl class="results">
         <div><dt>판독 토큰</dt><dd>100 → 9.4%<small>영상 조각 0.5fps, F1 0.708</small></dd></div>
         <div><dt>경계 F1 (±5초)</dt><dd>0.674 → 0.731<small>영상 조각 1fps, 토큰 17.7%</small></dd></div>
-        <div><dt>AI 라벨 점수 재확인</dt><dd>0.792 → 0.204<small>사람 정답, 무작위 0.196</small></dd></div>
+        <div><dt>AI 라벨 점수 재검증</dt><dd>0.792 → 0.204<small>사람 정답, 무작위 0.196</small></dd></div>
       </dl>
+      <p style="font-size:9pt;margin-top:4mm"><strong style="color:var(--accent)">구상 중</strong>&nbsp; 요리 영상을 올리면 구간을 나눠 레시피, 숏츠, 블로그용 레시피로 만들어 주는 B2C 앱</p>
     </div>
   </div>
   <div class="footer"><span>모진성, Backend Developer</span><span>6</span></div>
@@ -295,10 +296,10 @@
     <div>
       <p>특정 시간대만 되면 캠퍼스 주차장에서 빈자리를 찾느라 스트레스를 받는다는 이야기를 자주 들었습니다. 주차면마다 센서를 달면 장비와 설치에 비용이 많이 들어, 카메라 영상만으로 풀어 보고 싶었습니다. 저는 분석 서버를 맡아, 차가 잠깐 가려져도 상태가 흔들리지 않는 판정 로직을 만들었습니다.</p>
       <ul class="points" style="margin-top:3mm">
-        <li><strong>탐지 결과를 주차면 단위로 연결</strong><span>박스와 주차면이 겹치는 면적, 모델 신뢰도를 함께 보고 어느 자리의 차인지 정했습니다. 55호관 20면, 도서관 36면.</span></li>
-        <li><strong>빈자리로 바꿀 때 더 깐깐하게</strong><span>차가 있는 자리를 비었다고 안내하면 운전자가 헛걸음을 합니다. 차가 들어온 건 5번, 빠진 건 8번 연속으로 확인해야 상태를 바꿉니다.</span></li>
+        <li><strong>차량 탐지 결과를 주차면별 상태로 변환</strong><span>박스와 주차면이 겹치는 면적, 모델 신뢰도를 함께 보고 어느 자리의 차인지 정했습니다. 55호관 20면, 도서관 36면.</span></li>
+        <li><strong>차가 잠깐 가려져도 상태가 흔들리지 않게</strong><span>차가 있는 자리를 비었다고 안내하면 운전자가 헛걸음을 합니다. 차가 들어온 건 5번, 빠진 건 8번 연속으로 확인해야 상태를 바꿉니다.</span></li>
         <li><strong>모델 추론 횟수 80% 절감</strong><span>5프레임 중 1개만 분석합니다.</span></li>
-        <li><strong>끝난 뒤 다시 보니 틀린 데이터</strong><span>기록이 없는 시간대는 <code>has_data=false</code>로 구분하고, 두 주차장이 같이 쓰던 주차면 ID는 기본키를 <code>(parking_lot, id)</code>로 나눴습니다.</span></li>
+        <li><strong>프로젝트 이후 발견한 잘못된 통계 데이터 수정</strong><span>기록이 없는 시간대는 <code>has_data=false</code>로 구분하고, 두 주차장이 같이 쓰던 주차면 ID는 기본키를 <code>(parking_lot, id)</code>로 나눴습니다.</span></li>
       </ul>
     </div>
     <div>
@@ -318,9 +319,9 @@
     <div>
       <p>써트맵은 시험일과 교재를 넣으면 AI가 하루 단위 학습 계획을 짜 주고, 공부한 내용을 문제로 점검하고, 못 끝낸 계획은 다음 날로 옮겨 주는 학습 관리 서비스입니다. 저는 백엔드를 맡아 API와 데이터 구조를 설계하고, 로그인 기능을 구현했습니다.</p>
       <ul class="points" style="margin-top:3mm">
-        <li><strong>만들기 전에 먼저 물어보고 방향을 바꿨습니다</strong><span>직업별 자격증 추천으로 기획했지만, 취업 준비생 100명에게 물어보니 진짜 고민은 “정해진 시간 안에 어떻게 공부할까”였습니다.</span></li>
-        <li><strong>본조사로 문제를 다시 확인했습니다</strong><span>인터뷰 43건, 설문 165건에서 실패 이유 1위는 계획 부재(23.5%), 학습 만족도는 5점 중 2.8점이었습니다.</span></li>
-        <li><strong>로그인과 소셜 계정 연동</strong><span>JWT 로그인과 구글, 카카오, 네이버 소셜 로그인을 구현했습니다.</span></li>
+        <li><strong>사용자 인터뷰로 서비스 방향을 바꿨습니다</strong><span>직업별 자격증 추천으로 기획했지만, 취업 준비생 100명에게 물어보니 진짜 고민은 “정해진 시간 안에 어떻게 공부할까”였습니다.</span></li>
+        <li><strong>인터뷰와 설문으로 문제를 수치로 확인했습니다</strong><span>인터뷰 43건, 설문 165건에서 실패 이유 1위는 계획 부재(23.5%), 학습 만족도는 5점 중 2.8점이었습니다.</span></li>
+        <li><strong>JWT 로그인과 소셜 로그인 구현</strong><span>JWT 로그인과 구글, 카카오, 네이버 소셜 로그인을 구현했습니다.</span></li>
       </ul>
       <h3 style="margin-top:4mm">팀 성과</h3>
       <p style="font-size:9pt">부산 U창업 패키지 선발, 서울대 대학연대 창업 네트워크 캠프 우수상, 학생 창업유망팀 300 성장트랙A, 하나 소셜벤처 유니버시티 우수팀, 린스타트업(동남권) 2단계, 경남권 창업역량강화교육 우수상, 교내 G-SCOUT 선정 (2025.06 ~ 09)</p>

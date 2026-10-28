@@ -422,3 +422,7 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 1000px) { .pipeline-steps { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width: 760px) { .event-photos { grid-template-columns: 1fr; gap: 18px; } .pipeline-steps { grid-template-columns: 1fr; gap: 9px; margin-top: 24px; } .pipeline-steps li { padding: 13px 15px; } }
 @media print { .event-photos { gap: 14px; break-inside: avoid; } .pipeline-steps { grid-template-columns: repeat(4,1fr); gap: 8px; break-inside: avoid; } .pipeline-steps p { font-size: 9pt; } }
+
+/* Small label above each project's solved-problem list. */
+.list-label { margin-top: 2px; color: var(--accent); font-size: 12px; font-weight: 750; letter-spacing: .02em; }
+.list-label + .contribution-list li:first-child { margin-top: 6px; }
