@@ -395,3 +395,30 @@ button { font: inherit; cursor: pointer; }
 .ide .p { color: #e06c75; }
 @media (max-width: 760px) { .code-snippet .ide pre { font-size: 11px; } .code-file { padding: 0 10px; font-size: 11px; } .code-lang { display: none; } }
 @media print { .ide { box-shadow: none; } .code-snippet .ide pre { font-size: 7.5pt; white-space: pre-wrap; } }
+
+/* Event photos after the Gabolle presentation. */
+.event-photos { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; margin-bottom: 22px; }
+.event-photos figure { min-width: 0; margin: 0; }
+.event-photos a { display: block; }
+.event-photos img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 3px; background: var(--line); }
+.event-photos .award-photo { object-position: center 75%; }
+.event-photos figcaption { margin-top: 9px; color: var(--muted); font-size: 12px; line-height: 1.75; }
+.event-photos figcaption strong { display: block; color: var(--ink); font-size: 13px; }
+
+/* Robotable: cooking frames and the four-stage pipeline. */
+.link-note { color: var(--muted); font-size: 12px; }
+.frame-preview { padding-top: 24px; }
+.frame-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.frame-grid > div { position: relative; min-width: 0; }
+.project-preview .frame-grid img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border: 0; border-radius: 3px; }
+.frame-grid span { position: absolute; left: 8px; bottom: 8px; padding: 1px 8px; border-radius: 3px; background: rgba(32,45,38,.84); color: #fff; font-size: 12px; line-height: 1.7; }
+.frame-grid time { margin-right: 6px; color: #c6dbc0; font-variant-numeric: tabular-nums; }
+.pipeline-steps { list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.pipeline-steps li { min-width: 0; padding: 15px 17px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+.pipeline-steps li > span { color: var(--accent); font-size: 11px; font-weight: 750; }
+.pipeline-steps strong { display: block; margin: 2px 0 5px; font-size: 15px; letter-spacing: -.02em; }
+.pipeline-steps p { color: #4b5b50; font-size: 13px; line-height: 1.75; }
+.pipeline-steps em { display: block; margin-top: 9px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--accent); font-size: 12px; font-style: normal; font-weight: 650; }
+@media (max-width: 1000px) { .pipeline-steps { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 760px) { .event-photos { grid-template-columns: 1fr; gap: 18px; } .pipeline-steps { grid-template-columns: 1fr; gap: 9px; margin-top: 24px; } .pipeline-steps li { padding: 13px 15px; } }
+@media print { .event-photos { gap: 14px; break-inside: avoid; } .pipeline-steps { grid-template-columns: repeat(4,1fr); gap: 8px; break-inside: avoid; } .pipeline-steps p { font-size: 9pt; } }
