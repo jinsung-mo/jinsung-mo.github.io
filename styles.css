@@ -372,3 +372,26 @@ button { font: inherit; cursor: pointer; }
 .milestones li { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 10px; font-size: 14px; }
 .milestones time { color: var(--accent); font-size: 12px; font-weight: 700; padding-top: 2px; }
 @media (max-width: 760px) { .milestones { grid-template-columns: 1fr; } }
+/* IDE 스타일 코드 블록 (One Dark 계열) */
+.ide { border: 1px solid #181a1f; border-radius: var(--radius); overflow: hidden; background: #282c34; box-shadow: 0 8px 22px rgba(20,30,25,.14); }
+.code-head { display: flex; align-items: stretch; height: 34px; background: #21252b; border-bottom: 1px solid #181a1f; padding-left: 12px; }
+.code-dots { display: flex; align-items: center; gap: 6px; margin-right: 12px; }
+.code-dots i { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+.code-dots i:nth-child(2) { background: #febc2e; }
+.code-dots i:nth-child(3) { background: #28c840; }
+.code-file { display: flex; align-items: center; padding: 0 14px; border-right: 1px solid #181a1f; color: #7f848e; font: 12px ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.code-file:first-of-type { background: #282c34; color: #d7dae0; box-shadow: inset 0 2px 0 #61afef; }
+.code-lang { margin-left: auto; display: flex; align-items: center; padding-right: 14px; color: #5c6370; font-size: 11px; }
+.code-snippet .ide pre { margin: 0; padding: 14px 18px 16px 0; background: #282c34; color: #abb2bf; border-radius: 0; font-size: 12.5px; line-height: 1.8; }
+.ide code { counter-reset: ln; }
+.ide .ln::before { counter-increment: ln; content: counter(ln); display: inline-block; width: 2.4em; margin-right: 16px; text-align: right; color: #4b5263; user-select: none; }
+.ide .k { color: #c678dd; }
+.ide .s { color: #98c379; }
+.ide .n { color: #d19a66; }
+.ide .c { color: #7f848e; }
+.ide .f { color: #61afef; }
+.ide .t { color: #e5c07b; }
+.ide .a { color: #e5c07b; }
+.ide .p { color: #e06c75; }
+@media (max-width: 760px) { .code-snippet .ide pre { font-size: 11px; } .code-file { padding: 0 10px; font-size: 11px; } .code-lang { display: none; } }
+@media print { .ide { box-shadow: none; } .code-snippet .ide pre { font-size: 7.5pt; white-space: pre-wrap; } }

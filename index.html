@@ -14,7 +14,7 @@
   <meta property="og:image:alt" content="삐용 프로젝트의 로봇 관제 웹 화면">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://jinsung-mo.github.io/">
-  <link rel="stylesheet" href="styles.css?v=20261028-dots">
+  <link rel="stylesheet" href="styles.css?v=20261028-ide">
   <script src="script.js?v=20261022-collaboration-merge" defer></script>
   <title>모진성 | Java · Spring Boot 백엔드 개발자</title>
 </head>
@@ -77,22 +77,22 @@
           <p class="scope-note">실내 테스트 공간에서 촬영한 팀 시연입니다. 저는 로봇과 웹의 통신, 경보 수신과 저장, 관련 API를 담당했습니다. 관제 화면, 로봇 주행과 AI 모델은 팀원들이 개발했습니다.</p>
         </section>
         <div class="arch-block"><figure class="arch-figure">
-          <a href="assets/bbiyong-alert-flow.png" target="_blank" rel="noopener noreferrer" aria-label="삐용 경보 저장 흐름도 원본 열기">
-            <img src="assets/bbiyong-alert-flow.png" alt="로봇의 화재 경보가 WSS로 들어와 순서대로 저장되고, MySQL의 messageId 고유 제약으로 중복을 판별한 뒤 관제 웹에 전달되는 흐름" loading="lazy" width="1800" height="1125">
+          <a href="assets/bbiyong-alert-flow.svg" target="_blank" rel="noopener noreferrer" aria-label="삐용 경보 저장 흐름도 원본 열기">
+            <img src="assets/bbiyong-alert-flow.svg" alt="로봇의 화재 경보가 WSS로 들어와 순서대로 저장되고, MySQL의 messageId 고유 제약으로 중복을 판별한 뒤 관제 웹에 전달되는 흐름" loading="lazy" width="1600" height="1000">
           </a>
-          <figcaption><strong>서버가 맡은 경보 처리</strong> 수신과 DB 저장을 분리하고, 중복 여부는 MySQL의 고유 제약으로 최종 확인합니다. 저장 대기열이 꽉 차면 경보를 버리지 않고 받은 스레드가 직접 저장합니다. <a href="https://github.com/jinsung-mo/-BBIYONG-autonomous_driving_factory_patrol_robot/blob/main/docs/assets/readme/architecture-fire-alert.png" target="_blank" rel="noopener noreferrer">저장소 원본 ↗</a></figcaption>
-        </figure><figure class="code-snippet"><pre><code><span class="c">// AsyncConfig: 대기열이 꽉 차면 버리지 않고 받은 스레드가 직접 저장한다</span>
-executor.setQueueCapacity(200);
-executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-
-<span class="c">// EventLogService: messageId에는 MySQL UNIQUE 제약이 걸려 있다</span>
-try {
-    savedEvent = eventLogRepository.saveAndFlush(logEntry);
-} catch (DataIntegrityViolationException duplicateMessageId) {
-    <span class="c">// 같은 경보가 동시에 들어와 이미 저장됨. 두 번째는 조용히 버린다</span>
-    rollbackDeduplication(deduplication);
-    return;
-}</code></pre><figcaption>EventLogService와 AsyncConfig 핵심 부분, <a href="https://github.com/jinsung-mo/-BBIYONG-autonomous_driving_factory_patrol_robot/blob/main/BE_system/src/main/java/com/bbiyong/server/event/service/EventLogService.java" target="_blank" rel="noopener noreferrer">전체 코드 ↗</a></figcaption></figure></div>
+          <figcaption><strong>서버가 맡은 경보 처리</strong> 수신과 DB 저장을 분리하고, 중복 여부는 MySQL의 고유 제약으로 최종 확인합니다. 저장 대기열이 꽉 차면 경보를 버리지 않고 받은 스레드가 직접 저장합니다.</figcaption>
+        </figure><figure class="code-snippet"><div class="ide"><div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">AsyncConfig.java</span><span class="code-file">EventLogService.java</span><span class="code-lang">Java</span></div><pre><code><span class="ln"><span class="c">// AsyncConfig: 대기열이 꽉 차면 버리지 않고 받은 스레드가 직접 저장한다</span></span>
+<span class="ln">executor.<span class="f">setQueueCapacity</span>(<span class="n">200</span>);</span>
+<span class="ln">executor.<span class="f">setRejectedExecutionHandler</span>(<span class="k">new</span> <span class="t">ThreadPoolExecutor</span>.<span class="t">CallerRunsPolicy</span>());</span>
+<span class="ln"></span>
+<span class="ln"><span class="c">// EventLogService: messageId에는 MySQL UNIQUE 제약이 걸려 있다</span></span>
+<span class="ln"><span class="k">try</span> {</span>
+<span class="ln">    savedEvent = eventLogRepository.<span class="f">saveAndFlush</span>(logEntry);</span>
+<span class="ln">} <span class="k">catch</span> (<span class="t">DataIntegrityViolationException</span> duplicateMessageId) {</span>
+<span class="ln">    <span class="c">// 같은 경보가 동시에 들어와 이미 저장됨. 두 번째는 조용히 버린다</span></span>
+<span class="ln">    <span class="f">rollbackDeduplication</span>(deduplication);</span>
+<span class="ln">    <span class="k">return</span>;</span>
+<span class="ln">}</span></code></pre></div><figcaption>EventLogService와 AsyncConfig 핵심 부분, <a href="https://github.com/jinsung-mo/-BBIYONG-autonomous_driving_factory_patrol_robot/blob/main/BE_system/src/main/java/com/bbiyong/server/event/service/EventLogService.java" target="_blank" rel="noopener noreferrer">전체 코드 ↗</a></figcaption></figure></div>
         <section class="deep-case" aria-label="화재 경보가 참조 오류로 저장되지 않을 수 있었습니다"><p class="deep-case-label">대표 사례 (프로젝트 종료 후 개인 작업)</p><h4>화재 경보가 참조 오류로 저장되지 않을 수 있었습니다</h4><ol><li><span>무엇을 봤나</span><p>프로젝트가 끝나고 ERD를 다시 그려 보니, 테이블 사이에 외래키가 하나도 없었습니다. 실제로 없는 이벤트 ID로 영상을 등록해도 API가 아무 문제 없이 받아 주고 있었습니다.</p></li><li><span>어떻게 정했나</span><p>외래키를 모든 관계에 똑같이 걸지는 않았습니다. 대신 “이벤트가 지워지면 이 데이터는 어떻게 돼야 하지?”를 관계마다 따져 봤습니다. 이벤트가 없으면 의미가 없는 알림 발송 기록은 같이 지우고(CASCADE), 증거로 남아야 하는 영상은 연결만 끊었습니다(SET NULL).</p></li><li><span>일부러 비워 둔 곳</span><p>경보가 가리키는 설비와 지도에는 외래키를 걸지 않았습니다. 로봇이 아직 등록되지 않은 설비 기준으로 경보를 보내면, 외래키 때문에 저장 자체가 실패하기 때문입니다. 화재 경보를 통째로 잃는 것보다는 참조가 조금 어긋나도 남아 있는 편이 낫다고 봤고, 이런 경보는 정기 점검 쿼리로 찾아내게 했습니다.</p></li><li><span>결과</span><p>스키마를 Flyway로 옮기고, 테스트 <strong>220건</strong>이 GitHub Actions에서 실제 MySQL 8 위로 자동 실행되게 했습니다. 처음에 봤던 영상 등록 문제가 이 테스트에서 걸려, 지금은 400으로 거절합니다.</p></li><li><span>아직 남은 일</span><p>알림 워커가 외부 HTTP 호출을 트랜잭션 안에서 하고 있어서, 알림을 보낸 뒤 커밋이 실패하면 같은 알림이 두 번 나갈 수 있습니다. 외부 호출을 트랜잭션 밖으로 빼는 것이 다음 할 일입니다.</p></li></ol></section>
         <section class="followup" aria-labelledby="bbiyong-followup-title"><div class="followup-heading"><h4 id="bbiyong-followup-title">프로젝트 종료 후 개인 개선과 검증</h4><a class="" href="https://github.com/jinsung-mo/-BBIYONG-autonomous_driving_factory_patrol_robot/blob/main/docs/post-project/README.md" target="_blank" rel="noopener noreferrer">측정 조건과 재현 SQL <span aria-hidden="true">↗</span></a></div>
           <dl class="result-grid"><div><dt>같은 경보 100회 동시 발행</dt><dd><strong>1건</strong> 저장, 중복 0<small>32개 스레드, 실제 이벤트 수신 경로</small></dd></div><div><dt>최근 24시간 통계 쿼리</dt><dd><strong>55.9 → 4.9</strong> ms<small>인덱스 추가, 검사 행 19.9만 → 6,642</small></dd></div><div><dt>특정 로봇 24시간 조회</dt><dd><strong>62.7 → 1.3</strong> ms<small>복합 인덱스, 검사 행 19.9만 → 1,329</small></dd></div></dl>
@@ -138,21 +138,21 @@ try {
           </a>
           <figcaption><strong>여행 생성 API의 중복 요청 처리</strong> 새 요청은 201, 같은 키와 같은 내용으로 다시 온 요청은 기존 결과와 200을 반환합니다. <a href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/docs/architecture/trip-create.png" target="_blank" rel="noopener noreferrer">저장소 원본 ↗</a></figcaption>
         </figure>
-        <section class="deep-case" aria-label="여행 만들기를 다시 누르면 여행이 두 개 생겼습니다"><p class="deep-case-label">대표 사례</p><h4>여행 만들기를 다시 누르면 여행이 두 개 생겼습니다</h4><ol><li><span>무슨 일이</span><p>휴대폰이 서버 응답을 못 받으면 사용자는 같은 요청을 한 번 더 보냅니다. 처음 코드는 “이 요청 키가 이미 있나?”를 조회해 보고, 없으면 여행을 저장했습니다.</p></li><li><span>왜 그랬나</span><p>같은 키의 요청 두 개를 동시에 보내 보니, 둘 다 “아직 없네”라고 보고 여행을 하나씩 만들었습니다. 조회하고 저장하는 사이의 짧은 틈이 문제였습니다.</p></li><li><span>고민한 점</span><p>서버 안에서 락을 걸면 서버가 여러 대일 때는 소용이 없습니다. 그래서 모든 서버가 같이 쓰는 DB에 판단을 맡기기로 했습니다.</p></li><li><span>바꾼 방법</span><p>요청 키를 먼저 DB에 넣어 보고, 들어간 요청만 여행을 만듭니다. 이미 있는 키라면 같은 내용일 때 기존 결과(200)를, 다른 내용일 때 409를 돌려줍니다.</p></li><li><span>한 번 더 막힌 곳</span><p>같은 방식을 일정 충돌에도 쓰면서 SAVEPOINT로 예외를 복구했는데, 메모리 테스트는 통과하고 실제 PostgreSQL 테스트에서만 실패했습니다. 예외를 복구하는 대신 <code>ON CONFLICT DO NOTHING</code>으로 저장된 행이 0개인지 보고 충돌을 판단하게 바꿨습니다.</p></li><li><span>결과</span><p>같은 키로 요청 8건을 동시에 보내도 여행은 <strong>1건</strong>만 생깁니다. 일정 충돌 처리는 실제 PostgreSQL 통합 테스트로 확인합니다.</p></li><li><span>아직 남은 일</span><p>동시 요청 테스트는 아직 메모리 저장소에서만 돌립니다. 실제 PostgreSQL에서 동시 요청을 다시 확인하는 것이 다음 할 일입니다.</p></li></ol><figure class="code-snippet"><pre><code><span class="c">// 요청 키를 먼저 넣어 본다. 이미 있으면 0행이 반영된다.</span>
-int inserted = entityManager.createNativeQuery(
-        "INSERT INTO trip_idempotency (user_id, idempotency_key, request_fingerprint, trip_id, created_at) "
-      + "VALUES (?1, ?2, ?3, ?4, ?5) ON CONFLICT (user_id, idempotency_key) DO NOTHING")
-    <span class="c">/* 파라미터 바인딩 생략 */</span>
-    .executeUpdate();
-
-if (inserted == 1) {                                  <span class="c">// 키를 차지한 요청만 여행을 만든다 (201)</span>
-    save(trip, tripConstraints, owner, snapshot);
-    return new SaveOutcome(trip, snapshot, true);
-}
-if (!existingFingerprint.equals(fingerprint)) {       <span class="c">// 같은 키, 다른 내용 (409)</span>
-    throw new IdempotencyKeyConflictException(idempotencyKey);
-}
-return new SaveOutcome(existingTrip, existingSnapshot, false);  <span class="c">// 같은 요청 다시 옴 (200)</span></code></pre><figcaption>JpaTripRepository.saveWithIdempotency 핵심 부분, <a href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/trip/infra/JpaTripRepository.java" target="_blank" rel="noopener noreferrer">전체 코드 ↗</a></figcaption></figure></section>
+        <section class="deep-case" aria-label="여행 만들기를 다시 누르면 여행이 두 개 생겼습니다"><p class="deep-case-label">대표 사례</p><h4>여행 만들기를 다시 누르면 여행이 두 개 생겼습니다</h4><ol><li><span>무슨 일이</span><p>휴대폰이 서버 응답을 못 받으면 사용자는 같은 요청을 한 번 더 보냅니다. 처음 코드는 “이 요청 키가 이미 있나?”를 조회해 보고, 없으면 여행을 저장했습니다.</p></li><li><span>왜 그랬나</span><p>같은 키의 요청 두 개를 동시에 보내 보니, 둘 다 “아직 없네”라고 보고 여행을 하나씩 만들었습니다. 조회하고 저장하는 사이의 짧은 틈이 문제였습니다.</p></li><li><span>고민한 점</span><p>서버 안에서 락을 걸면 서버가 여러 대일 때는 소용이 없습니다. 그래서 모든 서버가 같이 쓰는 DB에 판단을 맡기기로 했습니다.</p></li><li><span>바꾼 방법</span><p>요청 키를 먼저 DB에 넣어 보고, 들어간 요청만 여행을 만듭니다. 이미 있는 키라면 같은 내용일 때 기존 결과(200)를, 다른 내용일 때 409를 돌려줍니다.</p></li><li><span>한 번 더 막힌 곳</span><p>같은 방식을 일정 충돌에도 쓰면서 SAVEPOINT로 예외를 복구했는데, 메모리 테스트는 통과하고 실제 PostgreSQL 테스트에서만 실패했습니다. 예외를 복구하는 대신 <code>ON CONFLICT DO NOTHING</code>으로 저장된 행이 0개인지 보고 충돌을 판단하게 바꿨습니다.</p></li><li><span>결과</span><p>같은 키로 요청 8건을 동시에 보내도 여행은 <strong>1건</strong>만 생깁니다. 일정 충돌 처리는 실제 PostgreSQL 통합 테스트로 확인합니다.</p></li><li><span>아직 남은 일</span><p>동시 요청 테스트는 아직 메모리 저장소에서만 돌립니다. 실제 PostgreSQL에서 동시 요청을 다시 확인하는 것이 다음 할 일입니다.</p></li></ol><figure class="code-snippet"><div class="ide"><div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">JpaTripRepository.java</span><span class="code-lang">Java</span></div><pre><code><span class="ln"><span class="c">// 요청 키를 먼저 넣어 본다. 이미 있으면 0행이 반영된다.</span></span>
+<span class="ln"><span class="k">int</span> inserted = entityManager.<span class="f">createNativeQuery</span>(</span>
+<span class="ln">        <span class="s">"INSERT INTO trip_idempotency (user_id, idempotency_key, request_fingerprint, trip_id, created_at) "</span></span>
+<span class="ln">      + <span class="s">"VALUES (?1, ?2, ?3, ?4, ?5) ON CONFLICT (user_id, idempotency_key) DO NOTHING"</span>)</span>
+<span class="ln">    <span class="c">/* 파라미터 바인딩 생략 */</span></span>
+<span class="ln">    .<span class="f">executeUpdate</span>();</span>
+<span class="ln"></span>
+<span class="ln"><span class="k">if</span> (inserted == <span class="n">1</span>) {                                  <span class="c">// 키를 차지한 요청만 여행을 만든다 (201)</span></span>
+<span class="ln">    <span class="f">save</span>(trip, tripConstraints, owner, snapshot);</span>
+<span class="ln">    <span class="k">return</span> <span class="k">new</span> <span class="t">SaveOutcome</span>(trip, snapshot, <span class="k">true</span>);</span>
+<span class="ln">}</span>
+<span class="ln"><span class="k">if</span> (!existingFingerprint.<span class="f">equals</span>(fingerprint)) {       <span class="c">// 같은 키, 다른 내용 (409)</span></span>
+<span class="ln">    <span class="k">throw</span> <span class="k">new</span> <span class="t">IdempotencyKeyConflictException</span>(idempotencyKey);</span>
+<span class="ln">}</span>
+<span class="ln"><span class="k">return</span> <span class="k">new</span> <span class="t">SaveOutcome</span>(existingTrip, existingSnapshot, <span class="k">false</span>);  <span class="c">// 같은 요청 다시 옴 (200)</span></span></code></pre></div><figcaption>JpaTripRepository.saveWithIdempotency 핵심 부분, <a href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/trip/infra/JpaTripRepository.java" target="_blank" rel="noopener noreferrer">전체 코드 ↗</a></figcaption></figure></section>
         <details class="project-detail" id="gabolle-cases"><summary><span>그 밖의 문제 해결</span><span class="summary-hint">펼쳐 보기</span></summary><div class="detail-body"><div class="case-grid"><div class="story"><h4>동행자 두 명이 동시에 고치면 앞사람의 변경이 지워졌습니다</h4><p>두 사람이 같은 일정을 보고 고치면, 나중에 저장한 사람이 앞사람의 변경을 덮어씁니다. 그래서 요청에 “내가 본 버전”을 함께 보내고, DB의 최신 버전과 같을 때만 수정되게 했습니다. 버전이 다르면 409를 돌려줘 최신 일정을 다시 받게 합니다. 동시 수정 8건을 보내면 1건만 성공하고 7건은 거절되는지 테스트로 확인했습니다.</p></div>
 <div class="story"><h4>성공 응답을 받았는데 이벤트 기록이 사라졌습니다</h4><p>API는 “저장했다”고 응답하는데, 서버를 껐다 켜면 사용자 행동 기록이 전부 사라졌습니다. 따라가 보니 실제 DB가 아니라 메모리 저장소에 쌓이고 있었습니다. 기록이 PostgreSQL Outbox 테이블로 들어가도록 저장 경로를 이었습니다. Outbox 구조는 팀이 함께 설계했고, 저는 이벤트를 받아 저장하는 경로를 맡았습니다.</p></div></div><div class="evidence-links"><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/trip/application/TripCreationService.java" target="_blank" rel="noopener noreferrer">중복 생성 방지 코드 <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/itinerary/infra/JpaItineraryRepository.java" target="_blank" rel="noopener noreferrer">일정 충돌 처리 코드 <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo/gabolle-busan-travel/blob/main/backend/src/main/java/com/gabolle/backend/event/application/EventIngestService.java" target="_blank" rel="noopener noreferrer">이벤트 저장 코드 <span aria-hidden="true">↗</span></a></div></div></details>
       <details class="project-detail" id="gabolle-axmap"><summary><span>axMap: 팀원들의 AI가 같은 파일을 고치지 않게 하는 도구</span><span class="summary-hint">펼쳐 보기</span></summary><div class="detail-body"><p class="axmap-lead"><strong>한 줄로 말하면, 파일 예약 장부입니다.</strong> 회의실을 쓰기 전에 예약하듯, AI 코딩 도구가 파일을 고치기 전에 “이 파일은 제가 쓸게요”라고 장부에 먼저 적습니다. 다른 사람이 이미 예약한 파일이면 시작 전에 막고, 누가 언제까지 쓰는지 알려 줍니다. 저는 이 중에서 <strong>“지금 예약하려는 파일이 남의 예약과 겹치는가”를 판단하는 규칙</strong>을 설계하고, 만들어진 코드가 규칙대로 동작하는지 검증했습니다.</p><div class="case-grid"><div class="story"><h4>왜 만들었나</h4><p>가볼래 팀은 여섯 명이 각자 AI 코딩 도구를 띄워 개발했습니다. 그러다 보니 누가 어떤 파일을 고치는지 서로 보이지 않았고, 같은 파일을 동시에 고친 사실은 코드를 합칠 때가 돼서야 알게 됐습니다. 그래서 팀 회의에서 “고치기 전에 먼저 예약하자”는 규칙을 정했고, 이 규칙을 사람이 아니라 도구가 지키게 만든 것이 axMap입니다.</p></div>
@@ -258,7 +258,7 @@ return new SaveOutcome(existingTrip, existingSnapshot, false);  <span class="c">
           <div class="resume-line"><time>2022.03 ~ 2026.02</time><div><strong>창원대학교 컴퓨터공학과</strong><p>학사 졸업, 학점 3.61 / 4.5</p></div></div>
                   </div>
         <div>
-          <div class="about-group"><h3>자격</h3><div class="simple-line"><span>정보처리기사</span><time>2025.12</time></div><div class="simple-line"><span>TOPCIT 수준 3</span><time>2025.05</time></div></div>
+          <div class="about-group"><h3>자격</h3><div class="simple-line"><span>정보처리기사</span><time>2025.12</time></div><div class="simple-line"><span>TOPCIT 수준 3</span><time>2025.05</time></div><div class="simple-line"><span>1종 보통 운전면허</span></div></div>
           <div class="about-group"><h3>수상</h3><div class="simple-line"><span>SSAFY 특화프로젝트 우수상 <small>가볼래</small></span><time>2026.09</time></div><div class="simple-line"><span>SSAFY 공통프로젝트 우수상 <small>삐용</small></span><time>2026.08</time></div><div class="simple-line"><span>경남권 대학생 창업동아리 창업역량강화교육 우수상 <small>써트맵</small></span><time>2025.09</time></div><div class="simple-line"><span>교내 소프트웨어 전시회 인기상 <small>빈자리</small></span><time>2025.06</time></div><div class="simple-line"><span>SW 창업아이디어 경진대회 최우수상</span><time>2024.12</time></div><div class="simple-line"><span>스마트제조ICT 캡스톤 경진대회 장려상</span><time>2024.11</time></div></div>
           <div class="about-group"><h3>병역</h3><div class="simple-line"><span>육군 병장 만기전역</span><time>2019.01 ~ 2020.08</time></div></div>
         </div>

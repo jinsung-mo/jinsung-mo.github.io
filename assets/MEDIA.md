@@ -12,7 +12,7 @@
 - `bbiyong-mapping.mp4`와 `bbiyong-alert.mp4`: 발표 20·28번 슬라이드의 `image9.gif`(9.83초)와 `image20.gif`(8.9초)를 H.264, 20 FPS로 변환. 원래 속도, 무음. JPG는 원본 중간 프레임.
 
 - `bbiyong-console.png`: 팀 저장소 `docs/assets/readme/patrol-console.png` 전체 화면. 자르지 않고 표시.
-- `bbiyong-alert-flow.png`: 팀 저장소 `docs/assets/readme/architecture-fire-alert.png`. 경보 수신, 중복 판정·저장, 관제 전달 흐름을 설명하는 다이어그램입니다.
+- `bbiyong-alert-flow.svg`: 서버 코드(EventLogService, AsyncConfig)를 기준으로 새로 그린 경보 수신, 중복 판정과 저장, 전달 흐름도입니다.
 - `bbiyong-driving.mp4`: 같은 저장소의 `autonomous-driving.mp4`. 실제 로봇 촬영 원본의 01:00–01:20 발췌본을 그대로 사용.
 
 ## 빈자리

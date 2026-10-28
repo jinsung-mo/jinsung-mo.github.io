@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-labelledby="t d">
+<title id="t">화재 경보 처리 흐름</title>
+<desc id="d">로봇 브리지가 보낸 화재 경보를 WSS 핸들러가 받아 EventLogService에 넘기고, messageId로 중복을 확인한 뒤 MySQL에 한 번만 저장하고, 저장된 뒤에 로봇 회신, 관제 웹 방송, 알림 워커를 통한 Mattermost 전송을 하는 순서도</desc>
+<rect width="1600" height="1000" fill="#ffffff"/>
+<defs>
+  <marker id="mReq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f5945"/></marker>
+  <marker id="mRet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a978d"/></marker>
+  <marker id="mAsync" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a5fc4"/></marker>
+</defs>
+<circle cx="66" cy="54" r="7" fill="#2f5945"/>
+<text x="84" y="63" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="28" font-weight="750" fill="#202d26" text-anchor="start">화재 경보 처리 흐름</text>
+<text x="84" y="92" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="400" fill="#66756b" text-anchor="start">로봇이 보낸 경보가 한 번만 저장되고, 저장이 확정된 뒤에만 화면과 관리자에게 전달됩니다.</text>
+<rect x="40" y="206" width="1520" height="112" rx="12" fill="#f7f9f4" stroke="#cfd8cc" stroke-dasharray="5 5"/>
+<text x="56" y="230" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="13" font-weight="700" fill="#2f5945" text-anchor="start">01 수신</text>
+<rect x="40" y="330" width="1520" height="176" rx="12" fill="#f7f9f4" stroke="#cfd8cc" stroke-dasharray="5 5"/>
+<text x="56" y="354" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="13" font-weight="700" fill="#2f5945" text-anchor="start">02 저장과 중복 판정</text>
+<rect x="40" y="518" width="1520" height="230" rx="12" fill="#f7f9f4" stroke="#cfd8cc" stroke-dasharray="5 5"/>
+<text x="56" y="542" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="13" font-weight="700" fill="#2f5945" text-anchor="start">03 전달</text>
+<line x1="145" y1="176" x2="145" y2="752" stroke="#b9c5b8" stroke-width="1.4" stroke-dasharray="4 6"/>
+<rect x="57" y="112" width="176" height="64" rx="10" fill="#e7f0e9" stroke="#2f5945" stroke-width="2"/>
+<text x="145" y="140" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="17" font-weight="700" fill="#202d26" text-anchor="middle">로봇 브리지</text>
+<text x="145" y="162" font-family="'JetBrains Mono', Consolas, 'D2Coding', monospace" font-size="12.5" font-weight="400" fill="#66756b" text-anchor="middle">cloud_bridge.py</text>
+<line x1="363" y1="176" x2="363" y2="752" stroke="#b9c5b8" stroke-width="1.4" stroke-dasharray="4 6"/>
+<rect x="275" y="112" width="176" height="64" rx="10" fill="#e7f0e9" stroke="#2f5945" stroke-width="2"/>
+<text x="363" y="140" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="17" font-weight="700" fill="#202d26" text-anchor="middle">WSS 핸들러</text>
+<text x="363" y="162" font-family="'JetBrains Mono', Consolas, 'D2Coding', monospace" font-size="12.5" font-weight="400" fill="#66756b" text-anchor="middle">/ws/robot</text>
+<line x1="581" y1="176" x2="581" y2="752" stroke="#b9c5b8" stroke-width="1.4" stroke-dasharray="4 6"/>
+<rect x="493" y="112" width="176" height="64" rx="10" fill="#dcebdf" stroke="#2f5945" stroke-width="2"/>
+<text x="581" y="140" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="17" font-weight="700" fill="#202d26" text-anchor="middle">EventLogService</text>
+<text x="581" y="162" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="12.5" font-weight="400" fill="#66756b" text-anchor="middle">@Async 단일 스레드</text>
+<line x1="799" y1="176" x2="799" y2="752" stroke="#b9c5b8" stroke-width="1.4" stroke-dasharray="4 6"/>
+<rect x="711" y="112" width="176" height="64" rx="10" fill="#ece8f7" stroke="#5b4a9a" stroke-width="2"/>
+<text x="799" y="140" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="17" font-weight="700" fill="#202d26" text-anchor="middle">MySQL</text>
+<text x="799" y="162" font-family="'JetBrains Mono', Consolas, 'D2Coding', monospace" font-size="12.5" font-weight="400" fill="#66756b" text-anchor="middle">UNIQUE message_id</text>
+<line x1="1017" y1="176" x2="1017" y2="752" stroke="#b9c5b8" stroke-width="1.4" stroke-dasharray="4 6"/>
+<rect x="929" y="112" width="176" height="64" rx="10" fill="#e4eff6" stroke="#2d6a8f" stroke-width="2"/>
+<text x="1017" y="140" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="17" font-weight="700" fill="#202d26" text-anchor="middle">관제 웹</text>
+<text x="1017" y="162" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="12.5" font-weight="400" fill="#66756b" text-anchor="middle">STOMP 구독</text>
+<line x1="1235" y1="176" x2="1235" y2="752" stroke="#b9c5b8" stroke-width="1.4" stroke-dasharray="4 6"/>
+<rect x="1147" y="112" width="176" height="64" rx="10" fill="#f8ecdf" stroke="#b4671f" stroke-width="2"/>
+<text x="1235" y="140" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="17" font-weight="700" fill="#202d26" text-anchor="middle">알림 워커</text>
+<text x="1235" y="162" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="12.5" font-weight="400" fill="#66756b" text-anchor="middle">5초 주기</text>
+<line x1="1453" y1="176" x2="1453" y2="752" stroke="#b9c5b8" stroke-width="1.4" stroke-dasharray="4 6"/>
+<rect x="1365" y="112" width="176" height="64" rx="10" fill="#eef0ed" stroke="#66756b" stroke-width="2"/>
+<text x="1453" y="140" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="17" font-weight="700" fill="#202d26" text-anchor="middle">Mattermost</text>
+<text x="1453" y="162" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="12.5" font-weight="400" fill="#66756b" text-anchor="middle">관리자 알림</text>
+<rect x="356" y="250" width="14" height="50" rx="3" fill="#ffffff" stroke="#2f5945" stroke-width="2"/>
+<rect x="574" y="286" width="14" height="414" rx="3" fill="#ffffff" stroke="#2f5945" stroke-width="2"/>
+<rect x="792" y="352" width="14" height="40" rx="3" fill="#ffffff" stroke="#5b4a9a" stroke-width="2"/>
+<rect x="792" y="434" width="14" height="40" rx="3" fill="#ffffff" stroke="#5b4a9a" stroke-width="2"/>
+<rect x="1228" y="652" width="14" height="70" rx="3" fill="#ffffff" stroke="#b4671f" stroke-width="2"/>
+<line x1="147" y1="258" x2="354" y2="258" stroke="#2f5945" stroke-width="2.4" marker-end="url(#mReq)"/>
+<text x="250.5" y="247" font-family="'JetBrains Mono', Consolas, 'D2Coding', monospace" font-size="15" font-weight="600" fill="#2f5945" text-anchor="middle" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">EVENT_FIRE + messageId</text>
+<line x1="372" y1="292" x2="572" y2="292" stroke="#7a5fc4" stroke-width="2.4" stroke-dasharray="7 6" marker-end="url(#mAsync)"/>
+<text x="472.0" y="281" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="15" font-weight="600" fill="#7a5fc4" text-anchor="middle" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">저장 작업 넘김</text>
+<rect x="760" y="236" width="520" height="62" rx="8" fill="#fff8ec" stroke="#e2b77a"/>
+<text x="778" y="262" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="14" font-weight="600" fill="#7a4a12" text-anchor="start">대기열 200건이 꽉 차면 버리지 않고</text>
+<text x="778" y="284" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="14" font-weight="400" fill="#7a4a12" text-anchor="start">수신 스레드가 직접 저장합니다 (CallerRunsPolicy)</text>
+<line x1="590" y1="362" x2="790" y2="362" stroke="#2f5945" stroke-width="2.4" marker-end="url(#mReq)"/>
+<text x="690.0" y="351" font-family="'JetBrains Mono', Consolas, 'D2Coding', monospace" font-size="15" font-weight="600" fill="#2f5945" text-anchor="middle" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">findByMessageId</text>
+<line x1="790" y1="392" x2="590" y2="392" stroke="#8a978d" stroke-width="2.4" stroke-dasharray="7 6" marker-end="url(#mRet)"/>
+<text x="690.0" y="381" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="15" font-weight="600" fill="#56645a" text-anchor="middle" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">없음</text>
+<text x="823" y="386" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="13" font-weight="400" fill="#66756b" text-anchor="start" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">이미 있으면 여기서 종료</text>
+<line x1="590" y1="444" x2="790" y2="444" stroke="#2f5945" stroke-width="2.4" marker-end="url(#mReq)"/>
+<text x="690.0" y="433" font-family="'JetBrains Mono', Consolas, 'D2Coding', monospace" font-size="15" font-weight="600" fill="#2f5945" text-anchor="middle" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">saveAndFlush</text>
+<line x1="790" y1="474" x2="590" y2="474" stroke="#8a978d" stroke-width="2.4" stroke-dasharray="7 6" marker-end="url(#mRet)"/>
+<text x="690.0" y="463" font-family="'JetBrains Mono', Consolas, 'D2Coding', monospace" font-size="15" font-weight="600" fill="#56645a" text-anchor="middle" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">eventId</text>
+<text x="823" y="468" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="13" font-weight="400" fill="#66756b" text-anchor="start" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">동시에 같은 경보가 오면 UNIQUE 위반으로 두 번째를 버림</text>
+<line x1="572" y1="566" x2="147" y2="566" stroke="#7a5fc4" stroke-width="2.4" stroke-dasharray="7 6" marker-end="url(#mAsync)"/>
+<text x="359.5" y="555" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="15" font-weight="600" fill="#7a5fc4" text-anchor="middle" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">EVENT_SAVED(eventId) 회신</text>
+<line x1="590" y1="614" x2="1015" y2="614" stroke="#2f5945" stroke-width="2.4" marker-end="url(#mReq)"/>
+<text x="802.5" y="603" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="15" font-weight="600" fill="#2f5945" text-anchor="middle" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">/topic/alerts 방송</text>
+<line x1="590" y1="660" x2="1226" y2="660" stroke="#7a5fc4" stroke-width="2.4" stroke-dasharray="7 6" marker-end="url(#mAsync)"/>
+<text x="908.0" y="649" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="15" font-weight="600" fill="#7a5fc4" text-anchor="middle" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">알림 PENDING 적재</text>
+<line x1="1244" y1="708" x2="1451" y2="708" stroke="#2f5945" stroke-width="2.4" marker-end="url(#mReq)"/>
+<text x="1347.5" y="697" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="15" font-weight="600" fill="#2f5945" text-anchor="middle" paint-order="stroke" stroke="#f7f9f4" stroke-width="7" stroke-linejoin="round">전송, 최대 3회 재시도</text>
+<line x1="60" y1="784" x2="106" y2="784" stroke="#2f5945" stroke-width="2.4" marker-end="url(#mReq)"/>
+<text x="118" y="789" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="14" font-weight="400" fill="#66756b" text-anchor="start">요청</text>
+<line x1="230" y1="784" x2="276" y2="784" stroke="#8a978d" stroke-width="2.4" stroke-dasharray="7 6" marker-end="url(#mRet)"/>
+<text x="288" y="789" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="14" font-weight="400" fill="#66756b" text-anchor="start">응답</text>
+<line x1="400" y1="784" x2="446" y2="784" stroke="#7a5fc4" stroke-width="2.4" stroke-dasharray="7 6" marker-end="url(#mAsync)"/>
+<text x="458" y="789" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="14" font-weight="400" fill="#66756b" text-anchor="start">비동기 전달</text>
+<rect x="60" y="818" width="480" height="150" rx="12" fill="#ffffff" stroke="#cfd8cc" stroke-width="1.5"/>
+<rect x="60" y="818" width="480" height="5" rx="2" fill="#2f5945"/>
+<circle cx="90" cy="864" r="6" fill="#2f5945"/>
+<text x="106" y="871" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="20" font-weight="700" fill="#202d26" text-anchor="start">수신과 저장 분리</text>
+<text x="90" y="916" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="700" fill="#2f5945" text-anchor="start">•</text>
+<text x="108" y="916" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="400" fill="#3e4d43" text-anchor="start">WSS 수신 스레드에서 DB 쓰기를 떼어 냄</text>
+<text x="90" y="950" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="700" fill="#2f5945" text-anchor="start">•</text>
+<text x="108" y="950" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="400" fill="#3e4d43" text-anchor="start">단일 스레드라 경보 순서와 중복 판정 순서 유지</text>
+<rect x="560" y="818" width="480" height="150" rx="12" fill="#ffffff" stroke="#cfd8cc" stroke-width="1.5"/>
+<rect x="560" y="818" width="480" height="5" rx="2" fill="#5b4a9a"/>
+<circle cx="590" cy="864" r="6" fill="#5b4a9a"/>
+<text x="606" y="871" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="20" font-weight="700" fill="#202d26" text-anchor="start">한 번만 저장</text>
+<text x="590" y="916" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="700" fill="#5b4a9a" text-anchor="start">•</text>
+<text x="608" y="916" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="400" fill="#3e4d43" text-anchor="start">재전송해도 바뀌지 않는 messageId로 먼저 조회</text>
+<text x="590" y="950" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="700" fill="#5b4a9a" text-anchor="start">•</text>
+<text x="608" y="950" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="400" fill="#3e4d43" text-anchor="start">동시 요청은 DB UNIQUE 제약이 최종 판단</text>
+<rect x="1060" y="818" width="480" height="150" rx="12" fill="#ffffff" stroke="#cfd8cc" stroke-width="1.5"/>
+<rect x="1060" y="818" width="480" height="5" rx="2" fill="#b4671f"/>
+<circle cx="1090" cy="864" r="6" fill="#b4671f"/>
+<text x="1106" y="871" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="20" font-weight="700" fill="#202d26" text-anchor="start">저장 후 전달</text>
+<text x="1090" y="916" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="700" fill="#b4671f" text-anchor="start">•</text>
+<text x="1108" y="916" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="400" fill="#3e4d43" text-anchor="start">저장이 확정된 경보만 회신, 방송, 알림</text>
+<text x="1090" y="950" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="700" fill="#b4671f" text-anchor="start">•</text>
+<text x="1108" y="950" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="16" font-weight="400" fill="#3e4d43" text-anchor="start">알림은 DB에 먼저 적재한 뒤 워커가 재시도</text>
+</svg>

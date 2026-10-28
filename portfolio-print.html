@@ -53,6 +53,19 @@
   .results dd small { display: block; font-size: 7.5pt; color: var(--muted); font-weight: 400; }
   pre { background: #1f2b24; color: #e3ebe1; padding: 3.5mm 4mm; border-radius: 3px; font: 7.6pt/1.6 Consolas, "D2Coding", monospace; white-space: pre-wrap; }
   pre .c { color: #9fb79f; }
+  .ide { border-radius: 3px; overflow: hidden; background: #282c34; border: 1px solid #181a1f; }
+  .ide pre { background: #282c34; color: #abb2bf; border-radius: 0; padding: 2.6mm 3mm 3mm 0; }
+  .code-head { display: flex; height: 6.4mm; background: #21252b; border-bottom: 1px solid #181a1f; padding-left: 2.6mm; }
+  .code-dots { display: flex; align-items: center; gap: 1.2mm; margin-right: 2.6mm; }
+  .code-dots i { width: 2mm; height: 2mm; border-radius: 50%; background: #ff5f57; }
+  .code-dots i:nth-child(2) { background: #febc2e; } .code-dots i:nth-child(3) { background: #28c840; }
+  .code-file { display: flex; align-items: center; padding: 0 3mm; border-right: 1px solid #181a1f; color: #7f848e; font: 7.5pt Consolas, monospace; }
+  .code-file:first-of-type { background: #282c34; color: #d7dae0; box-shadow: inset 0 1.5px 0 #61afef; }
+  .code-lang { margin-left: auto; display: flex; align-items: center; padding-right: 3mm; color: #5c6370; font-size: 7pt; }
+  .ide code { counter-reset: ln; background: none; padding: 0; font-size: inherit; }
+  .ide .ln::before { counter-increment: ln; content: counter(ln); display: inline-block; width: 2.2em; margin-right: 3mm; text-align: right; color: #4b5263; }
+  .ide .k { color: #c678dd; } .ide .s { color: #98c379; } .ide .n { color: #d19a66; } .ide .c { color: #7f848e; }
+  .ide .f { color: #61afef; } .ide .t { color: #e5c07b; } .ide .a { color: #e5c07b; } .ide .p { color: #e06c75; }
   ol.steps { list-style: none; padding: 0; border-top: 2px solid var(--accent); }
   ol.steps li { display: grid; grid-template-columns: 24mm 1fr; gap: 4mm; padding: 2.4mm 0; border-bottom: 1px solid var(--line); font-size: 9.3pt; }
   ol.steps li > span { color: var(--accent); font-weight: 700; font-size: 8.5pt; padding-top: .4mm; }
@@ -108,6 +121,7 @@
       <h3 style="color:var(--accent);margin-top:6mm">자격</h3>
       <div class="line"><time>2025.12</time><div>정보처리기사</div></div>
       <div class="line"><time>2025.05</time><div>TOPCIT 수준 3</div></div>
+      <div class="line"><time></time><div>1종 보통 운전면허</div></div>
       <h3 style="color:var(--accent);margin-top:6mm">병역</h3>
       <div class="line"><time>2019.01 ~ 2020.08</time><div>육군 병장 만기전역</div></div>
     </div>
@@ -148,7 +162,7 @@
       </ul>
     </div>
     <div>
-      <figure><img src="assets/bbiyong-alert-flow.png" alt="경보 처리 흐름"><figcaption>서버가 맡은 경보 처리: 수신과 DB 저장을 분리하고, 중복은 MySQL 고유 제약으로 최종 확인합니다.</figcaption></figure>
+      <figure><img src="assets/bbiyong-alert-flow.svg" alt="경보 처리 흐름"><figcaption>서버가 맡은 경보 처리: 수신과 DB 저장을 분리하고, 중복은 MySQL 고유 제약으로 최종 확인합니다.</figcaption></figure>
       <dl class="results" style="margin-top:6mm">
         <div><dt>같은 경보 100회 동시 발행</dt><dd>1건 저장<small>32개 스레드, 중복 0</small></dd></div>
         <div><dt>최근 24시간 통계 쿼리</dt><dd>55.9 → 4.9ms<small>검사 행 19.9만 → 6,642</small></dd></div>
@@ -179,17 +193,17 @@
         <li><strong>영상이 끊기고, 고친 뒤에도 6초 늦었습니다</strong><span>제가 웹 재생을 WebRTC(WHEP)로 바꾸는 일을 맡았고, 탐지 박스 보정값을 6초에서 0.3초로 줄여 운영했습니다.</span></li>
       </ul>
       <h3 style="margin-top:5mm">중복 경보를 막는 핵심 코드</h3>
-<pre style="margin-top:3mm"><span class="c">// 대기열이 꽉 차면 버리지 않고 받은 스레드가 직접 저장</span>
-executor.setQueueCapacity(200);
-executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-
-<span class="c">// messageId에는 MySQL UNIQUE 제약</span>
-try {
-    savedEvent = eventLogRepository.saveAndFlush(logEntry);
-} catch (DataIntegrityViolationException duplicateMessageId) {
-    rollbackDeduplication(deduplication);   <span class="c">// 이미 저장된 경보</span>
-    return;
-}</pre>
+<div class="ide" style="margin-top:3mm"><div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">AsyncConfig.java</span><span class="code-file">EventLogService.java</span><span class="code-lang">Java</span></div><pre><code><span class="ln"><span class="c">// 대기열이 꽉 차면 버리지 않고 받은 스레드가 직접 저장</span></span>
+<span class="ln">executor.<span class="f">setQueueCapacity</span>(<span class="n">200</span>);</span>
+<span class="ln">executor.<span class="f">setRejectedExecutionHandler</span>(<span class="k">new</span> <span class="t">ThreadPoolExecutor</span>.<span class="t">CallerRunsPolicy</span>());</span>
+<span class="ln"></span>
+<span class="ln"><span class="c">// messageId에는 MySQL UNIQUE 제약</span></span>
+<span class="ln"><span class="k">try</span> {</span>
+<span class="ln">    savedEvent = eventLogRepository.<span class="f">saveAndFlush</span>(logEntry);</span>
+<span class="ln">} <span class="k">catch</span> (<span class="t">DataIntegrityViolationException</span> duplicateMessageId) {</span>
+<span class="ln">    <span class="f">rollbackDeduplication</span>(deduplication);  <span class="c">// 이미 저장된 경보</span></span>
+<span class="ln">    <span class="k">return</span>;</span>
+<span class="ln">}</span></code></pre></div>
     </div>
   </div>
   <div class="footer"><span>모진성, Backend Developer</span><span>4</span></div>
@@ -210,17 +224,17 @@ try {
         <li><span>한 번 더 막힌 곳</span><p>SAVEPOINT 방식이 PostgreSQL 테스트에서만 실패해, <code>ON CONFLICT DO NOTHING</code>으로 저장된 행이 0개인지 보고 판단하게 바꿨습니다.</p></li>
         <li><span>결과</span><p>같은 키로 요청 8건을 동시에 보내도 여행은 <strong>1건</strong>만 생깁니다.</p></li>
       </ol>
-<pre style="margin-top:3mm">int inserted = entityManager.createNativeQuery(
-    "INSERT INTO trip_idempotency (...) VALUES (...) "
-  + "ON CONFLICT (user_id, idempotency_key) DO NOTHING").executeUpdate();
-
-if (inserted == 1) {                            <span class="c">// 키를 차지한 요청만 생성 (201)</span>
-    save(trip, tripConstraints, owner, snapshot);
-    return new SaveOutcome(trip, snapshot, true);
-}
-if (!existingFingerprint.equals(fingerprint))   <span class="c">// 같은 키, 다른 내용 (409)</span>
-    throw new IdempotencyKeyConflictException(idempotencyKey);
-return new SaveOutcome(existingTrip, existingSnapshot, false);  <span class="c">// 200</span></pre>
+<div class="ide" style="margin-top:3mm"><div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">JpaTripRepository.java</span><span class="code-lang">Java</span></div><pre><code><span class="ln"><span class="k">int</span> inserted = entityManager.<span class="f">createNativeQuery</span>(</span>
+<span class="ln">    <span class="s">"INSERT INTO trip_idempotency (...) VALUES (...) "</span></span>
+<span class="ln">  + <span class="s">"ON CONFLICT (user_id, idempotency_key) DO NOTHING"</span>).<span class="f">executeUpdate</span>();</span>
+<span class="ln"></span>
+<span class="ln"><span class="k">if</span> (inserted == <span class="n">1</span>) {  <span class="c">// 키를 차지한 요청만 생성 (201)</span></span>
+<span class="ln">    <span class="f">save</span>(trip, tripConstraints, owner, snapshot);</span>
+<span class="ln">    <span class="k">return</span> <span class="k">new</span> <span class="t">SaveOutcome</span>(trip, snapshot, <span class="k">true</span>);</span>
+<span class="ln">}</span>
+<span class="ln"><span class="k">if</span> (!existingFingerprint.<span class="f">equals</span>(fingerprint))  <span class="c">// 같은 키, 다른 내용 (409)</span></span>
+<span class="ln">    <span class="k">throw</span> <span class="k">new</span> <span class="t">IdempotencyKeyConflictException</span>(idempotencyKey);</span>
+<span class="ln"><span class="k">return</span> <span class="k">new</span> <span class="t">SaveOutcome</span>(existingTrip, existingSnapshot, <span class="k">false</span>);  <span class="c">// 200</span></span></code></pre></div>
     </div>
     <div>
       <ul class="points" style="margin-top:-2mm">
