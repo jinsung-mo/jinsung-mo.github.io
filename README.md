@@ -13,6 +13,8 @@ Java·Spring Boot 백엔드 개발 직무 지원을 위한 포트폴리오입니
 - `index.html`: 소개, 프로젝트, 협업 경험과 이력
 - `styles.css`: 화면 구성과 모바일 스타일
 - `script.js`: 상세 시연으로 직접 이동, 영상 정지, 인쇄 시 상세 설명 표시
+- `portfolio-print.html`: 제출용 PDF(A4 가로 7쪽)의 원본 페이지
+- `portfolio.pdf`: 위 페이지를 Chrome으로 인쇄한 제출용 PDF
 - `assets/`: 프로젝트 화면, 구조도, 시연 영상
 - `evidence/`: 성과 수치의 원본 응답과 그림 재현 스크립트
 
@@ -27,6 +29,14 @@ python -m http.server 8766 --bind 127.0.0.1
 ```
 
 브라우저에서 `http://127.0.0.1:8766/`를 엽니다. `인쇄·PDF 저장`을 누르면 기술 설명을 펼친 인쇄 화면을 열고, 종료하면 원래 펼침 상태로 돌아갑니다. 추가 영상은 인쇄에서 제외합니다.
+
+## PDF 다시 만들기
+
+로컬 서버를 띄운 상태에서 실행합니다.
+
+```sh
+chrome --headless=new --no-pdf-header-footer --print-to-pdf=portfolio.pdf http://127.0.0.1:8766/portfolio-print.html
+```
 
 ## 성과 수치의 출처
 
