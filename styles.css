@@ -367,3 +367,7 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 760px) { .stack-list { grid-template-columns: 1fr; gap: 12px; } .hero-metrics dd strong { font-size: 18px; } .code-snippet pre { font-size: 11px; padding: 14px; } .arch-figure { padding: 12px; } }
 @media print { .stack-list { gap: 12px; padding-top: 10px; } .stack-list dd { font-size: 8pt; } .hero-metrics dd strong { font-size: 13pt; } .code-snippet, .arch-figure, .arch-block { break-inside: avoid; } .code-snippet pre { font-size: 7.5pt; white-space: pre-wrap; } }
 .contribution-list span a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.milestones { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px 28px; }
+.milestones li { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 10px; font-size: 14px; }
+.milestones time { color: var(--accent); font-size: 12px; font-weight: 700; padding-top: 2px; }
+@media (max-width: 760px) { .milestones { grid-template-columns: 1fr; } }
