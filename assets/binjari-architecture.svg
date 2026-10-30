@@ -31,7 +31,7 @@
     <text x="45" y="141" font-size="17" fill="#607189">주차면 상태를 계산하고, 기록하고, 운전자에게 전달하는 데이터 흐름</text>
     <rect x="1017" y="73" width="238" height="37" rx="18.5" fill="#FFFFFF" stroke="#D6E3F6"/>
     <circle cx="1039" cy="91.5" r="5" fill="#2686D4"/>
-    <text x="1055" y="98" font-size="16" font-weight="700" fill="#305477">2개 주차장 · 56개 주차면</text>
+    <text x="1055" y="98" font-size="16" font-weight="700" fill="#305477">2개 주차장 · 57개 주차면</text>
 
     <!-- Three clearly separated domains -->
     <rect x="44" y="175" width="211" height="470" rx="24" fill="#EAF3FF" stroke="#CADFFF" stroke-width="1.5"/>
