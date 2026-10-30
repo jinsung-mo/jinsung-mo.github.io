@@ -240,7 +240,7 @@
       <ul class="points" style="margin-top:-2mm">
         <li><strong>두 사람이 동시에 고쳐도 변경이 사라지지 않게</strong><span>“내가 본 버전”이 DB 최신 버전과 같을 때만 수정하고, 다르면 409로 최신 일정을 다시 받게 했습니다.</span></li>
         <li><strong>서버를 재시작하면 사라지던 이벤트 기록을 DB에 저장</strong><span>메모리에 쌓이던 사용자 이벤트를 PostgreSQL Outbox 테이블에 저장하도록 바꿨습니다.</span></li>
-        <li><strong>AI 챗봇 ‘동백이’가 없는 가게 이름을 지어내지 않게</strong><span>첫 버전은 모델이 답장을 자유롭게 써서 데이터에 없는 가게 이름이 나갈 수 있었습니다. 답장은 서버가 조립하고, 챗봇은 Gemini 구조화 출력으로 화면 안내·여행 문장·도움말 세 가지로만 답하게 좁혔습니다. 버스 도착 시간과 환율은 실제 데이터 화면으로 안내합니다.</span></li>
+        <li><strong>AI 챗봇 ‘동백이’가 서울 가게를 추천하지 않게</strong><span>첫 버전은 모델이 답장을 자유롭게 써서, 부산 여행 앱인데 학습한 지식으로 서울에 있는 가게를 추천했습니다. 답장은 서버가 조립하고, 챗봇은 구조화 출력으로 화면 안내·여행 문장·도움말 세 가지로만 답하게 좁혔습니다. 버스 도착 시간과 환율은 실제 데이터 화면으로 안내합니다.</span></li>
       </ul>
       <figure style="margin-top:4mm"><img src="assets/gabolle-trip-create.png" alt="여행 생성 중복 요청 처리 흐름"><figcaption>여행 생성 API의 중복 요청 처리 흐름</figcaption></figure>
     </div>
