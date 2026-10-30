@@ -213,7 +213,7 @@
 <section class="page">
   <p class="label">03 / 프로젝트 2: 여행 계획 서비스</p>
   <h2>가볼래<small>GABOLLE</small> <span class="award">SSAFY 특화프로젝트 우수상</span></h2>
-  <p class="meta">2026.08 ~ 진행 중, 6인 팀, 여행과 일정 API 담당, Java 17, Spring Boot, JPA, PostgreSQL, Flyway, FLY ASIA 2026 전시(2026.10)</p>
+  <p class="meta">2026.08 ~ 09, 6인 팀, 여행과 일정 API 담당, Java 17, Spring Boot, JPA, PostgreSQL, Flyway, FLY ASIA 2026 전시(2026.10)</p>
   <div class="cols c2" style="margin-top:3mm">
     <div>
       <h3>트러블슈팅: 같은 요청이 동시에 오면 여행이 중복 생성되던 문제</h3>
@@ -222,7 +222,7 @@
         <li><span>고려한 점</span><p>서버 안의 락은 서버가 여러 대면 소용이 없어, 모든 서버가 같이 쓰는 DB에 판단을 맡겼습니다.</p></li>
         <li><span>해결</span><p>요청 키를 먼저 DB에 넣어 보고, 들어간 요청만 여행을 만듭니다. 같은 내용이면 기존 결과(200), 다른 내용이면 409입니다.</p></li>
         <li><span>추가 문제</span><p>SAVEPOINT 방식이 PostgreSQL 테스트에서만 실패해, <code>ON CONFLICT DO NOTHING</code>으로 저장된 행이 0개인지 보고 판단하게 바꿨습니다.</p></li>
-        <li><span>결과</span><p>같은 키로 요청 8건을 동시에 보내도 여행은 <strong>1건</strong>만 생깁니다.</p></li>
+        <li><span>결과</span><p>같은 키로 요청 8건을 동시에 보내도 여행은 <strong>1건</strong>만 생깁니다. 프로젝트 후 실제 PostgreSQL에서도 다시 확인했습니다.</p></li>
       </ol>
 <div class="ide" style="margin-top:3mm"><div class="code-head"><span class="code-dots"><i></i><i></i><i></i></span><span class="code-file">JpaTripRepository.java</span><span class="code-lang">Java</span></div><pre><code><span class="ln"><span class="k">int</span> inserted = entityManager.<span class="f">createNativeQuery</span>(</span>
 <span class="ln">    <span class="s">"INSERT INTO trip_idempotency (...) VALUES (...) "</span></span>
@@ -296,7 +296,7 @@
     <div>
       <p>특정 시간대만 되면 캠퍼스 주차장에서 빈자리를 찾느라 스트레스를 받는다는 이야기를 자주 들었습니다. 주차면마다 센서를 달면 장비와 설치에 비용이 많이 들어, 카메라 영상만으로 풀어 보고 싶었습니다. 저는 분석 서버를 맡아, 차가 잠깐 가려져도 상태가 흔들리지 않는 판정 로직을 만들었습니다.</p>
       <ul class="points" style="margin-top:3mm">
-        <li><strong>차량 탐지 결과를 주차면별 상태로 변환</strong><span>박스와 주차면이 겹치는 면적, 모델 신뢰도를 함께 보고 어느 자리의 차인지 정했습니다. 55호관 20면, 도서관 36면.</span></li>
+        <li><strong>차량 탐지 결과를 주차면별 상태로 변환</strong><span>박스와 주차면이 겹치는 면적, 모델 신뢰도를 함께 보고 어느 자리의 차인지 정했습니다. 프로젝트 때 57면으로 운영했고, 끝난 뒤 좌표가 겹친 1면을 정리해 56면입니다.</span></li>
         <li><strong>차가 잠깐 가려져도 상태가 흔들리지 않게</strong><span>차가 있는 자리를 비었다고 안내하면 운전자가 헛걸음을 합니다. 차가 들어온 건 5번, 빠진 건 8번 연속으로 확인해야 상태를 바꿉니다.</span></li>
         <li><strong>모델 추론 횟수 80% 절감</strong><span>5프레임 중 1개만 분석합니다.</span></li>
         <li><strong>프로젝트 이후 발견한 잘못된 통계 데이터 수정</strong><span>기록이 없는 시간대는 <code>has_data=false</code>로 구분하고, 두 주차장이 같이 쓰던 주차면 ID는 기본키를 <code>(parking_lot, id)</code>로 나눴습니다.</span></li>
