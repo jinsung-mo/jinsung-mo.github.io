@@ -1,6 +1,6 @@
 # axMap 사례 근거 자료
 
-포트폴리오의 [가볼래 · 팀 협업 도구 axMap](https://jinsung-mo.github.io/#gabolle-axmap) 항목에 쓴 수치와 그림의 원본입니다.
+포트폴리오의 [axMap](https://jinsung-mo.github.io/#axmap) 항목에 쓴 수치와 그림의 원본입니다.
 
 ## 수치
 

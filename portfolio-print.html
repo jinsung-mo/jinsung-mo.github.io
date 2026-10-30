@@ -213,7 +213,7 @@
 <section class="page">
   <p class="label">03 / 프로젝트 2: 여행 계획 서비스</p>
   <h2>가볼래<small>GABOLLE</small> <span class="award">SSAFY 특화프로젝트 우수상</span></h2>
-  <p class="meta">2026.08 ~ 09, 6인 팀, 여행과 일정 API 담당, Java 17, Spring Boot, JPA, PostgreSQL, Flyway, FLY ASIA 2026 전시(2026.10)</p>
+  <p class="meta">2026.08 ~ 09, 6인 팀, 여행·일정 API와 AI 챗봇 서버 담당, Java 17, Spring Boot, JPA, PostgreSQL, Flyway, Gemini API, FLY ASIA 2026 전시(2026.10)</p>
   <div class="cols c2" style="margin-top:3mm">
     <div>
       <h3>트러블슈팅: 같은 요청이 동시에 오면 여행이 중복 생성되던 문제</h3>
@@ -240,7 +240,7 @@
       <ul class="points" style="margin-top:-2mm">
         <li><strong>두 사람이 동시에 고쳐도 변경이 사라지지 않게</strong><span>“내가 본 버전”이 DB 최신 버전과 같을 때만 수정하고, 다르면 409로 최신 일정을 다시 받게 했습니다.</span></li>
         <li><strong>서버를 재시작하면 사라지던 이벤트 기록을 DB에 저장</strong><span>메모리에 쌓이던 사용자 이벤트를 PostgreSQL Outbox 테이블에 저장하도록 바꿨습니다.</span></li>
-        <li><strong>팀원들의 AI 코딩 도구가 같은 파일을 고치지 않게 (axMap)</strong><span>고치기 전에 파일을 먼저 예약하는 팀 도구입니다. 저는 예약이 겹치는지 판단하는 규칙을 설계하고 검증했습니다. 경로를 <code>/</code> 단위로 비교해 <code>src/auth</code> 예약이 <code>src/authz</code>까지 막지 않게 했습니다. 개발 기간 예약 3,629회, npm 누적 다운로드 23,794회.</span></li>
+        <li><strong>AI 챗봇 ‘동백이’가 없는 가게 이름을 지어내지 않게</strong><span>첫 버전은 모델이 답장을 자유롭게 써서 데이터에 없는 가게 이름이 나갈 수 있었습니다. 답장은 서버가 조립하고, 챗봇은 Gemini 구조화 출력으로 화면 안내·여행 문장·도움말 세 가지로만 답하게 좁혔습니다. 버스 도착 시간과 환율은 실제 데이터 화면으로 안내합니다.</span></li>
       </ul>
       <figure style="margin-top:4mm"><img src="assets/gabolle-trip-create.png" alt="여행 생성 중복 요청 처리 흐름"><figcaption>여행 생성 API의 중복 요청 처리 흐름</figcaption></figure>
     </div>
@@ -248,9 +248,36 @@
   <div class="footer"><span>모진성, Backend Developer</span><span>5</span></div>
 </section>
 
-<!-- 6. 로보터블 기업연계 -->
+<!-- 6. axMap -->
 <section class="page">
-  <p class="label">04 / 프로젝트 3: 요리 영상 분석 (기업연계, 진행 중)</p>
+  <p class="label">04 / 프로젝트 3: AI 코딩 협업 도구 (진행 중)</p>
+  <h2>axMap<small>axmap-cli</small> <span class="award">npm 공개 패키지</span></h2>
+  <p class="meta">2026.08 ~ 진행 중, 가볼래 팀에서 시작, 예약 겹침 판정 규칙 설계와 검증 담당, Node.js, Git, MCP, <a href="https://github.com/rl2aderjoon/axmap">github.com/rl2aderjoon/axmap</a>, <a href="https://www.npmjs.com/package/axmap-cli">npmjs.com/package/axmap-cli</a></p>
+  <div class="cols c2" style="margin-top:3mm">
+    <div>
+      <p>여러 사람의 AI 코딩 도구가 한 저장소에서 같이 일할 때, 고치기 전에 파일과 폴더를 먼저 예약하고 겹치는 예약은 시작 전에 막는 협업 도구입니다. 가볼래 팀 여섯 명이 각자 AI 코딩 도구로 개발하다 보니 같은 파일을 동시에 고친 사실을 코드를 합칠 때야 알게 됐고, 팀 회의에서 “고치기 전에 먼저 예약하자”는 규칙을 정해 도구가 지키게 만들었습니다. npm에 공개해 지금도 계속 업데이트하고 있습니다(최신 1.9.0, 2026.10.30).</p>
+      <ul class="points" style="margin-top:2mm">
+        <li><strong>어디까지를 ‘겹친다’고 볼지 규칙 설계</strong><span>같은 파일이거나 한쪽이 다른 쪽을 품은 폴더면 겹친다고 봤습니다. 경로를 <code>/</code> 단위로 잘라 비교해 <code>src/auth</code> 예약이 <code>src/authz</code>까지 막지 않게 했고, 저장소 밖을 가리키는 경로는 받지 않습니다.</span></li>
+        <li><strong>막을 때는 이유와 종료 코드 2</strong><span>누가 무슨 작업으로 몇 분 더 쓰는지 보여 주고, 일반 오류(1)와 다른 종료 코드 2를 돌려줘 AI가 같은 요청을 반복하지 않고 다른 작업으로 넘어가게 했습니다.</span></li>
+        <li><strong>판정 로직을 입력만 보는 함수로 분리</strong><span>따로 떼어 두자고 제안해, 두 사람이 거의 동시에 예약했을 때 최신 장부로 다시 판단하는 데도 그대로 썼습니다. 동시 예약 처리와 장부 동기화는 팀원들과 함께 설계했습니다.</span></li>
+      </ul>
+      <p style="font-size:9pt;margin-top:3mm"><strong style="color:var(--accent)">한계</strong>&nbsp; 예약을 무시하고 파일을 고치는 것까지 막지는 못하고, 서로 다른 파일에 같은 기능을 만드는 중복도 잡지 못합니다. 토큰 비용 때문에 한 사람의 계정으로만 코드를 생성하기로 해, 공개 저장소의 커밋 작성자는 팀원 한 명으로 나옵니다.</p>
+    </div>
+    <div>
+      <figure><img src="assets/axmap-overlap-rules.svg" alt="예약이 겹치는지 판단하는 순서와 src/auth 예시"><figcaption>예약이 겹치는지 판단하는 순서입니다. 보라색 실선은 제가 설계하고 검증한 부분, 회색 점선은 팀원들과 함께 설계한 부분입니다.</figcaption></figure>
+      <dl class="results">
+        <div><dt>가볼래 개발 기간 예약</dt><dd>3,629회<small>반납 2,224회, 2026.08.25 ~ 09.30</small></dd></div>
+        <div><dt>npm 누적 다운로드</dt><dd>23,794회<small>2026.08.28 ~ 10.25, CI·미러 포함</small></dd></div>
+        <div><dt>npm 배포</dt><dd>24개 버전<small>최신 1.9.0, 2026.10.30</small></dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="footer"><span>모진성, Backend Developer</span><span>6</span></div>
+</section>
+
+<!-- 7. 로보터블 기업연계 -->
+<section class="page">
+  <p class="label">05 / 프로젝트 4: 요리 영상 분석 (기업연계, 진행 중)</p>
   <h2>요리 영상 구간 분할<small>ROBOTABLE × SSAFY</small> <span class="award">로보터블 기업연계</span></h2>
   <p class="meta">2026.10 ~ 진행 중, 6인 팀, Python, PyTorch, scikit-learn, OpenCV, FFmpeg, Gemini API</p>
   <div class="cols c2" style="margin-top:3mm">
@@ -284,12 +311,12 @@
       <p style="font-size:9pt;margin-top:4mm"><strong style="color:var(--accent)">구상 중</strong>&nbsp; 요리 영상을 올리면 구간을 나눠 레시피, 숏츠, 블로그용 레시피로 만들어 주는 B2C 앱</p>
     </div>
   </div>
-  <div class="footer"><span>모진성, Backend Developer</span><span>6</span></div>
+  <div class="footer"><span>모진성, Backend Developer</span><span>7</span></div>
 </section>
 
-<!-- 7. 빈자리 -->
+<!-- 8. 빈자리 -->
 <section class="page">
-  <p class="label">05 / 프로젝트 4: 영상 분석 서비스</p>
+  <p class="label">06 / 프로젝트 5: 영상 분석 서비스</p>
   <h2>빈자리<small>BINJARI</small> <span class="award">교내 소프트웨어 전시회 인기상</span></h2>
   <p class="meta">2024.12 ~ 2025.06, 캡스톤 디자인, 2인 팀, Python, Flask, OpenCV, YOLOv8x, SQLite</p>
   <div class="cols c2" style="margin-top:3mm">
@@ -307,12 +334,12 @@
       <figure style="margin-top:4mm"><img src="assets/binjari-inference.jpg" alt="차량 탐지와 주차면 상태"><figcaption>왼쪽 차량 탐지 결과 → 오른쪽 서버가 확정한 주차면별 상태</figcaption></figure>
     </div>
   </div>
-  <div class="footer"><span>모진성, Backend Developer</span><span>7</span></div>
+  <div class="footer"><span>모진성, Backend Developer</span><span>8</span></div>
 </section>
 
-<!-- 8. 써트맵 -->
+<!-- 9. 써트맵 -->
 <section class="page">
-  <p class="label">06 / 프로젝트 5: 학습 계획 서비스 (창업 프로젝트)</p>
+  <p class="label">07 / 프로젝트 6: 학습 계획 서비스 (창업 프로젝트)</p>
   <h2>써트맵<small>CERTMAP</small> <span class="award">부산 U창업 패키지 선발</span></h2>
   <p class="meta">2025.03 ~ 12, 5인 창업팀, 백엔드, Java 17, Spring Boot, Spring Security, JWT, OAuth2, MySQL, 출시 전 MVP 단계</p>
   <div class="cols c2" style="margin-top:3mm">
@@ -331,7 +358,7 @@
       <figure style="margin-top:3mm;width:82%"><img src="assets/certmap-research.jpg" alt="써트맵 사용자 조사 결과"><figcaption>본조사 결과: 인터뷰 43건, 설문 165건 (2025, 팀 자체 조사)</figcaption></figure>
     </div>
   </div>
-  <div class="footer"><span>모진성  ahwlstjd57@gmail.com  github.com/jinsung-mo</span><span>8</span></div>
+  <div class="footer"><span>모진성  ahwlstjd57@gmail.com  github.com/jinsung-mo</span><span>9</span></div>
 </section>
 
 </body>
