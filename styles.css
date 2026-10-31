@@ -426,7 +426,7 @@ button { font: inherit; cursor: pointer; }
 .list-label + .contribution-list li:first-child { margin-top: 6px; }
 
 /* One project at a time: script.js turns the shortcut cards into a sticky project switcher. */
-.is-tabbed .project-shortcuts { position: sticky; top: 73px; z-index: 10; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-bottom: 0; padding: 10px 0; background: var(--white); border-bottom: 1px solid var(--ink); }
+.is-tabbed .project-shortcuts { position: sticky; top: 73px; z-index: 10; grid-template-columns: repeat(3,minmax(0,1fr)) auto; gap: 10px; margin-bottom: 0; padding: 10px 0; background: var(--white); border-bottom: 1px solid var(--ink); }
 .is-tabbed .project-shortcuts a { padding: 8px 14px; line-height: 1.5; }
 .is-tabbed .project-shortcuts a > span:nth-of-type(2) { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .is-tabbed .project-shortcuts a > span:last-child { display: none; }
@@ -444,13 +444,18 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 760px) { .is-tabbed .project-shortcuts { top: 65px; gap: 6px; padding: 7px 0; } .is-tabbed .project-shortcuts a { display: block; padding: 7px 2px; text-align: center; } .is-tabbed .project-shortcuts .shortcut-number { display: none; } .is-tabbed .project-shortcuts strong { font-size: 14px; } .project-pager { gap: 8px; margin-top: 30px; } .project-pager a { padding: 11px 13px; } .project-pager strong { font-size: 14px; } }
 @media print { .is-tabbed .project { border-top: 1px solid var(--ink); } .is-tabbed .project[hidden] { display: block; content-visibility: visible; padding: 20px 0 25px; } .project-pager { display: none; } }
 
-/* Other projects: short cards under the three main projects, always visible. */
-.side-projects { margin-top: 64px; padding: 34px 0 8px; border-top: 1px solid var(--ink); }
-.side-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 22px; }
-.side-head h3 { font-size: 24px; letter-spacing: -.04em; }
-.side-head p { color: var(--muted); font-size: 13px; }
-.side-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
-.side-card { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 22px 22px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+/* 그 밖의 프로젝트: the last tab; small buttons inside it show one summary card at a time. */
+.project-shortcuts .more-tab { border-style: dashed; }
+.side-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.side-tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 14px; font-weight: 650; }
+.side-tabs a:hover { border-color: var(--accent); }
+.side-tabs a[aria-current] { background: var(--accent); border-color: var(--accent); color: var(--white); }
+.side-tabs .live { padding: 1px 6px; border-radius: 3px; background: var(--pale); color: var(--accent); font-size: 11px; }
+.side-panels { display: grid; gap: 16px; }
+.is-side-tabbed .side-panels { gap: 0; }
+.side-card { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(0,1fr); gap: 18px 36px; align-items: start; min-width: 0; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+.side-card[hidden] { padding: 0; border: 0; }
+.side-main { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .side-kind { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--accent); font-size: 12px; font-weight: 700; }
 .side-kind .live { padding: 2px 7px; border-radius: 3px; background: var(--accent); color: var(--white); font-size: 11px; }
 .side-card h4 { font-size: 20px; line-height: 1.4; letter-spacing: -.03em; }
@@ -463,5 +468,6 @@ button { font: inherit; cursor: pointer; }
 .side-results strong { display: block; color: var(--accent); font-size: 15px; letter-spacing: -.02em; }
 .side-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: auto; padding-top: 4px; }
 .side-links a { padding-block: 5px; border-bottom: 1px solid #93a798; font-size: 13px; }
-@media (max-width: 1000px) { .side-grid { grid-template-columns: 1fr; } }
-@media (max-width: 760px) { .side-projects { margin-top: 44px; padding-top: 28px; } .side-head { display: block; } .side-head p { margin-top: 6px; } .side-card { padding: 18px 17px 14px; } }
+@media (max-width: 900px) { .side-card { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .side-card { padding: 18px 17px 14px; } .side-tabs a { padding: 7px 12px; font-size: 13px; } }
+@media print { .side-tabs { display: none; } .is-side-tabbed .side-panels { gap: 16px; } .side-card[hidden] { display: grid; content-visibility: visible; padding: 26px; border: 1px solid var(--line); } }

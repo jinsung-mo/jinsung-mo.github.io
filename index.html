@@ -14,8 +14,8 @@
   <meta property="og:image:alt" content="삐용 프로젝트의 로봇 관제 웹 화면">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://jinsung-mo.github.io/">
-  <link rel="stylesheet" href="styles.css?v=20261031-main-three">
-  <script src="script.js?v=20261031-main-three" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261031-side-tabs">
+  <script src="script.js?v=20261031-side-tabs" defer></script>
   <title>모진성 | Java · Spring Boot 백엔드 개발자</title>
 </head>
 <body>
@@ -66,11 +66,12 @@
       </div>
     </div></section>
     <section class="projects-section" id="projects" aria-labelledby="projects-title"><div class="wrap">
-      <div class="section-head"><div><p class="section-number">02 / PROJECTS</p><h2 id="projects-title">프로젝트</h2></div><p>주요 프로젝트 3개는 맡은 역할, 해결한 문제, 트러블슈팅까지 정리했고, <a href="#more-projects">그 밖의 프로젝트</a>는 아래에 짧게 모았습니다.</p></div>
-      <nav class="project-shortcuts" aria-label="주요 프로젝트 바로가기">
+      <div class="section-head"><div><p class="section-number">02 / PROJECTS</p><h2 id="projects-title">프로젝트</h2></div><p>주요 프로젝트 3개는 맡은 역할, 해결한 문제, 트러블슈팅까지 정리했고, <a href="#more-projects">그 밖의 프로젝트</a>는 마지막 탭에 짧게 모았습니다.</p></div>
+      <nav class="project-shortcuts" aria-label="프로젝트 바로가기">
         <a href="#bbiyong"><span class="shortcut-number">01</span><strong>삐용</strong><span>로봇 관제 서버, 팀장</span><span aria-hidden="true">↓</span></a>
         <a href="#gabolle"><span class="shortcut-number">02</span><strong>가볼래</strong><span>여행·일정 API, AI 챗봇</span><span aria-hidden="true">↓</span></a>
         <a href="#binjari"><span class="shortcut-number">03</span><strong>빈자리</strong><span>영상 분석 서버 / Flask</span><span aria-hidden="true">↓</span></a>
+        <a class="more-tab" href="#more-projects"><span class="shortcut-number">+</span><strong>그 밖의 프로젝트</strong><span>axMap · 로보터블 · 써트맵 · 데이콘</span><span aria-hidden="true">↓</span></a>
       </nav>
 
       <article class="project" id="bbiyong" aria-labelledby="bbiyong-title">
@@ -253,41 +254,59 @@
           <figcaption id="binjari-detail-caption"><strong>상세정보에서도 B5 상태가 바뀝니다</strong><p>실제 Flutter 상세 화면을 녹화했습니다. B5가 초록에서 빨강으로 바뀌고, 빈자리는 2개에서 1개, 점유율은 90%에서 95%로 갱신됩니다.</p></figcaption>
         </figure></div></details>
       </article>
-    </div>
-    <div class="wrap"><section class="side-projects" id="more-projects" aria-labelledby="more-projects-title">
-      <div class="side-head"><h3 id="more-projects-title">그 밖의 프로젝트</h3><p>지금 진행 중인 프로젝트 2개와 창업 프로젝트 1개입니다.</p></div>
-      <div class="side-grid">
-        <article class="side-card" id="axmap" aria-labelledby="axmap-title">
-          <p class="side-kind" id="gabolle-axmap"><span class="live">진행 중</span>AI 코딩 협업 도구</p>
-          <h4 id="axmap-title">axMap <small>axmap-cli</small></h4>
-          <p class="side-meta">2026.08 ~ 진행 중 · 가볼래 팀에서 시작 · 예약 겹침 판정 규칙 설계와 검증</p>
-          <p class="side-summary">여러 사람의 AI 코딩 도구가 한 저장소에서 같이 일할 때, 고치기 전에 파일과 폴더를 먼저 예약하고 겹치는 예약은 시작 전에 막는 협업 도구입니다. 경로를 <code>/</code> 단위로 비교해 <code>src/auth</code> 예약이 <code>src/authz</code>까지 막지 않게 하는 규칙을 설계하고 검증했습니다.</p>
-          <ul class="side-results"><li><strong>npm 다운로드 23,794회</strong>2026.08.28 ~ 10.25 누적, CI·미러 포함. 지금까지 24개 버전 배포(최신 1.9.0)</li><li><strong>예약 3,629회</strong>가볼래 개발 기간(2026.08.25 ~ 09.30) 장부에 쌓인 기록</li></ul>
-          <p class="side-stack">Node.js · Git · MCP</p>
-          <p class="side-note">토큰 비용 때문에 한 사람의 계정으로만 코드를 생성하기로 해, 공개 저장소의 커밋 작성자는 팀원 한 명으로 나옵니다.</p>
-          <div class="side-links"><a href="https://github.com/rl2aderjoon/axmap" target="_blank" rel="noopener noreferrer">GitHub 저장소 <span aria-hidden="true">↗</span></a><a href="https://www.npmjs.com/package/axmap-cli" target="_blank" rel="noopener noreferrer">npm <span aria-hidden="true">↗</span></a><a href="https://github.com/jinsung-mo/jinsung-mo.github.io/blob/main/evidence/axmap/README.md" target="_blank" rel="noopener noreferrer">수치 원본 <span aria-hidden="true">↗</span></a></div>
-        </article>
-        <article class="side-card" id="robotable" aria-labelledby="robotable-title">
-          <p class="side-kind"><span class="live">진행 중</span>요리 영상 분석 · 기업연계</p>
-          <h4 id="robotable-title">로보터블 기업연계 <small>요리 영상 구간 분할</small></h4>
-          <p class="side-meta">2026.10 ~ 진행 중 · 6인 팀 · S1 방법 비교, VLM 입력 실험, 사람 정답 검증</p>
-          <p class="side-summary">고정 화각으로 찍은 요리 영상을 행동별 구간으로 나누면서, 시각언어모델(VLM)이 쓰는 토큰을 줄이는 방법론을 찾는 프로젝트입니다.</p>
-          <ul class="side-results"><li><strong>판독 토큰 90% 절감</strong>사진 대신 원본 시각을 새긴 영상 조각을 보내고도 경계 F1(±5초)은 0.674 → 0.708로 유지했습니다(팀 결정 전 제안).</li><li id="robotable-case"><strong>0.792 → 0.204</strong>AI 라벨로 잰 팀 모델 점수를 사람 검수 16편으로 다시 재니 무작위(0.196) 수준이었습니다.</li></ul>
-          <p class="side-stack">Python · PyTorch · Gemini API</p>
-          <div class="side-links"><a href="https://lab.ssafy.com/s15-final/S15P31E109" target="_blank" rel="noopener noreferrer">SSAFY GitLab 저장소(로그인 필요) <span aria-hidden="true">↗</span></a></div>
-        </article>
-        <article class="side-card" id="certmap" aria-labelledby="certmap-title">
-          <p class="side-kind">학습 계획 서비스 · 창업 프로젝트</p>
-          <h4 id="certmap-title">써트맵 <small>CERTMAP</small></h4>
-          <p class="side-meta">2025.03 ~ 12 · 5인 창업팀 · 백엔드 · 부산 U창업 패키지 선발</p>
-          <p class="side-summary">시험일과 교재를 넣으면 AI가 하루 단위 학습 계획을 짜 주는 학습 관리 서비스입니다. API와 데이터 구조를 설계하고, JWT 로그인과 구글·카카오·네이버 소셜 로그인을 구현했습니다.</p>
-          <ul class="side-results"><li><strong>실패 이유 1위, 계획 부재 23.5%</strong>본조사(인터뷰 43건, 설문 165건) 결과를 근거로 자격증 추천에서 학습 계획 서비스로 방향을 바꿨습니다.</li></ul>
-          <p class="side-stack">Java 17 · Spring Boot · Spring Security · JWT · OAuth2 · MySQL</p>
-          <p class="side-note">회원·자격증·학습계획 API와 MySQL DB는 당시 로컬에서 작업해 공개하지 못했고, 공개 저장소에는 인증 서버만 있습니다.</p>
-          <div class="side-links"><a href="https://github.com/jinsung-mo/certmap" target="_blank" rel="noopener noreferrer">인증 서버 저장소 <span aria-hidden="true">↗</span></a></div>
-        </article>
-      </div>
-    </section></div></section>
+      <section class="project side-projects" id="more-projects" aria-labelledby="more-projects-title">
+        <header class="project-heading"><div><p class="project-kind">그 밖의 프로젝트</p><h3 id="more-projects-title">짧게 정리한 프로젝트</h3></div><div class="project-meta"><p>버튼을 누르면 프로젝트별 요약이 보입니다.</p></div></header>
+        <nav class="side-tabs" aria-label="그 밖의 프로젝트 고르기"><a href="#axmap">axMap<span class="live">진행 중</span></a><a href="#robotable">로보터블 기업연계<span class="live">진행 중</span></a><a href="#certmap">써트맵</a><a href="#dacon">데이콘 RAG</a></nav>
+        <div class="side-panels">
+          <article class="side-card" id="axmap" aria-labelledby="axmap-title">
+            <div class="side-main">
+              <p class="side-kind" id="gabolle-axmap"><span class="live">진행 중</span>AI 코딩 협업 도구</p>
+              <h4 id="axmap-title">axMap <small>axmap-cli</small></h4>
+              <p class="side-meta">2026.08 ~ 진행 중 · 가볼래 팀에서 시작 · 예약 겹침 판정 규칙 설계와 검증</p>
+              <p class="side-summary">여러 사람의 AI 코딩 도구가 한 저장소에서 같이 일할 때, 고치기 전에 파일과 폴더를 먼저 예약하고 겹치는 예약은 시작 전에 막는 협업 도구입니다. 경로를 <code>/</code> 단위로 비교해 <code>src/auth</code> 예약이 <code>src/authz</code>까지 막지 않게 하는 규칙을 설계하고 검증했습니다.</p>
+              <p class="side-stack">Node.js · Git · MCP</p>
+              <p class="side-note">토큰 비용 때문에 한 사람의 계정으로만 코드를 생성하기로 해, 공개 저장소의 커밋 작성자는 팀원 한 명으로 나옵니다.</p>
+              <div class="side-links"><a href="https://github.com/rl2aderjoon/axmap" target="_blank" rel="noopener noreferrer">GitHub 저장소 <span aria-hidden="true">↗</span></a><a href="https://www.npmjs.com/package/axmap-cli" target="_blank" rel="noopener noreferrer">npm <span aria-hidden="true">↗</span></a><a href="https://github.com/jinsung-mo/jinsung-mo.github.io/blob/main/evidence/axmap/README.md" target="_blank" rel="noopener noreferrer">수치 원본 <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <ul class="side-results"><li><strong>npm 다운로드 23,794회</strong>2026.08.28 ~ 10.25 누적, CI·미러 포함. 지금까지 24개 버전 배포(최신 1.9.0)</li><li><strong>예약 3,629회</strong>가볼래 개발 기간(2026.08.25 ~ 09.30) 장부에 쌓인 기록</li></ul>
+          </article>
+          <article class="side-card" id="robotable" aria-labelledby="robotable-title">
+            <div class="side-main">
+              <p class="side-kind"><span class="live">진행 중</span>요리 영상 분석 · 기업연계</p>
+              <h4 id="robotable-title">로보터블 기업연계 <small>요리 영상 구간 분할</small></h4>
+              <p class="side-meta">2026.10 ~ 진행 중 · 6인 팀 · S1 방법 비교, VLM 입력 실험, 사람 정답 검증</p>
+              <p class="side-summary">고정 화각으로 찍은 요리 영상을 행동별 구간으로 나누면서, 시각언어모델(VLM)이 쓰는 토큰을 줄이는 방법론을 찾는 프로젝트입니다.</p>
+              <p class="side-stack">Python · PyTorch · Gemini API</p>
+              <div class="side-links"><a href="https://lab.ssafy.com/s15-final/S15P31E109" target="_blank" rel="noopener noreferrer">SSAFY GitLab 저장소(로그인 필요) <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <ul class="side-results"><li><strong>판독 토큰 90% 절감</strong>사진 대신 원본 시각을 새긴 영상 조각을 보내고도 경계 F1(±5초)은 0.674 → 0.708로 유지했습니다(팀 결정 전 제안).</li><li id="robotable-case"><strong>0.792 → 0.204</strong>AI 라벨로 잰 팀 모델 점수를 사람 검수 16편으로 다시 재니 무작위(0.196) 수준이었습니다.</li></ul>
+          </article>
+          <article class="side-card" id="certmap" aria-labelledby="certmap-title">
+            <div class="side-main">
+              <p class="side-kind">학습 계획 서비스 · 창업 프로젝트</p>
+              <h4 id="certmap-title">써트맵 <small>CERTMAP</small></h4>
+              <p class="side-meta">2025.03 ~ 12 · 5인 창업팀 · 백엔드 · 부산 U창업 패키지 선발</p>
+              <p class="side-summary">시험일과 교재를 넣으면 AI가 하루 단위 학습 계획을 짜 주는 학습 관리 서비스입니다. API와 데이터 구조를 설계하고, JWT 로그인과 구글·카카오·네이버 소셜 로그인을 구현했습니다.</p>
+              <p class="side-stack">Java 17 · Spring Boot · Spring Security · JWT · OAuth2 · MySQL</p>
+              <p class="side-note">회원·자격증·학습계획 API와 MySQL DB는 당시 로컬에서 작업해 공개하지 못했고, 공개 저장소에는 인증 서버만 있습니다.</p>
+              <div class="side-links"><a href="https://github.com/jinsung-mo/certmap" target="_blank" rel="noopener noreferrer">인증 서버 저장소 <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <ul class="side-results"><li><strong>실패 이유 1위, 계획 부재 23.5%</strong>본조사(인터뷰 43건, 설문 165건) 결과를 근거로 자격증 추천에서 학습 계획 서비스로 방향을 바꿨습니다.</li></ul>
+          </article>
+          <article class="side-card" id="dacon" aria-labelledby="dacon-title">
+            <div class="side-main">
+              <p class="side-kind">RAG 질의응답 · 경진대회</p>
+              <h4 id="dacon-title">재정정보 AI 검색 알고리즘 경진대회 <small>DACON 2024</small></h4>
+              <p class="side-meta">2024 · 연구실 연구생으로 개인 참가 · RAG 파이프라인 구현과 LLM 파인튜닝</p>
+              <p class="side-summary">재정 보고서, 예산 설명자료, 기획재정부 보도자료 PDF를 근거로 중앙정부 재정 질문에 답하는 질의응답 모델을 만드는 대회입니다. PDF를 400자 단위로 나누고, bge-m3 임베딩 검색과 BM25를 RRF로 합친 하이브리드 검색으로 근거 3개를 찾은 뒤, 4bit로 양자화한 llama-2-ko-7b를 QLoRA로 파인튜닝해 답을 만들었습니다.</p>
+              <p class="side-stack">Python · PyMuPDF · LangChain · bge-m3 · BM25(kiwipiepy) · llama-2-ko-7b · QLoRA</p>
+              <div class="side-links"><a href="https://dacon.io/competitions/official/236295/overview/description" target="_blank" rel="noopener noreferrer">대회 페이지 <span aria-hidden="true">↗</span></a></div>
+            </div>
+            <ul class="side-results"><li><strong>리더보드 상위 31%</strong>참가자 1,132명(팀 순위 기준)이고 평가 지표는 F1입니다. 이후 다시 구현해 리더보드 점수를 62.2%(베이스라인)에서 약 65%로 올렸습니다.</li><li><strong>QLoRA 파인튜닝: 검증 F1 0.217 → 0.411</strong>검색한 근거와 질문을 입력으로 주고, 답변 토큰에만 손실을 걸어 학습했습니다.</li><li><strong>하이브리드 검색: 근거 포함률 49.1% → 58.5%</strong>정답 근거가 검색 결과에 들어오는 비율이 올라 검증 F1도 0.182 → 0.217이 됐습니다.</li></ul>
+          </article>
+        </div>
+      </section>
+    </div></section>
     <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="wrap contact-inner"><div><p class="section-number">03 / CONTACT</p><h2 id="contact-title">연락처</h2></div><div class="contact-links"><a href="mailto:ahwlstjd57@gmail.com">ahwlstjd57@gmail.com <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo" target="_blank" rel="noopener noreferrer">github.com/jinsung-mo <span aria-hidden="true">↗</span></a><a href="portfolio.pdf" target="_blank" rel="noopener">포트폴리오 PDF <span aria-hidden="true">↗</span></a></div></div></section>
   </main>
   <footer class="site-footer"><div class="wrap footer-inner"><p>© 2026 모진성, 백엔드 개발자</p><a href="#top">맨 위로 <span aria-hidden="true">↑</span></a></div></footer>
