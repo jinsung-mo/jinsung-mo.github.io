@@ -14,8 +14,8 @@
   <meta property="og:image:alt" content="삐용 프로젝트의 로봇 관제 웹 화면">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://jinsung-mo.github.io/">
-  <link rel="stylesheet" href="styles.css?v=20261030-axmap-tab">
-  <script src="script.js?v=20261030-project-tabs" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261031-main-three">
+  <script src="script.js?v=20261031-main-three" defer></script>
   <title>모진성 | Java · Spring Boot 백엔드 개발자</title>
 </head>
 <body>
@@ -66,14 +66,11 @@
       </div>
     </div></section>
     <section class="projects-section" id="projects" aria-labelledby="projects-title"><div class="wrap">
-      <div class="section-head"><div><p class="section-number">02 / PROJECTS</p><h2 id="projects-title">프로젝트</h2></div><p>프로젝트마다 무엇을 만들었는지, 맡은 역할, 해결한 문제, 트러블슈팅 순서로 정리했습니다.</p></div>
-      <nav class="project-shortcuts" aria-label="프로젝트 바로가기">
+      <div class="section-head"><div><p class="section-number">02 / PROJECTS</p><h2 id="projects-title">프로젝트</h2></div><p>주요 프로젝트 3개는 맡은 역할, 해결한 문제, 트러블슈팅까지 정리했고, <a href="#more-projects">그 밖의 프로젝트</a>는 아래에 짧게 모았습니다.</p></div>
+      <nav class="project-shortcuts" aria-label="주요 프로젝트 바로가기">
         <a href="#bbiyong"><span class="shortcut-number">01</span><strong>삐용</strong><span>로봇 관제 서버, 팀장</span><span aria-hidden="true">↓</span></a>
         <a href="#gabolle"><span class="shortcut-number">02</span><strong>가볼래</strong><span>여행·일정 API, AI 챗봇</span><span aria-hidden="true">↓</span></a>
-        <a href="#axmap"><span class="shortcut-number">03</span><strong>axMap</strong><span>AI 코딩 협업 도구, 진행 중</span><span aria-hidden="true">↓</span></a>
-        <a href="#robotable"><span class="shortcut-number">04</span><strong>로보터블</strong><span>요리 영상 구간 분할, 진행 중</span><span aria-hidden="true">↓</span></a>
-        <a href="#binjari"><span class="shortcut-number">05</span><strong>빈자리</strong><span>영상 분석 서버 / Flask</span><span aria-hidden="true">↓</span></a>
-        <a href="#certmap"><span class="shortcut-number">06</span><strong>써트맵</strong><span>학습 계획 서비스, 창업팀</span><span aria-hidden="true">↓</span></a>
+        <a href="#binjari"><span class="shortcut-number">03</span><strong>빈자리</strong><span>영상 분석 서버 / Flask</span><span aria-hidden="true">↓</span></a>
       </nav>
 
       <article class="project" id="bbiyong" aria-labelledby="bbiyong-title">
@@ -207,61 +204,8 @@
           <figcaption id="gabolle-demo-caption"><strong>가볼래 36초 핵심 시연</strong><p>홈에서 여행 조건을 설정하고 지도에서 경로를 확인하는 실제 앱 시연입니다.</p><ol><li>00:00 홈 화면</li><li>00:06 날짜와 인원 입력</li><li>00:16 여행 취향 선택</li><li>00:24 지도에서 경로 확인</li></ol></figcaption>
         </figure></div></details>
       </article>
-      <article class="project" id="axmap" aria-labelledby="axmap-title">
-        <header class="project-heading"><div><p class="project-kind">03 / AI 코딩 협업 도구 (진행 중)</p><h3 id="axmap-title">axMap <small>axmap-cli</small></h3></div><div class="project-meta"><p>2026.08 ~ 진행 중, 가볼래 팀에서 시작</p><span class="award">npm 공개 패키지</span></div></header>
-        <div class="project-intro">
-          <div class="project-summary"><p class="service-intro">여러 사람의 AI 코딩 도구가 한 저장소에서 같이 일할 때, 고치기 전에 파일과 폴더를 먼저 예약하고 겹치는 예약은 시작 전에 막는 협업 도구입니다. 회의실을 쓰기 전에 예약하듯, AI가 파일을 고치기 전에 “이 파일은 제가 쓸게요”라고 장부에 먼저 적습니다. 가볼래 팀이 개발하며 겪은 충돌 문제에서 시작해 npm에 공개했고, 지금도 계속 업데이트하고 있습니다(최신 1.9.0, 2026.10.30). 저는 예약이 서로 겹치는지 판단하는 규칙을 설계하고, 만들어진 코드가 규칙대로 동작하는지 검증했습니다.</p>
-            <dl class="project-facts"><div><dt>맡은 역할</dt><dd>예약 겹침 판정 규칙 설계와 검증, 동시 예약 처리 공동 설계</dd></div><div><dt>사용 기술</dt><dd>Node.js, Git, MCP, npm 배포</dd></div></dl>
-            <p class="list-label">해결한 문제</p><ul class="contribution-list"><li><strong>AI 코딩 도구끼리 같은 파일을 동시에 고치지 않게</strong><span>고치기 전에 예약하고, 남의 예약과 겹치면 시작 전에 막으면서 누가 무슨 작업으로 언제까지 쓰는지 알려 줍니다.</span></li><li><strong><code>src/auth</code> 예약이 <code>src/authz</code>까지 막지 않게</strong><span>경로를 <code>/</code> 단위로 잘라 폴더 이름끼리 비교하도록 규칙을 정했습니다.</span></li><li><strong>막힌 AI가 같은 요청을 반복하지 않게</strong><span>막은 이유와 함께 일반 오류(1)와 다른 종료 코드 2를 돌려줘, AI가 다른 작업으로 넘어가게 했습니다.</span></li></ul>
-            <div class="project-links"><a class="button button-small" href="https://github.com/rl2aderjoon/axmap" target="_blank" rel="noopener noreferrer">GitHub 저장소 <span aria-hidden="true">↗</span></a><a class="" href="https://www.npmjs.com/package/axmap-cli" target="_blank" rel="noopener noreferrer">npm 패키지 axmap-cli <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/rl2aderjoon/axmap/blob/main/README.ko.md" target="_blank" rel="noopener noreferrer">한국어 설명 <span aria-hidden="true">↗</span></a></div>
-          </div>
-          <figure class="project-preview" id="axmap-demo"><a href="assets/axmap-claim-conflict.svg" target="_blank" rel="noopener noreferrer" aria-label="axMap 예약 충돌 시연 원본 열기"><img src="assets/axmap-claim-conflict.svg" alt="터미널 두 개에서 A가 src/auth를 선점하고, B의 src/auth/login.ts 선점은 거절되며, src/authz는 통과하고, A가 반납한 뒤 B가 같은 파일을 이어받는 실제 실행 출력" loading="lazy" width="1280" height="797"></a><figcaption>두 사람이 같은 폴더를 예약하려 할 때<br><span>A가 먼저 예약한 폴더를 B가 잡으려다 막히고, A가 반납한 뒤에야 B가 이어받습니다. 실제 실행 화면입니다.</span></figcaption></figure>
-        </div>
-        <div class="verification"><p class="verification-label">사용 기록</p><p><strong>가볼래 개발 기간(2026.08.25 ~ 09.30)에 예약 3,629회, 반납 2,224회가 장부에 쌓였습니다.</strong> npm 누적 다운로드는 23,794회(2026.08.28 ~ 10.25, CI·미러 포함)이고, 지금까지 24개 버전을 배포했습니다.</p></div>
-        <details class="project-detail" id="gabolle-axmap"><summary><span>만든 이유, 겹침 판정 규칙, 한계 더 보기</span><span class="summary-hint">펼쳐 보기</span></summary><div class="detail-body"><div class="case-grid"><div class="story"><h4>왜 만들었나</h4><p>가볼래 팀은 여섯 명이 각자 AI 코딩 도구를 띄워 개발했습니다. 그러다 보니 누가 어떤 파일을 고치는지 서로 보이지 않았고, 같은 파일을 동시에 고친 사실은 코드를 합칠 때가 돼서야 알게 됐습니다. 그래서 팀 회의에서 “고치기 전에 먼저 예약하자”는 규칙을 정했고, 이 규칙을 사람이 아니라 도구가 지키게 만든 것이 axMap입니다.</p></div>
-<div class="story"><h4>어디까지를 ‘겹친다’고 볼까</h4><p>같은 파일이거나, 한쪽이 다른 쪽을 품은 폴더라면 겹친다고 봤습니다. A가 <code>src/auth</code> 폴더를 예약했다면 그 안의 <code>src/auth/login.ts</code>는 막힙니다. 그런데 이름만 비슷한 <code>src/authz</code>는 전혀 다른 폴더라 통과해야 합니다. 글자 앞부분만 비교하면 이것까지 막히기 때문에, 경로를 <code>/</code> 단위로 잘라 폴더 이름끼리 비교하도록 정했습니다. <code>./src/auth/</code>처럼 적는 방식만 다른 경로는 같은 경로로 맞추고, 저장소 밖을 가리키는 경로는 받지 않습니다.</p></div>
-<div class="story"><h4>막을 때는 이유까지 알려 줍니다</h4><p>“실패”라고만 하면 AI는 같은 요청을 계속 다시 보냅니다. 그래서 누가, 무슨 작업으로, 몇 분 더 쓰는지를 함께 보여 주고, 일반 오류(1)와 구분되는 종료 코드 2를 돌려줘 AI가 다른 작업으로 넘어가게 했습니다. 판단 로직은 입력만 보고 결과를 내도록 따로 떼어 두자고 제안했는데, 덕분에 두 사람이 거의 동시에 예약했을 때 최신 장부로 다시 판단하는 데도 그대로 쓸 수 있었습니다. 동시 예약 처리와 장부 동기화는 팀원들과 함께 설계했습니다.</p></div>
-<div class="story"><h4>무엇을 못 하나</h4><p>예약을 무시하고 파일을 고치는 것까지 막지는 못하고, 서로 다른 파일에 같은 기능을 만드는 중복도 잡지 못합니다. npm 다운로드 수에는 CI 서버, 미러, 봇이 받은 횟수가 포함돼 사용자 수가 아닙니다.</p></div>
-<div class="story story-wide"><h4>커밋 작성자가 한 명인 이유</h4><p>AI로 도구를 만드는 데 토큰 비용이 많이 들어, 팀 회의에서 한 사람의 개인 계정(Claude Max 구독)으로만 코드를 생성하기로 정했습니다. 나머지 팀원은 구조와 기능별 구현 방식을 회의로 함께 정하고, 결과를 검토하는 방식으로 참여했습니다. 그래서 공개 저장소에는 커밋 작성자가 팀원 한 명으로 나옵니다.</p></div></div><div class="media-grid axmap-media"><figure class="evidence-figure"><a href="assets/axmap-overlap-rules.svg" target="_blank" rel="noopener noreferrer" aria-label="axMap 선점 충돌 판정 도식 원본 열기"><img src="assets/axmap-overlap-rules.svg" alt="입력 검증과 경로 정규화 뒤 최신 장부를 받아 만료 선점을 제외하고 겹침을 판정하는 흐름, 그리고 A가 src/auth를 선점했을 때 하위 파일과 상위 폴더는 거절되고 src/authz는 통과하는 예시" loading="lazy" width="1280" height="710"></a><figcaption><strong>예약이 겹치는지 판단하는 순서</strong>보라색 실선은 제가 설계하고 검증한 부분, 회색 점선은 팀원들과 함께 설계한 부분입니다. 그림의 ‘선점’은 예약과 같은 뜻입니다.</figcaption></figure></div><div class="evidence-links"><a class="" href="https://github.com/rl2aderjoon/axmap/blob/f4609cb139fe97d06e6c3014cdf3b32ca22b4380/src/protocol.mjs#L10-L165" target="_blank" rel="noopener noreferrer">충돌 판정 코드 <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/rl2aderjoon/axmap/blob/f4609cb139fe97d06e6c3014cdf3b32ca22b4380/test/protocol.test.mjs" target="_blank" rel="noopener noreferrer">판정 테스트 <span aria-hidden="true">↗</span></a><a class="" href="https://www.npmjs.com/package/axmap-cli" target="_blank" rel="noopener noreferrer">npm 배포 페이지 <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo/jinsung-mo.github.io/blob/main/evidence/axmap/README.md" target="_blank" rel="noopener noreferrer">수치 원본 <span aria-hidden="true">↗</span></a></div></div></details>
-      </article>
-      <article class="project" id="robotable" aria-labelledby="robotable-title">
-        <header class="project-heading"><div><p class="project-kind">04 / 요리 영상 분석 (기업연계, 진행 중)</p><h3 id="robotable-title">요리 영상 구간 분할 <small>ROBOTABLE × SSAFY</small></h3></div><div class="project-meta"><p>2026.10 ~ 진행 중, 6인 팀</p><span class="award">로보터블 기업연계</span></div></header>
-        <div class="project-intro">
-          <div class="project-summary"><p class="service-intro">고정된 화각으로 찍은 요리 영상을 행동별 구간으로 나누는 프로젝트입니다. 시각언어모델(VLM)로 영상 전체를 분석하면 구간은 잘 찾지만 토큰을 너무 많이 써서, 토큰을 줄이면서도 구간을 찾아내는 방법론을 찾는 것이 과제입니다. 팀원마다 경계 검출 논문을 파이프라인에 적용해 S1(예상 구간 추출)에 맞는 방법을 고르고, 이를 근거로 S2부터 S4까지 최적의 방법을 찾고 있습니다. 저는 S1 방법 비교와 VLM 입력 방식 실험을 맡고 있습니다.</p>
-            <dl class="project-facts"><div><dt>맡은 역할</dt><dd>S1 경계 검출 논문 방법 적용과 비교, S2·S3 판독 입력 방식 실험, 사람 검수 정답 기준 검증, 영상 라벨링</dd></div><div><dt>사용 기술</dt><dd>Python, PyTorch, scikit-learn, OpenCV, FFmpeg, Gemini API</dd></div><div><dt>구상 중</dt><dd>요리 영상을 올리면 구간을 나눠 레시피, 숏츠, 블로그용 레시피로 만들어 주는 B2C 앱</dd></div></dl>
-            <p class="list-label">해결한 문제</p><ul class="contribution-list"><li><strong>사진 대신 영상 조각을 보내 판독 토큰 90% 절감</strong><span>프레임을 사진으로 한 장씩 보내던 방식을, 원본 시각을 새긴 480px 영상 조각으로 바꿨습니다. 사람 검수 16편에서 토큰은 팀 방식의 9.4%로 줄었고, 경계 F1(±5초)은 0.674에서 0.708로 떨어지지 않았습니다.</span></li><li><strong>AI 라벨로 잰 점수를 사람 정답으로 다시 검증</strong><span>AI 라벨로 학습하고 평가해 F1 0.792가 나온 팀 모델을 사람 검수 16편에 그대로 적용하니 0.204였습니다. 같은 개수를 무작위로 찍은 값(0.196)과 다르지 않았습니다. <a href="#robotable-case">자세히 보기</a></span></li><li><strong>경계 검출 논문의 방법을 S1에 적용해 비교</strong><span>변화점 탐지(KTS, PELT)와 사건 경계 검출(GEBD) 논문의 방법부터 지도학습 TCN까지 S1에 옮겨 같은 조건에서 비교했습니다. 기업이 준 정답 15편을 요리 단위로 나눈 교차검증에서 가장 좋은 조합도 F1(±3초) 0.800으로 목표 0.90에 못 미쳤고, 병목이 경계 검출보다 행동 상태 판독에 있다는 것을 확인했습니다.</span></li></ul>
-            <div class="project-links"><a class="button button-small" href="https://lab.ssafy.com/s15-final/S15P31E109" target="_blank" rel="noopener noreferrer">SSAFY GitLab 저장소 <span aria-hidden="true">↗</span></a><span class="link-note">SSAFY 계정이 있어야 열립니다</span></div>
-          </div>
-          <figure class="project-preview frame-preview"><div class="frame-grid">
-            <div><img src="assets/robotable-frame-1.jpg" alt="준비 장면" loading="lazy" width="720" height="720"><span><time>00:00</time>준비</span></div>
-            <div><img src="assets/robotable-frame-2.jpg" alt="달걀 투입 장면" loading="lazy" width="720" height="720"><span><time>00:20</time>달걀 투입</span></div>
-            <div><img src="assets/robotable-frame-3.jpg" alt="채소를 넣고 볶기 장면" loading="lazy" width="720" height="720"><span><time>00:30</time>채소 넣고 볶기</span></div>
-            <div><img src="assets/robotable-frame-4.jpg" alt="밥 투입 장면" loading="lazy" width="720" height="720"><span><time>01:10</time>밥 투입</span></div>
-          </div><figcaption>중간발표에 쓴 조리 영상 예시<br><span>재료가 들어가고 행동이 바뀌는 시점이 구간의 경계입니다.</span></figcaption></figure>
-        </div>
-        <ol class="pipeline-steps" aria-label="S1부터 S4까지 구간 분할 파이프라인">
-          <li><span>S1</span><strong>예상 구간 추출</strong><p>행동이 바뀔 만한 구간을 미리 추려 VLM이 볼 범위를 줄입니다.</p><em>제 실험: 논문 방법 적용, 사람 정답 검증</em></li>
-          <li><span>S2</span><strong>프레임 선별</strong><p>추린 구간을 바탕으로 VLM에 보낼 장면을 고릅니다.</p><em>제 실험: 사진 대신 영상 조각</em></li>
-          <li><span>S3</span><strong>VLM 판독</strong><p>고른 장면에서 조리 행동과 재료 상태를 읽습니다.</p><em>제 실험: 영상 조각 판독</em></li>
-          <li><span>S4</span><strong>구간 정리</strong><p>판독 결과를 행동별 구간으로 묶어 최종 결과를 만듭니다.</p></li>
-        </ol>
-        <figure class="arch-figure">
-          <a href="assets/robotable-video-chunk.svg" target="_blank" rel="noopener noreferrer" aria-label="판독 입력 방식별 토큰과 경계 F1 비교 원본 열기">
-            <img src="assets/robotable-video-chunk.svg" alt="팀 방식의 판독 토큰을 100%로 둘 때 사진 선별은 53%에 F1 0.709, 영상 조각 1fps는 17.7%에 F1 0.731, 영상 조각 0.5fps는 9.4%에 F1 0.708이고, 팀 방식의 F1은 0.674라는 비교 막대그래프" loading="lazy" width="1440" height="660">
-          </a>
-          <figcaption><strong>판독 입력 방식별 비용과 정확도</strong> 모델과 추론 설정은 그대로 두고 입력만 바꿨습니다. 0.5fps 조각은 토큰을 팀 방식의 9.4%로 줄이면서 F1을 지켰고, 1fps 조각은 토큰 17.7%로 F1이 팀 방식보다 높았습니다.</figcaption>
-        </figure>
-        <p class="scope-note">모든 수치는 팀 결정 전 제안 단계의 실험 결과입니다. 16편은 개발 중 여러 번 본 자료라 수치가 낙관적일 수 있어, 처음 보는 영상에서 설정을 고정하고 다시 확인할 예정입니다.</p>
-        <section class="deep-case" id="robotable-case" aria-label="트러블슈팅: AI 라벨로는 0.79였던 모델 점수가 사람 정답에서는 무작위 수준이던 문제"><p class="deep-case-label">트러블슈팅</p><h4>AI 라벨로는 0.79였던 모델 점수가 사람 정답에서는 무작위 수준이던 문제</h4><ol><li><span>문제</span><p>팀에서 AI가 붙인 라벨로 S1 경계 검출 모델을 다시 학습해, 교차검증 F1(±3초)을 0.286에서 0.792로 올렸다는 결과가 나왔습니다. 그런데 이 점수는 학습에 쓴 것과 같은 AI 라벨로 매긴 점수였습니다.</p></li><li><span>검증 방법</span><p>모델은 고치지 않고 사람이 검수한 16편에 그대로 적용했습니다. 경계를 많이 낼수록 점수가 저절로 오르기 때문에, 영상마다 같은 개수의 시각을 무작위로 찍은 기준선(50회 평균)을 함께 채점했습니다. 같은 정답과 매칭 코드로 Gemini 판독 결과도 한 표에 놓았습니다.</p></li><li><span>결과</span><p>F1은 <strong>0.204</strong>로, 같은 개수 무작위 0.196과 거의 같았습니다. 놓친 경계는 적었지만(재현율 0.954) 낸 경계의 89%가 정답과 맞지 않았습니다(정밀도 0.114).</p></li><li><span>원인</span><p>AI 라벨은 손을 옮기거나 잠깐 멈추는 순간까지 경계로 세서 분당 23.4개를 학습시켰고, 모델도 분당 31.9개를 냈습니다. 사람 정답은 분당 3.8개였습니다. 무엇을 경계로 볼지부터 달랐던 것입니다.</p></li><li><span>해결 제안</span><p>사람 정답에 맞춰 임계값을 다시 골라도 0.50 안팎으로, 비슷한 개수를 내는 Gemini 판독(0.626)보다 낮았습니다. 그래서 모델을 그대로 쓰기보다 학습 라벨의 경계 기준을 사람 쪽(분당 약 4개)에 맞추는 일을 먼저 하자고 제안했습니다. 조리 단계 중심 규칙으로 라벨을 바꿔 다시 학습하자 0.204가 0.385로 오른 것이 근거입니다.</p></li><li><span>남은 과제</span><p>16편에서 조건마다 1회씩 실행한 결과이고, 학습 라벨 기준은 팀 결정이 남아 있습니다. 사람이 검수한 라벨로 학습과 평가를 나눠 다시 확인하는 것이 다음 할 일입니다.</p></li></ol></section>
-        <details class="project-detail" id="robotable-cases"><summary><span>실험 과정과 트러블슈팅 더 보기 (6건)</span><span class="summary-hint">펼쳐 보기</span></summary><div class="detail-body"><div class="case-grid"><div class="story"><h4>논문 방법을 S1에 옮겨 보니</h4><p>영상 요약에 쓰이는 KTS, 변화점 탐지의 PELT, 사건 경계 검출(GEBD) 논문의 방법을 S1에 옮겨 같은 후보 수(분당 4개)로 비교했습니다. 잠정 라벨 4편에서는 오히려 단순한 4fps 프레임 차분이 경계의 66.7%를 ±1초 안에 잡아, CLIP 특징과 KTS(57.6%)나 GEBD 변형(42.4%)보다 나았습니다. 논문에서 좋은 방법이 고정 화각 요리 영상에서도 좋다고 볼 수 없어서, 이후 실험에서는 사람이 만든 정답으로 채점하고, 후보 수를 맞추거나 무작위 기준선을 함께 두어 비교했습니다.</p></div>
-<div class="story"><h4>영상 조각이 사진보다 싼 이유</h4><p>Gemini의 동영상 저해상도 모드는 프레임당 약 70토큰으로, 사진 한 장(약 550토큰)보다 훨씬 쌉니다. 화면 위쪽 띠에 원본 시각을 새겨 모델이 시각을 정확히 적게 했고, 조각을 120초로 늘려 호출마다 붙는 프롬프트 비용도 줄였습니다. 사람이 초안을 검수하는 용도라면 놓친 경계를 찾기보다 틀린 경계를 지우는 편이 쉬워서, “젓기와 그대로 익히기 사이도 새 구간” 지시를 더해 재현율을 0.66에서 0.87로 올린 조건도 함께 제안했습니다.</p></div>
-<div class="story"><h4>목표 0.90에 못 미친 이유를 찾았습니다</h4><p>기업이 준 정답 15편으로 임베딩과 변화점 탐지, 지도학습 TCN과 GRU, 행동 인식 특징(X3D), 미세조정한 CLIP까지 비교했습니다. 가장 좋은 조합은 두 모델의 점수 평균으로 F1(±3초) 0.800이었습니다. 정답을 뜯어보니 경계의 91%가 불 조절, 투입, 젓기, 뒤집기, 그대로 익히기처럼 동작 상태가 바뀌는 지점이었습니다. 상태를 초 단위로 정확히 알면 0.943까지 가능한데 지금 모델의 상태 정확도가 약 0.80이라, 경계보다 상태 판독을 먼저 올려야 한다고 정리했습니다.</p></div>
-<div class="story"><h4>효과가 없었던 것도 남겼습니다</h4><p>움직임 신호로 프레임을 더 줄이면, 조리 중에는 젓느라 화면이 늘 움직여 경계를 놓쳤습니다. 두 번 판독해 투표로 합치는 방법은 토큰이 두 배인데 얻는 것이 작았습니다. 손과 물체 탐지(YOLO, MediaPipe)에 로컬 VLM을 잇는 5단계 파일럿은 재료 투입을 하나도 찾지 못해 채택을 보류했습니다. 실패한 조건도 코드와 호출 기록을 함께 남겨, 팀이 같은 시도를 반복하지 않게 했습니다.</p></div>
-<div class="story"><h4>사람끼리도 경계를 다르게 긋습니다</h4><p>다른 사람이 단 라벨을 예측처럼 놓고 채점해도 F1(±5초)은 0.694였습니다. 그래서 점수가 0.7을 넘은 뒤에는 남은 오차의 상당 부분이 정답 작성 방식 차이일 수 있다고 보고, 재료 투입을 시작만 적을지 끝까지 적을지 같은 라벨 표기 기준을 팀에서 맞추자고 제안했습니다.</p></div>
-<div class="story story-wide"><h4>AI 도구를 쓴 방식</h4><p>실험 코드 작성과 실행에는 Claude Code를 썼습니다. 저는 무엇을 비교할지, 같은 정답과 같은 매칭 코드와 무작위 기준선처럼 어떤 조건에서 비교할지를 정하고 결과와 기록을 확인했습니다. 실험마다 코드 커밋, 입력 해시, 모델 설정과 실제 사용 토큰을 남겨 다른 팀원이 같은 결과를 다시 낼 수 있게 했습니다.</p></div></div></div></details>
-      </article>
       <article class="project" id="binjari" aria-labelledby="binjari-title">
-        <header class="project-heading"><div><p class="project-kind">05 / 영상 분석 서비스</p><h3 id="binjari-title">빈자리 <small>BINJARI</small></h3></div><div class="project-meta"><p>2024.12 ~ 2025.06, 캡스톤 디자인, 2인 팀</p><span class="award">교내 소프트웨어 전시회 인기상</span></div></header>
+        <header class="project-heading"><div><p class="project-kind">03 / 영상 분석 서비스</p><h3 id="binjari-title">빈자리 <small>BINJARI</small></h3></div><div class="project-meta"><p>2024.12 ~ 2025.06, 캡스톤 디자인, 2인 팀</p><span class="award">교내 소프트웨어 전시회 인기상</span></div></header>
         <div class="project-intro">
           <div class="project-summary"><p class="service-intro">특정 시간대만 되면 캠퍼스 주차장에서 빈자리를 찾느라 스트레스를 받는다는 이야기를 자주 들었습니다. 주차면마다 센서를 달면 장비와 설치에 비용이 많이 들어, 카메라 영상만으로 풀어 보고 싶었습니다. 그렇게 만든 서비스가 빈자리입니다. 주차장 영상을 주차면별 상태로 바꿔 앱에 빈자리 수와 시간대별 통계를 보여 줍니다. 저는 분석 서버를 맡아, 차가 잠깐 가려져도 상태가 흔들리지 않는 판정 로직을 만들었습니다.</p>
             <dl class="project-facts"><div><dt>맡은 역할</dt><dd>Flask 분석 서버, 주차면 매핑과 상태 판정, 상태 API, SQLite 저장과 통계</dd></div><div><dt>사용 기술</dt><dd>Python, Flask, OpenCV, YOLOv8x, SQLite<br><span class="muted">안서현: Flutter 앱, 관리자 화면, 모델 학습</span></dd></div></dl>
@@ -309,23 +253,41 @@
           <figcaption id="binjari-detail-caption"><strong>상세정보에서도 B5 상태가 바뀝니다</strong><p>실제 Flutter 상세 화면을 녹화했습니다. B5가 초록에서 빨강으로 바뀌고, 빈자리는 2개에서 1개, 점유율은 90%에서 95%로 갱신됩니다.</p></figcaption>
         </figure></div></details>
       </article>
-      <article class="project" id="certmap" aria-labelledby="certmap-title">
-        <header class="project-heading"><div><p class="project-kind">06 / 학습 계획 서비스 (창업 프로젝트)</p><h3 id="certmap-title">써트맵 <small>CERTMAP</small></h3></div><div class="project-meta"><p>2025.03 ~ 12, 5인 창업팀, 백엔드</p><span class="award">부산 U창업 패키지 선발</span></div></header>
-        <div class="project-intro">
-          <div class="project-summary"><p class="service-intro">써트맵은 시험일과 교재를 넣으면 AI가 하루 단위 학습 계획을 짜 주고, 공부한 내용을 문제로 점검하고, 못 끝낸 계획은 다음 날로 옮겨 주는 학습 관리 서비스입니다. 저는 백엔드를 맡아 API와 데이터 구조를 설계하고, 로그인 기능을 구현했습니다. 회원, 자격증, 학습계획 API와 MySQL DB는 당시 로컬에서 작업해 공개하지 못했고, 공개 저장소에는 인증 서버만 있습니다.</p>
-            <dl class="project-facts"><div><dt>맡은 역할</dt><dd>백엔드 (API와 데이터 구조 설계, JWT 인증과 소셜 로그인 구현)</dd></div><div><dt>사용 기술</dt><dd>Java 17, Spring Boot, Spring Security, JWT, OAuth2, MySQL</dd></div></dl>
-            <p class="list-label">주요 작업</p><ul class="contribution-list"><li><strong>사용자 조사로 서비스 방향을 바꿨습니다</strong><span>처음에는 목표 직업에 맞는 자격증을 추천하는 서비스로 기획했습니다. 취업 준비생 100명에게 설문과 인터뷰를 해 보니 무슨 자격증을 딸지는 이미 알고 있었고, 진짜 고민은 “정해진 시간 안에 어떻게 공부할까”였습니다.</span></li><li><strong>본조사로 문제를 수치로 확인했습니다</strong><span>이후 본조사(인터뷰 43건, 설문 165건)에서 자격증 취득 실패 이유 1위는 계획 부재(23.5%)였고, 스스로 매긴 학습 만족도는 5점 만점에 2.8점이었습니다.</span></li><li><strong>JWT 로그인과 소셜 로그인 구현</strong><span>JWT 기반 로그인과 구글, 카카오, 네이버 소셜 로그인을 구현했습니다.</span></li></ul>
-            <div class="project-links"><a class="button button-small" href="https://github.com/jinsung-mo/certmap" target="_blank" rel="noopener noreferrer">인증 서버 저장소 <span aria-hidden="true">↗</span></a></div>
-          </div>
-          <figure class="project-preview console-preview"><a href="assets/certmap-flow.jpg" target="_blank" rel="noopener noreferrer" aria-label="써트맵 Plan Check Act 화면 원본 열기"><img src="assets/certmap-flow.jpg" alt="학습 플랜 설계, 실력 점검, 미완료 플랜 연기로 이어지는 써트맵 앱 화면 세 개" loading="lazy" width="1440" height="810"></a><figcaption>Plan, Check, Act 세 흐름으로 설계한 앱 화면<br><span>화면 디자인은 팀 결과물입니다. 출시 전 MVP 단계입니다.</span></figcaption></figure>
-        </div>
-        <figure class="arch-figure"><a href="assets/certmap-research.jpg" target="_blank" rel="noopener noreferrer" aria-label="써트맵 사용자 조사 결과 원본 열기"><img src="assets/certmap-research.jpg" alt="자격증 취득 실패 이유 1위가 계획 부재 23.5퍼센트이고 학습 만족도가 5점 중 2.8점이라는 조사 결과" loading="lazy" width="1440" height="810"></a><figcaption><strong>본조사 결과</strong>인터뷰 43건, 설문 165건 (2025, 팀 자체 조사). 실패 원인 1위는 계획 부재였습니다.</figcaption></figure>
-        <section class="followup" aria-labelledby="certmap-result-title"><div class="followup-heading"><h4 id="certmap-result-title">팀 성과: 창업 프로그램 선정과 수상</h4></div>
-          <ul class="milestones"><li><time>2025.06</time>부산 U창업 패키지 선발</li><li><time>2025.07</time>서울대학교 대학연대 창업 네트워크 캠프 우수상</li><li><time>2025.07</time>학생 창업유망팀 300 성장트랙A 선정</li><li><time>2025.08</time>하나 소셜벤처 유니버시티 우수팀 선정</li><li><time>2025.08</time>린스타트업(동남권) 2단계 선정</li><li><time>2025.09</time>경남권 대학생 창업동아리 창업역량강화교육 우수상</li><li><time>2025.09</time>교내 G-SCOUT 창업동아리 선정</li></ul>
-          <p class="measurement-note">배운 점: 기능을 정하기 전에 사용자에게 먼저 물어본 것이 서비스 방향을 가장 크게 바꿨습니다. 같은 불편을 겪는 사람이 실제로 얼마나 있는지 숫자로 확인한 뒤 만들 것을 정했습니다.</p>
-        </section>
-      </article>
-    </div></section>
+    </div>
+    <div class="wrap"><section class="side-projects" id="more-projects" aria-labelledby="more-projects-title">
+      <div class="side-head"><h3 id="more-projects-title">그 밖의 프로젝트</h3><p>지금 진행 중인 프로젝트 2개와 창업 프로젝트 1개입니다.</p></div>
+      <div class="side-grid">
+        <article class="side-card" id="axmap" aria-labelledby="axmap-title">
+          <p class="side-kind" id="gabolle-axmap"><span class="live">진행 중</span>AI 코딩 협업 도구</p>
+          <h4 id="axmap-title">axMap <small>axmap-cli</small></h4>
+          <p class="side-meta">2026.08 ~ 진행 중 · 가볼래 팀에서 시작 · 예약 겹침 판정 규칙 설계와 검증</p>
+          <p class="side-summary">여러 사람의 AI 코딩 도구가 한 저장소에서 같이 일할 때, 고치기 전에 파일과 폴더를 먼저 예약하고 겹치는 예약은 시작 전에 막는 협업 도구입니다. 경로를 <code>/</code> 단위로 비교해 <code>src/auth</code> 예약이 <code>src/authz</code>까지 막지 않게 하는 규칙을 설계하고 검증했습니다.</p>
+          <ul class="side-results"><li><strong>npm 다운로드 23,794회</strong>2026.08.28 ~ 10.25 누적, CI·미러 포함. 지금까지 24개 버전 배포(최신 1.9.0)</li><li><strong>예약 3,629회</strong>가볼래 개발 기간(2026.08.25 ~ 09.30) 장부에 쌓인 기록</li></ul>
+          <p class="side-stack">Node.js · Git · MCP</p>
+          <p class="side-note">토큰 비용 때문에 한 사람의 계정으로만 코드를 생성하기로 해, 공개 저장소의 커밋 작성자는 팀원 한 명으로 나옵니다.</p>
+          <div class="side-links"><a href="https://github.com/rl2aderjoon/axmap" target="_blank" rel="noopener noreferrer">GitHub 저장소 <span aria-hidden="true">↗</span></a><a href="https://www.npmjs.com/package/axmap-cli" target="_blank" rel="noopener noreferrer">npm <span aria-hidden="true">↗</span></a><a href="https://github.com/jinsung-mo/jinsung-mo.github.io/blob/main/evidence/axmap/README.md" target="_blank" rel="noopener noreferrer">수치 원본 <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="side-card" id="robotable" aria-labelledby="robotable-title">
+          <p class="side-kind"><span class="live">진행 중</span>요리 영상 분석 · 기업연계</p>
+          <h4 id="robotable-title">로보터블 기업연계 <small>요리 영상 구간 분할</small></h4>
+          <p class="side-meta">2026.10 ~ 진행 중 · 6인 팀 · S1 방법 비교, VLM 입력 실험, 사람 정답 검증</p>
+          <p class="side-summary">고정 화각으로 찍은 요리 영상을 행동별 구간으로 나누면서, 시각언어모델(VLM)이 쓰는 토큰을 줄이는 방법론을 찾는 프로젝트입니다.</p>
+          <ul class="side-results"><li><strong>판독 토큰 90% 절감</strong>사진 대신 원본 시각을 새긴 영상 조각을 보내고도 경계 F1(±5초)은 0.674 → 0.708로 유지했습니다(팀 결정 전 제안).</li><li id="robotable-case"><strong>0.792 → 0.204</strong>AI 라벨로 잰 팀 모델 점수를 사람 검수 16편으로 다시 재니 무작위(0.196) 수준이었습니다.</li></ul>
+          <p class="side-stack">Python · PyTorch · Gemini API</p>
+          <div class="side-links"><a href="https://lab.ssafy.com/s15-final/S15P31E109" target="_blank" rel="noopener noreferrer">SSAFY GitLab 저장소(로그인 필요) <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="side-card" id="certmap" aria-labelledby="certmap-title">
+          <p class="side-kind">학습 계획 서비스 · 창업 프로젝트</p>
+          <h4 id="certmap-title">써트맵 <small>CERTMAP</small></h4>
+          <p class="side-meta">2025.03 ~ 12 · 5인 창업팀 · 백엔드 · 부산 U창업 패키지 선발</p>
+          <p class="side-summary">시험일과 교재를 넣으면 AI가 하루 단위 학습 계획을 짜 주는 학습 관리 서비스입니다. API와 데이터 구조를 설계하고, JWT 로그인과 구글·카카오·네이버 소셜 로그인을 구현했습니다.</p>
+          <ul class="side-results"><li><strong>실패 이유 1위, 계획 부재 23.5%</strong>본조사(인터뷰 43건, 설문 165건) 결과를 근거로 자격증 추천에서 학습 계획 서비스로 방향을 바꿨습니다.</li></ul>
+          <p class="side-stack">Java 17 · Spring Boot · Spring Security · JWT · OAuth2 · MySQL</p>
+          <p class="side-note">회원·자격증·학습계획 API와 MySQL DB는 당시 로컬에서 작업해 공개하지 못했고, 공개 저장소에는 인증 서버만 있습니다.</p>
+          <div class="side-links"><a href="https://github.com/jinsung-mo/certmap" target="_blank" rel="noopener noreferrer">인증 서버 저장소 <span aria-hidden="true">↗</span></a></div>
+        </article>
+      </div>
+    </section></div></section>
     <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="wrap contact-inner"><div><p class="section-number">03 / CONTACT</p><h2 id="contact-title">연락처</h2></div><div class="contact-links"><a href="mailto:ahwlstjd57@gmail.com">ahwlstjd57@gmail.com <span aria-hidden="true">↗</span></a><a class="" href="https://github.com/jinsung-mo" target="_blank" rel="noopener noreferrer">github.com/jinsung-mo <span aria-hidden="true">↗</span></a><a href="portfolio.pdf" target="_blank" rel="noopener">포트폴리오 PDF <span aria-hidden="true">↗</span></a></div></div></section>
   </main>
   <footer class="site-footer"><div class="wrap footer-inner"><p>© 2026 모진성, 백엔드 개발자</p><a href="#top">맨 위로 <span aria-hidden="true">↑</span></a></div></footer>

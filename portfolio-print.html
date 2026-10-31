@@ -83,6 +83,18 @@
   .cards span { font-size: 8pt; color: var(--accent); font-weight: 700; }
   .cards h3 { font-size: 10.5pt; margin: 1mm 0 1.5mm; }
   .cards p { font-size: 9pt; }
+  .c3 { grid-template-columns: repeat(3,1fr); gap: 7mm; }
+  .side { display: flex; flex-direction: column; gap: 2.4mm; min-width: 0; padding: 5mm; border: 1px solid var(--line); border-radius: 3px; }
+  .side-kind { color: var(--accent); font-size: 8.5pt; font-weight: 700; }
+  .side-kind .live { background: var(--accent); color: #fff; padding: .4mm 2mm; border-radius: 2px; margin-right: 1.5mm; font-size: 7.5pt; }
+  .side h3 { font-size: 14pt; }
+  .side h3 small { color: var(--muted); font-size: 8.5pt; font-weight: 600; margin-left: 1.5mm; }
+  .side-text { font-size: 9.3pt; line-height: 1.75; }
+  ul.side-results { list-style: none; padding: 0; display: grid; gap: 2mm; }
+  ul.side-results li { background: var(--pale); padding: 2.4mm 3mm; border-radius: 2px; font-size: 8.5pt; color: #4b5b50; }
+  ul.side-results strong { display: block; color: var(--accent); font-size: 10.5pt; }
+  .side-stack, .side-note { color: var(--muted); font-size: 8pt; }
+  .side-link { margin-top: auto; font-size: 8.5pt; }
 </style>
 </head>
 <body>
@@ -248,75 +260,9 @@
   <div class="footer"><span>모진성, Backend Developer</span><span>5</span></div>
 </section>
 
-<!-- 6. axMap -->
+<!-- 6. 빈자리 -->
 <section class="page">
-  <p class="label">04 / 프로젝트 3: AI 코딩 협업 도구 (진행 중)</p>
-  <h2>axMap<small>axmap-cli</small> <span class="award">npm 공개 패키지</span></h2>
-  <p class="meta">2026.08 ~ 진행 중, 가볼래 팀에서 시작, 예약 겹침 판정 규칙 설계와 검증 담당, Node.js, Git, MCP, <a href="https://github.com/rl2aderjoon/axmap">github.com/rl2aderjoon/axmap</a>, <a href="https://www.npmjs.com/package/axmap-cli">npmjs.com/package/axmap-cli</a></p>
-  <div class="cols c2" style="margin-top:3mm">
-    <div>
-      <p>여러 사람의 AI 코딩 도구가 한 저장소에서 같이 일할 때, 고치기 전에 파일과 폴더를 먼저 예약하고 겹치는 예약은 시작 전에 막는 협업 도구입니다. 가볼래 팀 여섯 명이 각자 AI 코딩 도구로 개발하다 보니 같은 파일을 동시에 고친 사실을 코드를 합칠 때야 알게 됐고, 팀 회의에서 “고치기 전에 먼저 예약하자”는 규칙을 정해 도구가 지키게 만들었습니다. npm에 공개해 지금도 계속 업데이트하고 있습니다(최신 1.9.0, 2026.10.30).</p>
-      <ul class="points" style="margin-top:2mm">
-        <li><strong>어디까지를 ‘겹친다’고 볼지 규칙 설계</strong><span>같은 파일이거나 한쪽이 다른 쪽을 품은 폴더면 겹친다고 봤습니다. 경로를 <code>/</code> 단위로 잘라 비교해 <code>src/auth</code> 예약이 <code>src/authz</code>까지 막지 않게 했고, 저장소 밖을 가리키는 경로는 받지 않습니다.</span></li>
-        <li><strong>막을 때는 이유와 종료 코드 2</strong><span>누가 무슨 작업으로 몇 분 더 쓰는지 보여 주고, 일반 오류(1)와 다른 종료 코드 2를 돌려줘 AI가 같은 요청을 반복하지 않고 다른 작업으로 넘어가게 했습니다.</span></li>
-        <li><strong>판정 로직을 입력만 보는 함수로 분리</strong><span>따로 떼어 두자고 제안해, 두 사람이 거의 동시에 예약했을 때 최신 장부로 다시 판단하는 데도 그대로 썼습니다. 동시 예약 처리와 장부 동기화는 팀원들과 함께 설계했습니다.</span></li>
-      </ul>
-      <p style="font-size:9pt;margin-top:3mm"><strong style="color:var(--accent)">한계</strong>&nbsp; 예약을 무시하고 파일을 고치는 것까지 막지는 못하고, 서로 다른 파일에 같은 기능을 만드는 중복도 잡지 못합니다. 토큰 비용 때문에 한 사람의 계정으로만 코드를 생성하기로 해, 공개 저장소의 커밋 작성자는 팀원 한 명으로 나옵니다.</p>
-    </div>
-    <div>
-      <figure><img src="assets/axmap-overlap-rules.svg" alt="예약이 겹치는지 판단하는 순서와 src/auth 예시"><figcaption>예약이 겹치는지 판단하는 순서입니다. 보라색 실선은 제가 설계하고 검증한 부분, 회색 점선은 팀원들과 함께 설계한 부분입니다.</figcaption></figure>
-      <dl class="results">
-        <div><dt>가볼래 개발 기간 예약</dt><dd>3,629회<small>반납 2,224회, 2026.08.25 ~ 09.30</small></dd></div>
-        <div><dt>npm 누적 다운로드</dt><dd>23,794회<small>2026.08.28 ~ 10.25, CI·미러 포함</small></dd></div>
-        <div><dt>npm 배포</dt><dd>24개 버전<small>최신 1.9.0, 2026.10.30</small></dd></div>
-      </dl>
-    </div>
-  </div>
-  <div class="footer"><span>모진성, Backend Developer</span><span>6</span></div>
-</section>
-
-<!-- 7. 로보터블 기업연계 -->
-<section class="page">
-  <p class="label">05 / 프로젝트 4: 요리 영상 분석 (기업연계, 진행 중)</p>
-  <h2>요리 영상 구간 분할<small>ROBOTABLE × SSAFY</small> <span class="award">로보터블 기업연계</span></h2>
-  <p class="meta">2026.10 ~ 진행 중, 6인 팀, Python, PyTorch, scikit-learn, OpenCV, FFmpeg, Gemini API</p>
-  <div class="cols c2" style="margin-top:3mm">
-    <div>
-      <p>고정된 화각의 요리 영상을 행동별 구간으로 나누는 프로젝트입니다. VLM으로 영상 전체를 분석하면 토큰을 너무 많이 써서, 토큰을 줄이면서 구간을 찾는 방법론을 찾는 것이 과제입니다. 팀원마다 경계 검출 논문을 적용해 S1(예상 구간 추출) 방법을 고르고, 이를 근거로 S2~S4의 최적 방법을 찾고 있습니다. 저는 S1 방법 비교와 VLM 입력 방식 실험을 맡고 있습니다.</p>
-      <ul class="points" style="margin-top:2mm">
-        <li><strong>사진 대신 영상 조각을 보내 판독 토큰 90% 절감</strong><span>원본 시각을 새긴 480px 영상 조각으로 바꿔, 사람 검수 16편에서 토큰은 팀 방식의 9.4%, 경계 F1(±5초)은 0.674 → 0.708로 떨어지지 않았습니다.</span></li>
-        <li><strong>경계 검출 논문의 방법을 S1에 적용해 비교</strong><span>KTS, PELT, GEBD 방법부터 지도학습 TCN까지 같은 조건으로 비교했습니다. 최고 F1(±3초) 0.800으로 목표 0.90에 못 미쳤고, 병목이 행동 상태 판독에 있음을 확인했습니다.</span></li>
-      </ul>
-      <h3 style="margin-top:4mm">트러블슈팅: AI 라벨로는 0.79였던 모델 점수가 사람 정답에서는 무작위 수준이던 문제</h3>
-      <ol class="steps">
-        <li><span>문제</span><p>AI 라벨로 학습하고 평가해 F1(±3초) 0.792가 나온 팀 모델이 있었습니다. 학습과 같은 AI 라벨로 매긴 점수였습니다.</p></li>
-        <li><span>검증 방법</span><p>모델을 고치지 않고 사람 검수 16편에 적용하고, 같은 개수를 무작위로 찍은 기준선과 Gemini 판독을 같은 정답·매칭 코드로 채점했습니다.</p></li>
-        <li><span>결과와 원인</span><p>F1 <strong>0.204</strong>, 무작위 0.196과 같았습니다. AI 라벨은 분당 23.4개의 경계를 가르쳤고 사람 정답은 분당 3.8개였습니다.</p></li>
-        <li><span>해결 제안</span><p>학습 라벨의 경계 기준을 사람 쪽에 맞추는 일을 먼저 하자고 제안했습니다. 조리 단계 중심 규칙으로 다시 학습하자 0.204 → 0.385가 됐습니다.</p></li>
-      </ol>
-    </div>
-    <div>
-      <figure><img src="assets/robotable-video-chunk.svg" alt="판독 입력 방식별 토큰과 경계 F1"><figcaption>모델과 추론 설정은 그대로 두고 입력만 바꿨습니다. 팀 결정 전 제안이며, 16편은 개발 중 여러 번 본 자료라 수치가 낙관적일 수 있습니다.</figcaption></figure>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm;margin-top:4mm">
-        <figure><img src="assets/robotable-frame-1.jpg" alt="준비 장면"><figcaption>00:00 준비</figcaption></figure>
-        <figure><img src="assets/robotable-frame-2.jpg" alt="달걀 투입 장면"><figcaption>00:20 달걀 투입</figcaption></figure>
-        <figure><img src="assets/robotable-frame-3.jpg" alt="채소를 넣고 볶기 장면"><figcaption>00:30 채소 넣고 볶기</figcaption></figure>
-        <figure><img src="assets/robotable-frame-4.jpg" alt="밥 투입 장면"><figcaption>01:10 밥 투입</figcaption></figure>
-      </div>
-      <dl class="results">
-        <div><dt>판독 토큰</dt><dd>100 → 9.4%<small>영상 조각 0.5fps, F1 0.708</small></dd></div>
-        <div><dt>경계 F1 (±5초)</dt><dd>0.674 → 0.731<small>영상 조각 1fps, 토큰 17.7%</small></dd></div>
-        <div><dt>AI 라벨 점수 재검증</dt><dd>0.792 → 0.204<small>사람 정답, 무작위 0.196</small></dd></div>
-      </dl>
-      <p style="font-size:9pt;margin-top:4mm"><strong style="color:var(--accent)">구상 중</strong>&nbsp; 요리 영상을 올리면 구간을 나눠 레시피, 숏츠, 블로그용 레시피로 만들어 주는 B2C 앱</p>
-    </div>
-  </div>
-  <div class="footer"><span>모진성, Backend Developer</span><span>7</span></div>
-</section>
-
-<!-- 8. 빈자리 -->
-<section class="page">
-  <p class="label">06 / 프로젝트 5: 영상 분석 서비스</p>
+  <p class="label">04 / 프로젝트 3: 영상 분석 서비스</p>
   <h2>빈자리<small>BINJARI</small> <span class="award">교내 소프트웨어 전시회 인기상</span></h2>
   <p class="meta">2024.12 ~ 2025.06, 캡스톤 디자인, 2인 팀, Python, Flask, OpenCV, YOLOv8x, SQLite</p>
   <div class="cols c2" style="margin-top:3mm">
@@ -334,31 +280,46 @@
       <figure style="margin-top:4mm"><img src="assets/binjari-inference.jpg" alt="차량 탐지와 주차면 상태"><figcaption>왼쪽 차량 탐지 결과 → 오른쪽 서버가 확정한 주차면별 상태</figcaption></figure>
     </div>
   </div>
-  <div class="footer"><span>모진성, Backend Developer</span><span>8</span></div>
+  <div class="footer"><span>모진성, Backend Developer</span><span>6</span></div>
 </section>
 
-<!-- 9. 써트맵 -->
+<!-- 7. 그 밖의 프로젝트 -->
 <section class="page">
-  <p class="label">07 / 프로젝트 6: 학습 계획 서비스 (창업 프로젝트)</p>
-  <h2>써트맵<small>CERTMAP</small> <span class="award">부산 U창업 패키지 선발</span></h2>
-  <p class="meta">2025.03 ~ 12, 5인 창업팀, 백엔드, Java 17, Spring Boot, Spring Security, JWT, OAuth2, MySQL, 출시 전 MVP 단계</p>
-  <div class="cols c2" style="margin-top:3mm">
-    <div>
-      <p>써트맵은 시험일과 교재를 넣으면 AI가 하루 단위 학습 계획을 짜 주고, 공부한 내용을 문제로 점검하고, 못 끝낸 계획은 다음 날로 옮겨 주는 학습 관리 서비스입니다. 저는 백엔드를 맡아 API와 데이터 구조를 설계하고, 로그인 기능을 구현했습니다. 회원, 자격증, 학습계획 API와 MySQL DB는 당시 로컬에서 작업해 공개하지 못했고, 공개 저장소에는 인증 서버만 있습니다.</p>
-      <ul class="points" style="margin-top:3mm">
-        <li><strong>사용자 조사로 서비스 방향을 바꿨습니다</strong><span>직업별 자격증 추천으로 기획했지만, 취업 준비생 100명에게 설문과 인터뷰를 해 보니 진짜 고민은 “정해진 시간 안에 어떻게 공부할까”였습니다.</span></li>
-        <li><strong>본조사로 문제를 수치로 확인했습니다</strong><span>이후 본조사(인터뷰 43건, 설문 165건)에서 실패 이유 1위는 계획 부재(23.5%), 학습 만족도는 5점 중 2.8점이었습니다.</span></li>
-        <li><strong>JWT 로그인과 소셜 로그인 구현</strong><span>JWT 로그인과 구글, 카카오, 네이버 소셜 로그인을 구현했습니다.</span></li>
-      </ul>
-      <h3 style="margin-top:4mm">팀 성과</h3>
-      <p style="font-size:9pt">부산 U창업 패키지 선발, 서울대 대학연대 창업 네트워크 캠프 우수상, 학생 창업유망팀 300 성장트랙A, 하나 소셜벤처 유니버시티 우수팀, 린스타트업(동남권) 2단계, 경남권 창업역량강화교육 우수상, 교내 G-SCOUT 선정 (2025.06 ~ 09)</p>
+  <p class="label">05 / 그 밖의 프로젝트</p>
+  <h2>그 밖의 프로젝트<small>OTHER PROJECTS</small></h2>
+  <p class="meta">지금 진행 중인 프로젝트 2개와 창업 프로젝트 1개입니다.</p>
+  <div class="cols c3" style="margin-top:5mm">
+    <div class="side">
+      <p class="side-kind"><span class="live">진행 중</span>AI 코딩 협업 도구</p>
+      <h3>axMap<small>axmap-cli</small></h3>
+      <p class="meta">2026.08 ~ 진행 중, 가볼래 팀에서 시작, 예약 겹침 판정 규칙 설계와 검증</p>
+      <p class="side-text">여러 사람의 AI 코딩 도구가 한 저장소에서 같이 일할 때, 고치기 전에 파일과 폴더를 먼저 예약하고 겹치는 예약은 시작 전에 막는 협업 도구입니다. 경로를 <code>/</code> 단위로 비교해 <code>src/auth</code> 예약이 <code>src/authz</code>까지 막지 않게 하는 규칙을 설계하고 검증했습니다.</p>
+      <ul class="side-results"><li><strong>npm 다운로드 23,794회</strong>2026.08.28 ~ 10.25 누적, CI·미러 포함. 24개 버전 배포(최신 1.9.0)</li><li><strong>예약 3,629회</strong>가볼래 개발 기간(2026.08.25 ~ 09.30) 장부 기록</li></ul>
+      <p class="side-stack">Node.js · Git · MCP</p>
+      <p class="side-note">토큰 비용 때문에 한 사람의 계정으로만 코드를 생성하기로 해, 공개 저장소의 커밋 작성자는 팀원 한 명입니다.</p>
+      <p class="side-link"><a href="https://github.com/rl2aderjoon/axmap">github.com/rl2aderjoon/axmap</a></p>
     </div>
-    <div>
-      <figure><img src="assets/certmap-flow.jpg" alt="써트맵 Plan Check Act 화면"><figcaption>Plan, Check, Act 세 흐름으로 설계한 앱 화면 (디자인은 팀 결과물)</figcaption></figure>
-      <figure style="margin-top:3mm;width:82%"><img src="assets/certmap-research.jpg" alt="써트맵 사용자 조사 결과"><figcaption>본조사 결과: 인터뷰 43건, 설문 165건 (2025, 팀 자체 조사)</figcaption></figure>
+    <div class="side">
+      <p class="side-kind"><span class="live">진행 중</span>요리 영상 분석 · 기업연계</p>
+      <h3>로보터블 기업연계<small>요리 영상 구간 분할</small></h3>
+      <p class="meta">2026.10 ~ 진행 중, 6인 팀, S1 방법 비교, VLM 입력 실험, 사람 정답 검증</p>
+      <p class="side-text">고정 화각으로 찍은 요리 영상을 행동별 구간으로 나누면서, 시각언어모델(VLM)이 쓰는 토큰을 줄이는 방법론을 찾는 프로젝트입니다.</p>
+      <ul class="side-results"><li><strong>판독 토큰 90% 절감</strong>사진 대신 원본 시각을 새긴 영상 조각을 보내고도 경계 F1(±5초)은 0.674 → 0.708로 유지했습니다(팀 결정 전 제안).</li><li><strong>0.792 → 0.204</strong>AI 라벨로 잰 팀 모델 점수를 사람 검수 16편으로 다시 재니 무작위(0.196) 수준이었습니다.</li></ul>
+      <p class="side-stack">Python · PyTorch · Gemini API</p>
+      <p class="side-link">SSAFY GitLab 비공개 저장소(S15P31E109)</p>
+    </div>
+    <div class="side">
+      <p class="side-kind">학습 계획 서비스 · 창업 프로젝트</p>
+      <h3>써트맵<small>CERTMAP</small></h3>
+      <p class="meta">2025.03 ~ 12, 5인 창업팀, 백엔드, 부산 U창업 패키지 선발</p>
+      <p class="side-text">시험일과 교재를 넣으면 AI가 하루 단위 학습 계획을 짜 주는 학습 관리 서비스입니다. API와 데이터 구조를 설계하고, JWT 로그인과 구글·카카오·네이버 소셜 로그인을 구현했습니다.</p>
+      <ul class="side-results"><li><strong>실패 이유 1위, 계획 부재 23.5%</strong>본조사(인터뷰 43건, 설문 165건) 결과를 근거로 자격증 추천에서 학습 계획 서비스로 방향을 바꿨습니다.</li></ul>
+      <p class="side-stack">Java 17 · Spring Boot · Spring Security · JWT · OAuth2 · MySQL</p>
+      <p class="side-note">회원·자격증·학습계획 API와 MySQL DB는 당시 로컬에서 작업해 공개하지 못했고, 공개 저장소에는 인증 서버만 있습니다.</p>
+      <p class="side-link"><a href="https://github.com/jinsung-mo/certmap">github.com/jinsung-mo/certmap</a></p>
     </div>
   </div>
-  <div class="footer"><span>모진성  ahwlstjd57@gmail.com  github.com/jinsung-mo</span><span>9</span></div>
+  <div class="footer"><span>모진성, Backend Developer</span><span>7</span></div>
 </section>
 
 </body>

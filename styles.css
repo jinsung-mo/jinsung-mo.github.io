@@ -336,13 +336,10 @@ button { font: inherit; cursor: pointer; }
 @media(max-width:760px) { .service-recording { padding: 16px; } .service-recording-heading { display: block; } .service-recording-heading h4 { font-size: 17px; } .service-recording-heading > span { display: block; margin-top: 5px; } .demo-chapters { display: block; } }
 @media print { .service-recording { display: none; } }
 
-.axmap-media { margin-top: 30px; }
-.axmap-media .evidence-figure img { max-height: none; }
-@media print { #axmap-demo { display: none; } }
 .collaboration-section .deep-case { background: var(--white); margin: 34px 0 0; scroll-margin-top: 90px; }
 .collaboration-section .deep-case li p { color: #45564b; }
-.axmap-lead, .detail-lead { margin: 0 0 22px; padding: 18px 22px; background: var(--pale); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; font-size: 15px; line-height: 1.9; }
-.axmap-lead strong, .detail-lead strong { color: var(--ink); }
+.detail-lead { margin: 0 0 22px; padding: 18px 22px; background: var(--pale); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; font-size: 15px; line-height: 1.9; }
+.detail-lead strong { color: var(--ink); }
 .hero-metrics dd strong { display: block; color: var(--accent); font-size: 22px; line-height: 1.4; letter-spacing: -.035em; font-weight: 750; }
 .hero-metrics dd { font-weight: 500; color: #45564b; }
 .hero-metrics dd small { color: var(--muted); font-size: 11px; }
@@ -429,7 +426,7 @@ button { font: inherit; cursor: pointer; }
 .list-label + .contribution-list li:first-child { margin-top: 6px; }
 
 /* One project at a time: script.js turns the shortcut cards into a sticky project switcher. */
-.is-tabbed .project-shortcuts { position: sticky; top: 73px; z-index: 10; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 10px; margin-bottom: 0; padding: 10px 0; background: var(--white); border-bottom: 1px solid var(--ink); }
+.is-tabbed .project-shortcuts { position: sticky; top: 73px; z-index: 10; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-bottom: 0; padding: 10px 0; background: var(--white); border-bottom: 1px solid var(--ink); }
 .is-tabbed .project-shortcuts a { padding: 8px 14px; line-height: 1.5; }
 .is-tabbed .project-shortcuts a > span:nth-of-type(2) { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .is-tabbed .project-shortcuts a > span:last-child { display: none; }
@@ -444,9 +441,27 @@ button { font: inherit; cursor: pointer; }
 .project-pager .pager-next { grid-column: 2; text-align: right; }
 .project-pager span { display: block; color: var(--muted); font-size: 12px; }
 .project-pager strong { font-size: 16px; letter-spacing: -.02em; }
-@media (max-width: 1200px) { .is-tabbed .project-shortcuts a > span:nth-of-type(2) { display: none; } }
-@media (max-width: 1000px) { .is-tabbed .project-shortcuts { gap: 6px; } .is-tabbed .project-shortcuts a { padding: 8px; gap: 0 6px; } }
-@media (max-width: 760px) { .is-tabbed .project-shortcuts { top: 65px; gap: 4px; padding: 7px 0; } .is-tabbed .project-shortcuts a { display: block; padding: 7px 2px; text-align: center; } .is-tabbed .project-shortcuts .shortcut-number { display: none; } .is-tabbed .project-shortcuts strong { font-size: 13px; } .project-pager { gap: 8px; margin-top: 30px; } .project-pager a { padding: 11px 13px; } .project-pager strong { font-size: 14px; } }
-@media (max-width: 400px) { .is-tabbed .project-shortcuts strong { font-size: 12px; letter-spacing: -.04em; } }
-@media (max-width: 350px) { .is-tabbed .project-shortcuts { grid-template-columns: repeat(3,minmax(0,1fr)); } .is-tabbed .project-shortcuts a { padding: 5px 2px; } }
+@media (max-width: 760px) { .is-tabbed .project-shortcuts { top: 65px; gap: 6px; padding: 7px 0; } .is-tabbed .project-shortcuts a { display: block; padding: 7px 2px; text-align: center; } .is-tabbed .project-shortcuts .shortcut-number { display: none; } .is-tabbed .project-shortcuts strong { font-size: 14px; } .project-pager { gap: 8px; margin-top: 30px; } .project-pager a { padding: 11px 13px; } .project-pager strong { font-size: 14px; } }
 @media print { .is-tabbed .project { border-top: 1px solid var(--ink); } .is-tabbed .project[hidden] { display: block; content-visibility: visible; padding: 20px 0 25px; } .project-pager { display: none; } }
+
+/* Other projects: short cards under the three main projects, always visible. */
+.side-projects { margin-top: 64px; padding: 34px 0 8px; border-top: 1px solid var(--ink); }
+.side-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 22px; }
+.side-head h3 { font-size: 24px; letter-spacing: -.04em; }
+.side-head p { color: var(--muted); font-size: 13px; }
+.side-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.side-card { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 22px 22px 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+.side-kind { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--accent); font-size: 12px; font-weight: 700; }
+.side-kind .live { padding: 2px 7px; border-radius: 3px; background: var(--accent); color: var(--white); font-size: 11px; }
+.side-card h4 { font-size: 20px; line-height: 1.4; letter-spacing: -.03em; }
+.side-card h4 small { margin-left: 4px; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: 0; }
+.side-meta, .side-stack, .side-note { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.side-summary { color: #46564b; font-size: 14px; line-height: 1.85; }
+.side-card code { font-size: .88em; background: var(--pale); padding: 1px 5px; border-radius: 3px; }
+.side-results { display: grid; gap: 8px; margin: 2px 0; padding: 0; list-style: none; }
+.side-results li { padding: 10px 12px; border-radius: 4px; background: var(--pale); color: #46564b; font-size: 13px; line-height: 1.7; }
+.side-results strong { display: block; color: var(--accent); font-size: 15px; letter-spacing: -.02em; }
+.side-links { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: auto; padding-top: 4px; }
+.side-links a { padding-block: 5px; border-bottom: 1px solid #93a798; font-size: 13px; }
+@media (max-width: 1000px) { .side-grid { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .side-projects { margin-top: 44px; padding-top: 28px; } .side-head { display: block; } .side-head p { margin-top: 6px; } .side-card { padding: 18px 17px 14px; } }

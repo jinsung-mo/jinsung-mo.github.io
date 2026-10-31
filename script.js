@@ -67,7 +67,8 @@ if (tabbed) {
 }
 
 // A direct link can point inside a closed project disclosure or a hidden project.
-function revealHashTarget() {
+// On first load it re-scrolls too: hiding the other projects moves everything after them.
+function revealHashTarget(event) {
   if (!location.hash) return;
   let target;
   try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); }
@@ -91,7 +92,7 @@ function revealHashTarget() {
     }
     parent = parent.parentElement;
   }
-  if (revealed) requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+  if (revealed || !event) requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
 }
 window.addEventListener('hashchange', revealHashTarget);
 revealHashTarget();
